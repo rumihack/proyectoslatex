@@ -1,0 +1,509 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% --- PAQUETES ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% --- CONFIGURACION DE DISENO PROFESIONAL ---
+\usetheme{default}
+\setbeamercolor{background canvas}{bg=}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+
+% Colores institucionales
+\definecolor{unemiAzul}{RGB}{20,40,90}
+\definecolor{unemiNaranja}{RGB}{255,102,0}
+\definecolor{codigofondo}{RGB}{245,245,250}
+
+% Tipografia
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamercolor{frametitle}{fg=unemiAzul}
+
+% Comando para cuadros de codigo
+\newcommand{\codigobox}[1]{
+	\begin{block}{}
+		\colorbox{codigofondo}{
+			\begin{minipage}{0.96\textwidth}
+				\ttfamily\scriptsize
+				#1
+			\end{minipage}
+		}
+	\end{block}
+}
+
+% --- FONDO DE LA PRESENTACION ---
+\setbeamertemplate{background}{
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[inner sep=0pt] at (current page.center) {
+			\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI2}
+		};
+	\end{tikzpicture}
+}
+
+\begin{document}
+	
+	% ============================================================
+	% PORTADA
+	% ============================================================
+	{
+		\setbeamertemplate{background}{%
+			\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI}%
+		}
+		\begin{frame}[plain]
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[fill=unemiAzul, fill opacity=0.8, text opacity=1,
+				rounded corners, inner sep=20pt]
+				at (current page.center) {
+					\begin{minipage}{0.7\textwidth}
+						\centering
+						{\Huge \textbf{\textcolor{white}{Lenguajes de Programacion}}} \\[0.4cm]
+						{\Large \textcolor{white}{Alto Nivel y Bajo Nivel}} \\[1cm]
+						{\small \textcolor{white}{Estudiante:}} \\[0.1cm]
+						\textbf{\textcolor{unemiNaranja}{Angel Fernando Calero Maldonado}} \\[0.3cm]
+						{\small \textcolor{white}{Universidad Estatal de Milagro}}
+					\end{minipage}
+				};
+			\end{tikzpicture}
+		\end{frame}
+	}
+	
+	% ============================================================
+	% DIAPOSITIVA 1
+	% ============================================================
+	\begin{frame}{Que es un Lenguaje de Programacion?}
+		Un \textbf{lenguaje de programacion} es un sistema formal de instrucciones que
+		permite expresar algoritmos para que una computadora realice tareas especificas.
+		Segun su cercania al hardware, se clasifican principalmente en:
+		
+		\vspace{0.3cm}
+		\begin{columns}
+			\column{0.48\textwidth}
+			\begin{block}{Alto Nivel}
+				Usa una sintaxis cercana al lenguaje humano. Facilita la lectura, escritura
+				y mantenimiento del codigo, ocultando gran parte de los detalles internos
+				del hardware.
+			\end{block}
+			
+			\column{0.48\textwidth}
+			\begin{block}{Bajo Nivel}
+				Se comunica de manera directa o casi directa con el procesador. Permite mayor
+				control sobre memoria, registros e instrucciones, pero exige conocimientos
+				tecnicos mas profundos.
+			\end{block}
+		\end{columns}
+		
+		\vspace{0.3cm}
+		\centering
+		\textit{\small ``A mayor abstraccion, mayor facilidad para el programador;
+			a menor abstraccion, mayor control sobre la maquina.''}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 2
+	% ============================================================
+	\begin{frame}{Lenguaje de Alto Nivel --- Definicion}
+		Un \textbf{lenguaje de alto nivel} esta disenado para que el programador pueda
+		resolver problemas usando instrucciones comprensibles y estructuras logicas
+		cercanas al razonamiento humano.
+		
+		\vspace{0.25cm}
+		\begin{block}{Caracteristicas principales}
+			\begin{itemize}
+				\item \textbf{Abstraccion del hardware:} oculta registros, direcciones de memoria
+				y detalles internos del procesador.
+				\item \textbf{Portabilidad:} el mismo codigo puede adaptarse a diferentes
+				sistemas operativos o arquitecturas.
+				\item \textbf{Productividad:} permite desarrollar programas con menos lineas de
+				codigo y en menor tiempo.
+				\item \textbf{Bibliotecas y frameworks:} ofrece herramientas listas para crear
+				aplicaciones, paginas web, sistemas de datos o inteligencia artificial.
+			\end{itemize}
+		\end{block}
+		
+		\vspace{0.2cm}
+		\small \textbf{Ejemplos:} Python, Java, JavaScript, C\#, Ruby, PHP.
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 3
+	% ============================================================
+	\begin{frame}{Lenguaje de Bajo Nivel --- Definicion}
+		Un \textbf{lenguaje de bajo nivel} trabaja muy cerca del lenguaje maquina. Sus
+		instrucciones se relacionan directamente con operaciones que el procesador puede
+		ejecutar, por lo que ofrece mayor control y menor abstraccion.
+		
+		\vspace{0.25cm}
+		\begin{columns}
+			\column{0.48\textwidth}
+			\begin{block}{Lenguaje Maquina}
+				Es el nivel mas bajo. Esta formado por instrucciones binarias, es decir,
+				secuencias de 0 y 1 que la CPU interpreta directamente.
+			\end{block}
+			
+			\column{0.48\textwidth}
+			\begin{block}{Lenguaje Ensamblador}
+				Usa instrucciones mnemotecnicas como \texttt{MOV}, \texttt{ADD} o \texttt{INT}.
+				Debe traducirse a lenguaje maquina mediante un programa llamado ensamblador.
+			\end{block}
+		\end{columns}
+		
+		\vspace{0.25cm}
+		\small \textbf{Ejemplos:} NASM, MASM, GAS, ARM Assembly, x86 Assembly.
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 4
+	% ============================================================
+	\begin{frame}{Alto Nivel --- Ventajas y Desventajas}
+		\begin{columns}
+			\column{0.48\textwidth}
+			\begin{block}{\textcolor{unemiNaranja}{$\checkmark$}\ Ventajas}
+				\begin{itemize}
+					\item Facilita la lectura y escritura del codigo.
+					\item Reduce el tiempo de desarrollo.
+					\item Permite crear aplicaciones complejas con mayor rapidez.
+					\item Es mas facil de mantener, corregir y actualizar.
+					\item Tiene amplia documentacion, comunidades y bibliotecas.
+				\end{itemize}
+			\end{block}
+			
+			\column{0.48\textwidth}
+			\begin{block}{\textcolor{red}{$\times$}\ Desventajas}
+				\begin{itemize}
+					\item Puede ser menos eficiente que el codigo de bajo nivel.
+					\item Consume mas memoria por sus capas de abstraccion.
+					\item Ofrece menor control directo del hardware.
+					\item Depende de interpretes, compiladores o maquinas virtuales.
+					\item No siempre es adecuado para sistemas criticos o embebidos.
+				\end{itemize}
+			\end{block}
+		\end{columns}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 5
+	% ============================================================
+	\begin{frame}{Bajo Nivel --- Ventajas y Desventajas}
+		\begin{columns}
+			\column{0.48\textwidth}
+			\begin{block}{\textcolor{unemiNaranja}{$\checkmark$}\ Ventajas}
+				\begin{itemize}
+					\item Permite controlar directamente el hardware.
+					\item Genera programas altamente eficientes.
+					\item Optimiza el uso de memoria y procesador.
+					\item Es fundamental en sistemas operativos y controladores.
+					\item Resulta util en sistemas embebidos y dispositivos IoT.
+				\end{itemize}
+			\end{block}
+			
+			\column{0.48\textwidth}
+			\begin{block}{\textcolor{red}{$\times$}\ Desventajas}
+				\begin{itemize}
+					\item Tiene una curva de aprendizaje elevada.
+					\item Su codigo es mas dificil de leer y depurar.
+					\item Depende de la arquitectura del procesador.
+					\item Aumenta el riesgo de errores criticos.
+					\item El desarrollo suele ser mas lento y costoso.
+				\end{itemize}
+			\end{block}
+		\end{columns}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 6
+	% ============================================================
+	\begin{frame}{Ejemplo en Alto Nivel --- Python}
+		El siguiente programa imprime un mensaje en pantalla utilizando \textbf{Python},
+		un lenguaje de alto nivel caracterizado por su sintaxis clara:
+		
+		\vspace{0.3cm}
+		
+		\codigobox{
+			\# Programa en Python - Alto Nivel\\
+			\# Objetivo: imprimir un mensaje en pantalla\\[0.15cm]
+			mensaje = "Hola, Mundo!"\\
+			print(mensaje)
+		}
+		
+		\vspace{0.3cm}
+		\begin{block}{Observacion}
+			Con una sola instruccion principal, \texttt{print()}, el programador puede
+			mostrar texto en pantalla. Python gestiona internamente detalles como la salida
+			estandar, la codificacion del texto y la comunicacion con el sistema operativo.
+		\end{block}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 7
+	% ============================================================
+	\begin{frame}{Equivalente en Pseudocodigo}
+		El mismo procedimiento puede representarse en \textbf{pseudocodigo}, una forma
+		estructurada de describir algoritmos sin depender de un lenguaje real:
+		
+		\vspace{0.3cm}
+		
+		\codigobox{
+			INICIO\\
+			\hspace*{0.4cm}DEFINIR mensaje COMO CADENA\\
+			\hspace*{0.4cm}mensaje $<$- "Hola, Mundo!"\\
+			\hspace*{0.4cm}ESCRIBIR mensaje\\
+			FIN
+		}
+		
+		\vspace{0.3cm}
+		\begin{block}{Proposito del Pseudocodigo}
+			El pseudocodigo permite planificar la logica de un algoritmo antes de llevarlo
+			a un lenguaje de programacion. Por eso se utiliza frecuentemente en la ensenanza
+			de programacion y resolucion de problemas.
+		\end{block}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 8
+	% ============================================================
+	\begin{frame}{Equivalente en Bajo Nivel --- Ensamblador x86}
+		La misma tarea en \textbf{ensamblador} requiere declarar datos, cargar registros
+		del procesador e invocar una llamada al sistema:
+		
+		\vspace{0.2cm}
+		
+		\codigobox{
+			section .data\\
+			\hspace*{0.4cm}msg db "Hola, Mundo!", 0x0A\\
+			\hspace*{0.4cm}len equ \$ - msg\\[0.15cm]
+			section .text\\
+			\hspace*{0.4cm}global \_start\\[0.15cm]
+			\_start:\\
+			\hspace*{0.4cm}mov eax, 4 \hspace*{0.7cm}; sys\_write\\
+			\hspace*{0.4cm}mov ebx, 1 \hspace*{0.7cm}; salida estandar\\
+			\hspace*{0.4cm}mov ecx, msg \hspace*{0.35cm}; direccion del mensaje\\
+			\hspace*{0.4cm}mov edx, len \hspace*{0.45cm}; longitud del mensaje\\
+			\hspace*{0.4cm}int 0x80 \hspace*{0.85cm}; llamada al kernel\\[0.15cm]
+			\hspace*{0.4cm}mov eax, 1 \hspace*{0.7cm}; sys\_exit\\
+			\hspace*{0.4cm}xor ebx, ebx \hspace*{0.35cm}; codigo de salida 0\\
+			\hspace*{0.4cm}int 0x80
+		}
+		
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 9
+	% ============================================================
+	\begin{frame}{El Nivel mas Bajo --- Lenguaje Maquina}
+		Por debajo del ensamblador se encuentra el \textbf{lenguaje maquina}. Este se
+		representa mediante codigos binarios o hexadecimales que el procesador puede
+		ejecutar directamente:
+		
+		\vspace{0.2cm}
+		
+		\codigobox{
+			Instruccion: int 0x80\\
+			Hexadecimal : CD 80\\
+			Binario     : 11001101 10000000\\[0.15cm]
+			Instruccion: mov eax, 4\\
+			Hexadecimal : B8 04 00 00 00\\
+			Binario     : 10111000 00000100 00000000 00000000 00000000\\[0.15cm]
+			Instruccion: mov ebx, 1\\
+			Hexadecimal : BB 01 00 00 00\\
+			Binario     : 10111011 00000001 00000000 00000000 00000000
+		}
+		
+		\vspace{0.1cm}
+		\begin{block}{Reflexion}
+			La CPU no interpreta directamente Python ni pseudocodigo. Todo programa debe
+			terminar traducido a instrucciones de maquina para poder ejecutarse.
+		\end{block}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 10
+	% ============================================================
+	\begin{frame}{Comparacion Directa}
+		\centering
+		\textbf{Tarea: Imprimir ``Hola, Mundo!'' en pantalla}
+		
+		\vspace{0.4cm}
+		\begin{columns}
+			\column{0.30\textwidth}
+			\begin{block}{\centering Alto Nivel}
+				\centering
+				\vspace{0.15cm}
+				\texttt{\small print("Hola, Mundo!")} \\[0.2cm]
+				\textbf{Simple y legible}
+				\vspace{0.1cm}
+			\end{block}
+			
+			\column{0.36\textwidth}
+			\begin{block}{\centering Ensamblador}
+				\centering
+				\vspace{0.1cm}
+				\small
+				Declarar datos \\
+				Cargar registros \\
+				Indicar longitud \\
+				Llamar al kernel \\[0.1cm]
+				\textbf{Mayor control tecnico}
+				\vspace{0.1cm}
+			\end{block}
+			
+			\column{0.28\textwidth}
+			\begin{block}{\centering Maquina}
+				\centering
+				\vspace{0.1cm}
+				\small
+				\texttt{B8 04 00 00 00} \\
+				\texttt{BB 01 00 00 00} \\
+				\texttt{CD 80 \ldots} \\[0.1cm]
+				\textbf{Bits y bytes}
+				\vspace{0.1cm}
+			\end{block}
+		\end{columns}
+		
+		\vspace{0.35cm}
+		\small La diferencia principal esta en el nivel de abstraccion: mientras Python
+		simplifica la tarea, el ensamblador exige controlar los detalles internos.
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 11
+	% ============================================================
+	\begin{frame}{Jerarquia de Abstraccion}
+		\centering
+		\begin{tikzpicture}[scale=0.92]
+			\fill[unemiAzul!75, rounded corners=4pt]
+			(0,4.2) rectangle (10,5.2);
+			\node[white, font=\bfseries\small] at (5,4.7)
+			{Lenguajes de Alto Nivel -- Python, Java, JavaScript, C\#};
+			
+			\fill[unemiNaranja!80, rounded corners=4pt]
+			(0.5,2.9) rectangle (9.5,3.9);
+			\node[white, font=\bfseries\small] at (5,3.4)
+			{Lenguajes de Nivel Medio -- C, C++};
+			
+			\fill[unemiAzul!40, rounded corners=4pt]
+			(1,1.6) rectangle (9,2.6);
+			\node[unemiAzul, font=\bfseries\small] at (5,2.1)
+			{Lenguaje Ensamblador -- NASM, MASM, GAS};
+			
+			\fill[unemiAzul!20, rounded corners=4pt]
+			(1.5,0.3) rectangle (8.5,1.3);
+			\node[unemiAzul, font=\bfseries\small] at (5,0.8)
+			{Lenguaje Maquina -- Codigo Binario (0s y 1s)};
+			
+			\fill[gray!35, rounded corners=4pt]
+			(2,-0.9) rectangle (8,0.0);
+			\node[font=\bfseries\small] at (5,-0.45)
+			{Hardware -- Procesador (CPU)};
+			
+			\draw[->, very thick, unemiNaranja]
+			(10.4,5.0) -- (10.4,0.8);
+			\node[right, font=\small\bfseries, text=unemiAzul] at (10.5,3.1)
+			{Mayor};
+			\node[right, font=\small\bfseries, text=unemiAzul] at (10.5,2.7)
+			{abstraccion};
+		\end{tikzpicture}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 12
+	% ============================================================
+	\begin{frame}{Cuando usar cada tipo?}
+		\begin{columns}
+			\column{0.48\textwidth}
+			\begin{block}{Se usa Alto Nivel cuando\ldots}
+				\begin{itemize}
+					\item Se crean aplicaciones web, moviles o de escritorio.
+					\item Se necesita desarrollar rapido.
+					\item Se trabaja con datos, inteligencia artificial o automatizacion.
+					\item La facilidad de mantenimiento es importante.
+					\item El proyecto debe funcionar en diferentes plataformas.
+				\end{itemize}
+			\end{block}
+			
+			\column{0.48\textwidth}
+			\begin{block}{Se usa Bajo Nivel cuando\ldots}
+				\begin{itemize}
+					\item Se programan sistemas operativos o kernels.
+					\item Se desarrollan controladores de hardware.
+					\item Se trabaja con microcontroladores o sistemas embebidos.
+					\item Se requiere maxima eficiencia.
+					\item Se analiza el comportamiento interno de un programa.
+				\end{itemize}
+			\end{block}
+		\end{columns}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 13
+	% ============================================================
+	\begin{frame}{Conclusiones}
+		\begin{block}{Sintesis}
+			\begin{itemize}
+				\item Los lenguajes de \textbf{alto nivel} priorizan la facilidad de uso,
+				la productividad y la claridad del codigo.
+				\item Los lenguajes de \textbf{bajo nivel} priorizan el rendimiento, el control
+				del hardware y la eficiencia.
+				\item Ambos tipos son necesarios: cada uno responde a necesidades distintas
+				dentro del desarrollo de software.
+				\item Comprender el bajo nivel ayuda a escribir programas de alto nivel mas
+				eficientes y conscientes del uso de recursos.
+			\end{itemize}
+		\end{block}
+		
+		\vspace{0.3cm}
+		\centering
+		\textit{``Un buen programador no solo escribe instrucciones; tambien comprende
+			como esas instrucciones llegan a ejecutarse en la maquina.''}
+	\end{frame}
+	
+	% ============================================================
+	% DIAPOSITIVA 14
+	% ============================================================
+	\begin{frame}{Referencias Bibliograficas}
+		\small
+		\begin{itemize}
+			\item Aho, A. V., Lam, M. S., Sethi, R., \& Ullman, J. D. (2006).
+			\textit{Compilers: Principles, Techniques, and Tools}. Pearson.
+			\item Bryant, R. E., \& O'Hallaron, D. R. (2016).
+			\textit{Computer Systems: A Programmer's Perspective}. Pearson.
+			\item Patterson, D. A., \& Hennessy, J. L. (2021).
+			\textit{Computer Organization and Design: The Hardware/Software Interface}.
+			Morgan Kaufmann.
+			\item Sebesta, R. W. (2016).
+			\textit{Concepts of Programming Languages}. Pearson.
+			\item Stallings, W. (2019).
+			\textit{Computer Organization and Architecture}. Pearson.
+			\item Tanenbaum, A. S., \& Bos, H. (2015).
+			\textit{Modern Operating Systems}. Pearson.
+			\item Van Rossum, G., \& Drake, F. L. (2009).
+			\textit{The Python Language Reference Manual}. Network Theory Ltd.
+		\end{itemize}
+	\end{frame}
+	
+	% ============================================================
+	% CIERRE
+	% ============================================================
+	{
+		\setbeamertemplate{background}{%
+			\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI}%
+		}
+		\begin{frame}[plain]
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[fill=unemiAzul, fill opacity=0.8, text opacity=1,
+				rounded corners, inner sep=20pt]
+				at (current page.center) {
+					\begin{minipage}{0.9\textwidth}
+						\centering
+						{\Huge \textbf{\textcolor{white}{Gracias}}}
+					\end{minipage}
+				};
+			\end{tikzpicture}
+		\end{frame}
+	}
+	
+\end{document}

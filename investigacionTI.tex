@@ -1,0 +1,355 @@
+\documentclass[12pt,a4paper]{article}
+
+% ==================================================
+% PAQUETES
+% ==================================================
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{hanging}
+
+% ==================================================
+% CONFIGURACIÓN APA 7
+% ==================================================
+\geometry{
+	left=2.54cm,
+	right=2.54cm,
+	top=2.54cm,
+	bottom=2.54cm
+}
+
+\doublespacing
+
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+\setlength{\headheight}{15pt}
+
+% ==================================================
+% NUMERACIÓN APA
+% ==================================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ==================================================
+% CONFIGURACIÓN DE TÍTULOS APA
+% ==================================================
+\titleformat{\section}
+{\normalfont\bfseries\centering}
+{}
+{0pt}
+{}
+
+\titleformat{\subsection}
+{\normalfont\bfseries}
+{}
+{0pt}
+{}
+
+\titlespacing*{\section}{0pt}{0pt}{12pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+
+\setlist[itemize]{
+	noitemsep,
+	topsep=0pt,
+	leftmargin=1.27cm
+}
+
+% ==================================================
+% FONDOS PDF
+% ==================================================
+\newcommand{\FondoPortada}{
+	\AddToShipoutPictureBG*{
+		\AtPageLowerLeft{
+			\includegraphics[
+			width=\paperwidth,
+			height=\paperheight
+			]{plantillasTrabajosUNEMI/portadaLibroUNEMI.pdf}
+		}
+	}
+}
+
+\newcommand{\FondoDocumento}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[
+			width=\paperwidth,
+			height=\paperheight
+			]{plantillasTrabajosUNEMI/plantillaA4PaginaDocumento.pdf}
+		}
+	}
+}
+
+\newcommand{\FondoFinal}{
+	\AddToShipoutPictureBG*{
+		\AtPageLowerLeft{
+			\includegraphics[
+			width=\paperwidth,
+			height=\paperheight
+			]{plantillasTrabajosUNEMI/plantillaA4PaginaFinal.pdf}
+		}
+	}
+}
+
+% ==================================================
+% INICIO DOCUMENTO
+% ==================================================
+\begin{document}
+	
+	% ==================================================
+	% PORTADA LIMPIA
+	% ==================================================
+	\FondoPortada
+	
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\mbox{}
+	\end{titlepage}
+	
+	\ClearShipoutPictureBG
+	
+	% ==================================================
+	% PORTADA APA 7
+	% ==================================================
+	\FondoDocumento
+	
+	\setcounter{page}{2}
+	
+	\newpage
+	
+	\thispagestyle{fancy}
+	
+	\vspace*{3cm}
+	
+	\begin{center}
+		
+		\textbf{Historia de las TI}\\[2cm]
+		
+		Ángel Fernando Calero Maldonado\\[0.5cm]
+		
+		Universidad Estatal de Milagro\\[0.5cm]
+		
+		Facultad de Ciencias e Ingeniería\\[0.5cm]
+		
+		Carrera de Tecnologías de la Información\\[0.5cm]
+		
+		Fundamentos de tecnologías de información\\[0.5cm]
+		
+		Díaz Sandoya Eduardo Luis\\[0.5cm]
+		
+		23 de abril de 2026
+		
+	\end{center}
+	
+	% ==================================================
+	% INTRODUCCIÓN
+	% ==================================================
+	\newpage
+	
+	\section*{Introducción}
+	
+	El presente documento académico aborda temas relacionados con el software, su clasificación, la calidad del software y los lenguajes de programación de alto y bajo nivel. Estos contenidos permiten comprender la importancia del software dentro del campo de las tecnologías de la información.
+	
+	La investigación se desarrolla a partir de la información proporcionada en la imagen base, donde se establecen tres ejes principales: clasificación del software, calidad del software y lenguajes de alto y bajo nivel.
+	
+	% ==================================================
+	% DESARROLLO
+	% ==================================================
+	\section{Software: Clasificación}
+	
+	El software puede clasificarse según su función principal dentro de un sistema informático. Entre las categorías más importantes se encuentran el software de sistema, el software de aplicación y el software de programación.
+	
+	\subsection{Software de sistema}
+	
+	El software de sistema permite el funcionamiento general del computador y administra los recursos del hardware.
+	
+	\begin{itemize}
+		\item Windows.
+		\item Linux.
+		\item macOS.
+	\end{itemize}
+	
+	\subsection{Software de aplicación}
+	
+	El software de aplicación está diseñado para que el usuario realice tareas específicas.
+	
+	\begin{itemize}
+		\item Microsoft Word.
+		\item WhatsApp.
+		\item Google Drive.
+	\end{itemize}
+	
+	\subsection{Software de programación}
+	
+	El software de programación permite crear, editar y ejecutar programas informáticos.
+	
+	\begin{itemize}
+		\item Python.
+		\item Visual Studio Code.
+		\item Eclipse.
+	\end{itemize}
+	
+	\subsection{Tabla comparativa}
+	
+	\begin{longtable}{|p{4cm}|p{9cm}|}
+		\hline
+		\textbf{Categoría} & \textbf{Ejemplos} \\
+		\hline
+		Software de sistema & Windows, Linux, macOS. \\
+		\hline
+		Software de aplicación & Microsoft Word, WhatsApp, Google Drive. \\
+		\hline
+		Software de programación & Python, Visual Studio Code, Eclipse. \\
+		\hline
+	\end{longtable}
+	
+	\subsection{Software según licencia}
+	
+	El software también puede clasificarse según el tipo de licencia.
+	
+	\begin{itemize}
+		\item \textbf{Software libre:} permite usar, estudiar, modificar y distribuir el programa.
+		\item \textbf{Software propietario:} posee restricciones de uso, copia o modificación.
+		\item \textbf{Software de código abierto:} permite acceder al código fuente.
+		\item \textbf{Software en la nube:} funciona mediante servicios disponibles a través de internet.
+	\end{itemize}
+	
+	% ==================================================
+	% CALIDAD DEL SOFTWARE
+	% ==================================================
+	\section{Calidad del software}
+	
+	La calidad del software se relaciona con el grado en que un programa cumple con las necesidades del usuario y funciona de manera adecuada.
+	
+	Según la información base, se deben considerar atributos como funcionalidad, fiabilidad, usabilidad, eficiencia, mantenibilidad y portabilidad.
+	
+	\subsection{Atributos de calidad}
+	
+	\begin{itemize}
+		\item \textbf{Funcionalidad:} capacidad del software para cumplir las funciones requeridas.
+		\item \textbf{Fiabilidad:} capacidad de funcionar correctamente durante un tiempo determinado.
+		\item \textbf{Usabilidad:} facilidad con la que el usuario puede utilizar el sistema.
+		\item \textbf{Eficiencia:} uso adecuado de recursos como memoria, tiempo y procesamiento.
+		\item \textbf{Mantenibilidad:} facilidad para corregir, mejorar o actualizar el software.
+		\item \textbf{Portabilidad:} capacidad de funcionar en distintos entornos o plataformas.
+	\end{itemize}
+	
+	\subsection{Evaluación de un software conocido}
+	
+	Para esta evaluación se selecciona Microsoft Word como ejemplo de software de aplicación.
+	
+	\begin{longtable}{|p{6cm}|p{7cm}|}
+		\hline
+		\textbf{Fortalezas} & \textbf{Debilidades} \\
+		\hline
+		Presenta una interfaz conocida y fácil de usar. & Requiere licencia para utilizar todas sus funciones. \\
+		\hline
+		Permite elaborar documentos académicos y profesionales. & Puede consumir recursos considerables del sistema. \\
+		\hline
+		Tiene herramientas de formato, revisión y diseño. & Algunas funciones dependen del ecosistema de Microsoft. \\
+		\hline
+	\end{longtable}
+	
+	% ==================================================
+	% LENGUAJES
+	% ==================================================
+	\section{Lenguajes de alto y bajo nivel}
+	
+	Los lenguajes de programación permiten dar instrucciones a una computadora. Estos pueden clasificarse en lenguajes de alto nivel y lenguajes de bajo nivel.
+	
+	\subsection{Lenguaje de alto nivel}
+	
+	Un lenguaje de alto nivel es más cercano al lenguaje humano y facilita la escritura de programas.
+	
+	\begin{itemize}
+		\item Es más fácil de leer y escribir.
+		\item Permite desarrollar programas con mayor rapidez.
+		\item Reduce la complejidad del código.
+	\end{itemize}
+	
+	\subsection{Lenguaje de bajo nivel}
+	
+	Un lenguaje de bajo nivel está más relacionado con el hardware y con el lenguaje máquina.
+	
+	\begin{itemize}
+		\item Permite mayor control del hardware.
+		\item Puede ofrecer mayor eficiencia.
+		\item Requiere mayor conocimiento técnico.
+	\end{itemize}
+	
+	\subsection{Ejemplo en Python}
+	
+	\begin{verbatim}
+		print("Hola mundo")
+	\end{verbatim}
+	
+	\subsection{Comparación con lenguaje ensamblador}
+	
+	\begin{verbatim}
+		MOV AH, 09H
+		LEA DX, MENSAJE
+		INT 21H
+	\end{verbatim}
+	
+	% ==================================================
+	% CONCLUSIONES
+	% ==================================================
+	\section*{Conclusiones}
+	
+	El software es un elemento fundamental dentro de los sistemas informáticos, ya que permite realizar tareas, administrar recursos y desarrollar nuevas aplicaciones.
+	
+	La clasificación del software ayuda a comprender su función dentro de un entorno tecnológico. Además, la calidad del software permite evaluar aspectos importantes como funcionalidad, fiabilidad, usabilidad, eficiencia, mantenibilidad y portabilidad.
+	
+	Finalmente, los lenguajes de alto y bajo nivel cumplen funciones importantes en la programación. Los lenguajes de alto nivel facilitan el desarrollo, mientras que los lenguajes de bajo nivel permiten mayor control sobre el hardware.
+	
+	% ==================================================
+	% REFERENCIAS APA 7
+	% ==================================================
+	\clearpage
+	
+	\ClearShipoutPictureBG
+	
+	\FondoFinal
+	
+	\thispagestyle{fancy}
+	
+	\section*{Referencias}
+	
+	\begin{hangparas}{1.27cm}{1}
+		
+		Pressman, R. S., \& Maxim, B. R. (2020). \textit{Ingeniería del software: Un enfoque práctico} (9.a ed.). McGraw-Hill Education.
+		
+		Sommerville, I. (2016). \textit{Ingeniería de software} (10.a ed.). Pearson Educación.
+		
+		Stallings, W. (2018). \textit{Sistemas operativos: Aspectos internos y principios de diseño} (9.a ed.). Pearson.
+		
+		Tanenbaum, A. S., \& Bos, H. (2015). \textit{Sistemas operativos modernos} (4.a ed.). Pearson Educación.
+		
+		Silberschatz, A., Galvin, P. B., \& Gagne, G. (2018). \textit{Fundamentos de sistemas operativos} (10.a ed.). Wiley.
+		
+		ISO/IEC. (2011). \textit{ISO/IEC 25010: Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE)}. International Organization for Standardization.
+		
+		Oracle Corporation. (2024). \textit{The Java Language Specification}. https://docs.oracle.com/
+		
+		Massachusetts Institute of Technology. (2023). \textit{Introduction to Computer Science and Programming}. MIT OpenCourseWare. https://ocw.mit.edu/
+		
+		Harvard University. (2023). \textit{CS50 Introduction to Computer Science}. Harvard OpenCourseWare. https://cs50.harvard.edu/
+		
+	\end{hangparas}
+	
+	\ClearShipoutPictureBG
+	
+\end{document}

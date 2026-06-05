@@ -1,0 +1,107 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{etoolbox}
+
+% =========================================================================
+% PALETA DE COLORES EXACTA DE PSEINT
+% =========================================================================
+\definecolor{azulPSeInt}{RGB}{0, 0, 153}
+\definecolor{verdePSeInt}{RGB}{0, 102, 0}
+\definecolor{grisLineas}{RGB}{160, 160, 160}
+\definecolor{rojoPSeInt}{RGB}{204, 0, 0}
+
+% =========================================================================
+% MACROS DE COLOR
+% =========================================================================
+\newcommand{\kw}[1]{{\color{azulPSeInt}\textbf{#1}}}
+\newcommand{\txt}[1]{{\color{verdePSeInt}"#1"}}
+\newcommand{\num}[1]{{\color{rojoPSeInt}#1}}
+\newcommand{\op}[1]{{\color{azulPSeInt}#1}}
+
+% =========================================================================
+% MÁRGENES APA 7 (2.54 cm)
+% =========================================================================
+\geometry{top=2.54cm, bottom=2.54cm, left=2.54cm, right=2.54cm}
+\doublespacing
+
+% =========================================================================
+% CONFIGURACIÓN DEL ENTORNO ALGORÍTMICO
+% =========================================================================
+\makeatletter
+\renewcommand{\ALG@name}{Algoritmo}
+\renewcommand{\listalgorithmname}{Índice de Algoritmos}
+\algrenewcommand\alglinenumber[1]{%
+	{\footnotesize\color{grisLineas}\ttfamily #1}%
+}
+\makeatother
+
+\AtBeginEnvironment{algorithmic}{\ttfamily\bfseries\small}
+
+% =========================================================================
+% BLOQUE PROCESO: indenta todo su contenido interior
+% =========================================================================
+\algblockdefx[PROCESO]{Proceso}{FinProceso}%
+[1]{\kw{Algoritmo} \texttt{#1}}%
+{\kw{FinAlgoritmo}}
+
+% =========================================================================
+% BLOQUE SI/SINO/FINSI CON TEXTO LITERAL
+% =========================================================================
+\algblockdefx[SI]{Si}{FinSi}%
+[1]{\kw{Si} #1 \kw{Entonces}}%
+{\kw{FinSi}}
+
+\algcblockdefx[SI]{SI}{Sino}{FinSi}%
+{\kw{Sino}}%
+{\kw{FinSi}}
+
+% =========================================================================
+% COMANDOS EN ESPAÑOL (solo los que no son bloques)
+% =========================================================================
+\newcommand{\Escribir}[1]{\State \kw{Escribir} #1}
+\newcommand{\Leer}[1]{\State \kw{Leer} #1}
+\newcommand{\Asignacion}[2]{\State \texttt{#1} \op{$\leftarrow$} \texttt{#2}}
+
+% =========================================================================
+% CUERPO DEL DOCUMENTO
+% =========================================================================
+\begin{document}
+	
+	\chapter{Estructuras de Control en PSeInt}
+	
+	A continuación se presenta el pseudocódigo estructurado con el formato estético
+	oficial de un libro técnico y los colores nativos de la interfaz:
+	
+	\begin{algorithm}[H]
+		\caption{Cálculo de Promedio y Condición de Aprobación}
+		\vspace{8pt}
+		\label{alg:promedio_final}
+		\begin{spacing}{1.5}
+			\begin{algorithmic}[1]
+				
+				\Proceso{promedioEstudiantes}
+				\Escribir{\txt{Ingrese las tres notas del estudiante:}}
+				\Leer{\texttt{nota1, nota2, nota3}}
+				\Asignacion{promedio}{(nota1 + nota2 + nota3) \op{/} \num{3}}
+				\Escribir{\txt{El promedio final es: }, \texttt{promedio}}
+				
+				\Si{\texttt{promedio} \op{$\geq$} \num{7}}
+				\Escribir{\txt{El estudiante está APROBADO.}}
+				\Sino
+				\Escribir{\txt{El estudiante está REPROBADO.}}
+				\FinSi
+				
+				\FinProceso
+				
+			\end{algorithmic}
+		\end{spacing}
+		\vspace{8pt}
+	\end{algorithm}
+	
+\end{document}

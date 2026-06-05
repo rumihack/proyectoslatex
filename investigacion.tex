@@ -1,0 +1,420 @@
+% =========================================================
+% DOCUMENTO APA 7 - UNIVERSIDAD ESTATAL DE MILAGRO
+% Compilar con XeLaTeX
+% Fondos PDF en: plantillasTrabajosUNEMI
+% =========================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% =========================
+% PREÁMBULO
+% =========================
+\usepackage[a4paper,margin=2.54cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage[spanish]{babel}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{hanging}
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=black,
+	citecolor=black
+}
+
+% =========================
+% FORMATO APA 7
+% =========================
+\geometry{
+	left=2.54cm,
+	right=2.54cm,
+	top=2.54cm,
+	bottom=2.54cm
+}
+
+\doublespacing
+
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+\setlength{\headheight}{15pt}
+
+% =========================
+% NUMERACIÓN CENTRO INFERIOR
+% =========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\fontsize{11}{11}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}
+{\normalfont\bfseries\centering}{\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+
+\renewcommand{\contentsname}{Índice de contenidos}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% =========================
+% FONDOS PDF
+% =========================
+\newcommand{\FondoPortada}{
+	\AddToShipoutPictureBG*{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/portadaLibroUNEMI.pdf}
+}}}
+
+\newcommand{\FondoCuerpo}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaDocumento.pdf}
+}}}
+
+\newcommand{\FondoFinal}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaFinal.pdf}
+}}}
+
+\begin{document}
+	
+	% =========================
+	% PORTADA SIN NUMERACIÓN
+	% =========================
+	\FondoPortada
+	
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\centering
+		\singlespacing
+		
+		\vspace*{10cm}
+		
+		{\color{white}
+			\fontsize{30}{34}\selectfont
+			\bfseries Fundamentos del Software\par}
+		
+	\end{titlepage}
+	
+	% =========================
+	% NUMERACIÓN DESDE LA SEGUNDA HOJA
+	% =========================
+	\clearpage
+	\setcounter{page}{1}
+	
+	% =========================
+	% SEGUNDA HOJA: DATOS GENERALES
+	% =========================
+	\FondoCuerpo
+	\thispagestyle{fancy}
+	
+	\begin{center}
+		\singlespacing
+		
+		\vspace*{1cm}
+		
+		{\fontsize{24}{1}\selectfont\bfseries UNIVERSIDAD ESTATAL DE MILAGRO\par}
+		\vspace{0.5cm}
+		
+		{\fontsize{20}{15}\selectfont\bfseries FACULTAD DE CIENCIAS E INGENIERÍA\par}
+		\vspace{0.5cm}
+		
+		{\fontsize{18}{15}\selectfont\bfseries CARRERA DE TECNOLOGÍAS DE LA INFORMACIÓN EN LÍNEA\par}
+		
+		\vspace{1.5cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries TEMA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Fundamentos del Software\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries AUTOR:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Ángel Fernando Calero Maldonado\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Ángel Fernando Calero Maldonado\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Ángel Fernando Calero Maldonado\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Ángel Fernando Calero Maldonado\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Ángel Fernando Calero Maldonado\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries ASIGNATURA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Fundamentos de tecnologías de información\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries DOCENTE:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Díaz Sandoya Eduardo Luis\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries FECHA DE ENTREGA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont miércoles, 21 de mayo de 2026\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries PERIODO:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont abril 2026 a julio 2026\par}
+		
+		\vfill
+		
+		{\fontsize{18}{15}\selectfont\bfseries MILAGRO -- ECUADOR\par}
+		
+		\vspace*{0.5cm}
+		
+	\end{center}
+	
+	% =========================
+	% ÍNDICE AUTOMÁTICO
+	% =========================
+	\clearpage
+	\thispagestyle{fancy}
+	\tableofcontents
+	\clearpage
+	
+	% =========================
+	% CUERPO DEL DOCUMENTO
+	% =========================
+	
+	\section{Introducción}
+	
+	El software es uno de los componentes fundamentales de cualquier sistema informático moderno. Sin él, el hardware no pasaría de ser un conjunto de circuitos sin propósito definido. Comprender qué es el software, cómo se clasifica, con qué criterios se evalúa su calidad y de qué manera se construye mediante lenguajes de programación resulta esencial para cualquier profesional en formación dentro del área de Tecnologías de la Información.
+	
+	Este trabajo aborda tres ejes temáticos establecidos en la guía de práctica G001\_S06\_TI\_ENLÍNEA: la clasificación del software según su función y tipo de licencia, la evaluación de calidad bajo la norma ISO/IEC 25010 y el análisis comparativo entre lenguajes de alto y bajo nivel. El objetivo es ir más allá de las definiciones formales y conectar cada concepto con ejemplos reales del entorno tecnológico actual.
+	
+	\section{Software: Clasificación}
+	
+	\subsection{Clasificación según su función}
+	
+	El software puede agruparse en tres grandes categorías según la función que desempeña dentro de un sistema informático: software de sistema, software de aplicación y software de programación. Cada categoría cumple un rol distinto y se dirige a usuarios o procesos específicos.
+	
+	El \textbf{software de sistema} es el conjunto de programas que permiten que el hardware funcione y que sirven como plataforma para ejecutar otros programas. Gestiona los recursos del computador y ofrece servicios básicos al resto del software. El \textbf{software de aplicación} está diseñado para que el usuario realice tareas concretas, como redactar documentos, comunicarse o gestionar datos. Por su parte, el \textbf{software de programación} proporciona las herramientas necesarias para que los desarrolladores creen nuevos programas, incluyendo compiladores, intérpretes y entornos de desarrollo integrados (Pressman, 2014).
+	
+	\begin{center}
+		\singlespacing
+		\begin{tabular}{|p{3.2cm}|p{3.8cm}|p{6.2cm}|}
+			\hline
+			\textbf{Categoría} & \textbf{Ejemplo} & \textbf{Descripción breve} \\ \hline
+			\multirow{3}{3.2cm}{\textbf{Software de sistema}} & Windows 11 & Sistema operativo de Microsoft para equipos personales y empresariales. \\ \cline{2-3}
+			& Linux Ubuntu & Sistema operativo libre orientado a servidores y desarrollo. \\ \cline{2-3}
+			& macOS Sonoma & Sistema operativo de Apple optimizado para su ecosistema de hardware. \\ \hline
+			\multirow{3}{3.2cm}{\textbf{Software de aplicación}} & Microsoft Word & Procesador de texto para la creación y edición de documentos. \\ \cline{2-3}
+			& WhatsApp & Aplicación de mensajería instantánea y llamadas de voz y video. \\ \cline{2-3}
+			& Google Drive & Almacenamiento y edición colaborativa de archivos en la nube. \\ \hline
+			\multirow{3}{3.2cm}{\textbf{Software de programación}} & Visual Studio Code & Editor de código con soporte para múltiples lenguajes y extensiones. \\ \cline{2-3}
+			& IntelliJ IDEA & IDE especializado en Java con herramientas avanzadas de refactorización. \\ \cline{2-3}
+			& Python (intérprete) & Entorno de ejecución e interpretación del lenguaje Python. \\ \hline
+		\end{tabular}
+		
+		\vspace{0.3cm}
+		\textit{Tabla 1. Clasificación del software según su función con ejemplos representativos.}
+	\end{center}
+	
+	\doublespacing
+	
+	\subsection{Clasificación según tipo de licencia}
+	
+	Además de su función, el software también puede clasificarse según las condiciones legales que regulan su uso, distribución y modificación. Esta distinción tiene implicaciones directas en el acceso a la tecnología, los costos de implementación y la posibilidad de adaptar el software a necesidades específicas (Stallman, 2002).
+	
+	\begin{center}
+		\singlespacing
+		\begin{tabular}{|p{3.2cm}|p{3.8cm}|p{6.2cm}|}
+			\hline
+			\textbf{Tipo de licencia} & \textbf{Ejemplo} & \textbf{Descripción breve} \\ \hline
+			\multirow{3}{3.2cm}{\textbf{Software libre}} & GNU/Linux & Núcleo del sistema operativo Linux, distribuido bajo licencia GPL. \\ \cline{2-3}
+			& LibreOffice & Suite ofimática libre como alternativa a Microsoft Office. \\ \cline{2-3}
+			& VLC Media Player & Reproductor multimedia libre compatible con múltiples formatos. \\ \hline
+			\multirow{3}{3.2cm}{\textbf{Software propietario}} & Adobe Photoshop & Editor gráfico profesional con licencia comercial de Adobe. \\ \cline{2-3}
+			& Microsoft Office & Suite de productividad con licencia de pago o suscripción. \\ \cline{2-3}
+			& AutoCAD & Software de diseño asistido por computadora con licencia anual. \\ \hline
+			\multirow{3}{3.2cm}{\textbf{Código abierto}} & Apache HTTP Server & Servidor web de código abierto ampliamente usado en producción. \\ \cline{2-3}
+			& MySQL & Sistema de gestión de bases de datos relacional de código abierto. \\ \cline{2-3}
+			& Firefox & Navegador web de código abierto desarrollado por Mozilla. \\ \hline
+			\multirow{3}{3.2cm}{\textbf{Software en la nube}} & Google Docs & Editor de texto en línea sin instalación local requerida. \\ \cline{2-3}
+			& Canva & Plataforma de diseño gráfico accesible desde el navegador. \\ \cline{2-3}
+			& Zoom & Plataforma de videoconferencias y reuniones virtuales en la nube. \\ \hline
+		\end{tabular}
+		
+		\vspace{0.3cm}
+		\textit{Tabla 2. Clasificación del software según tipo de licencia con ejemplos.}
+	\end{center}
+	
+	\doublespacing
+	
+	\section{Calidad del Software}
+	
+	\subsection{La norma ISO/IEC 25010 y sus atributos}
+	
+	La norma ISO/IEC 25010 es el estándar internacional que define un modelo de calidad del producto software. Este modelo establece ocho características principales que permiten evaluar de manera sistemática qué tan bueno es un software desde múltiples perspectivas: funcionalidad, fiabilidad, usabilidad, eficiencia de desempeño, mantenibilidad, portabilidad, seguridad y compatibilidad (ISO/IEC 25010, 2011).
+	
+	La \textbf{funcionalidad} mide si el software cumple con las funciones para las que fue diseñado. La \textbf{fiabilidad} evalúa la capacidad del sistema para mantener un nivel de servicio bajo condiciones determinadas. La \textbf{usabilidad} se refiere a la facilidad con que los usuarios pueden aprender a operar y controlar el sistema. La \textbf{eficiencia de desempeño} analiza el uso óptimo de recursos como tiempo de respuesta y consumo de memoria. La \textbf{mantenibilidad} mide con qué facilidad puede modificarse el software. La \textbf{portabilidad} evalúa la capacidad de transferir el software a distintos entornos. La \textbf{seguridad} considera la protección de datos y la resistencia ante accesos no autorizados. Finalmente, la \textbf{compatibilidad} examina la coexistencia del sistema con otros productos en el mismo entorno.
+	
+	\subsection{Evaluación de calidad: WhatsApp}
+	
+	Se seleccionó WhatsApp como software de análisis por ser una de las aplicaciones de comunicación más utilizadas a nivel mundial, lo que permite contar con suficiente información empírica para una evaluación fundamentada.
+	
+	\begin{center}
+		\singlespacing
+		\begin{tabular}{|p{3.5cm}|p{5cm}|p{5cm}|}
+			\hline
+			\textbf{Atributo ISO/IEC 25010} & \textbf{Fortaleza} & \textbf{Debilidad} \\ \hline
+			Funcionalidad & Mensajería, llamadas, videollamadas, archivos y estados en una sola app. & Limitaciones para gestionar mensajes en múltiples dispositivos simultáneamente. \\ \hline
+			Fiabilidad & Alta disponibilidad global con mínimo tiempo de inactividad. & Interrupciones del servicio afectan a millones de usuarios de forma simultánea. \\ \hline
+			Usabilidad & Interfaz intuitiva que no requiere capacitación previa para uso básico. & Configuraciones avanzadas de privacidad poco visibles para usuarios no técnicos. \\ \hline
+			Eficiencia de desempeño & Bajo consumo de datos en mensajes de texto y audio comprimido. & Llamadas de video en redes lentas presentan latencia y pérdida de calidad notable. \\ \hline
+			Mantenibilidad & Actualizaciones frecuentes con mejoras progresivas y corrección de errores. & El código fuente es propietario; no permite auditorías externas independientes. \\ \hline
+			Portabilidad & Disponible en Android, iOS y versión web/desktop multiplataforma. & La versión de escritorio depende de la conexión activa del teléfono móvil. \\ \hline
+			Seguridad & Cifrado de extremo a extremo activado por defecto en todos los chats. & Los metadatos de uso son recopilados por Meta con fines comerciales. \\ \hline
+			Compatibilidad & Se integra con el sistema de contactos del dispositivo sin configuración adicional. & Compatibilidad limitada con soluciones empresariales de gestión de comunicaciones. \\ \hline
+		\end{tabular}
+		
+		\vspace{0.3cm}
+		\textit{Tabla 3. Evaluación de calidad de WhatsApp bajo los atributos de la norma ISO/IEC 25010.}
+	\end{center}
+	
+	\doublespacing
+	
+	\section{Lenguajes de Alto y Bajo Nivel}
+	
+	\subsection{Definición y diferencias fundamentales}
+	
+	Un \textbf{lenguaje de alto nivel} es aquel cuya sintaxis está diseñada para que los seres humanos puedan leerlo y escribirlo con relativa facilidad. Utiliza palabras y estructuras cercanas al lenguaje natural, abstrayendo los detalles del hardware subyacente. Python, Java, C\# y JavaScript son ejemplos representativos. El programador no necesita preocuparse por cómo se gestiona la memoria o cómo se ejecutan internamente las instrucciones; el compilador o intérprete se encarga de traducir el código al lenguaje que entiende la máquina.
+	
+	Un \textbf{lenguaje de bajo nivel}, en cambio, opera cerca del hardware y requiere que el programador tenga un conocimiento detallado de la arquitectura del procesador. El ensamblador (Assembly) es el ejemplo más representativo: cada instrucción corresponde casi directamente a una operación del procesador. El lenguaje máquina, compuesto únicamente de ceros y unos, es el nivel más bajo posible (Tanenbaum, 2016).
+	
+	\subsection{Ventajas y desventajas}
+	
+	Los lenguajes de alto nivel ofrecen como principales ventajas la legibilidad del código, la rapidez de desarrollo, la portabilidad entre diferentes plataformas y una curva de aprendizaje más accesible. Sin embargo, tienen como desventaja que el programador tiene menor control sobre los recursos del sistema y que la ejecución puede ser menos eficiente que en bajo nivel.
+	
+	Los lenguajes de bajo nivel permiten un control preciso sobre el hardware, optimización del rendimiento al máximo y son indispensables en sistemas embebidos, controladores de dispositivos y desarrollo de sistemas operativos. Su principal desventaja es que son difíciles de leer, escribir y mantener, y están fuertemente ligados a una arquitectura específica.
+	
+	\subsection{Ejemplo comparativo}
+	
+	A continuación se presenta una comparación entre un programa que imprime un mensaje en pantalla, escrito en Python (alto nivel) y su equivalente conceptual en lenguaje ensamblador x86-64 para Linux (bajo nivel).
+	
+	\textbf{Python (alto nivel):}
+	
+	\begin{center}
+		\singlespacing
+		\begin{tabular}{|p{13cm}|}
+			\hline
+			\vspace{0.1cm}
+			\texttt{print("Hola, mundo")} \\
+			\vspace{0.1cm} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\doublespacing
+	
+	Con una sola línea de código, Python gestiona internamente la asignación de memoria para la cadena, la llamada al sistema operativo y la presentación del resultado en la salida estándar.
+	
+	\textbf{Ensamblador x86-64 (bajo nivel):}
+	
+	\begin{center}
+		\singlespacing
+		\begin{tabular}{|p{13cm}|}
+			\hline
+			\vspace{0.1cm}
+			\texttt{section .data} \\
+			\texttt{\hspace{1cm}msg db "Hola, mundo", 10} \\
+			\texttt{\hspace{1cm}len equ \$ - msg} \\
+			\texttt{section .text} \\
+			\texttt{\hspace{1cm}global \_start} \\
+			\texttt{\_start:} \\
+			\texttt{\hspace{1cm}mov rax, 1} \\
+			\texttt{\hspace{1cm}mov rdi, 1} \\
+			\texttt{\hspace{1cm}mov rsi, msg} \\
+			\texttt{\hspace{1cm}mov rdx, len} \\
+			\texttt{\hspace{1cm}syscall} \\
+			\texttt{\hspace{1cm}mov rax, 60} \\
+			\texttt{\hspace{1cm}xor rdi, rdi} \\
+			\texttt{\hspace{1cm}syscall} \\
+			\vspace{0.1cm} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\doublespacing
+	
+	En ensamblador, el programador debe definir manualmente el segmento de datos, declarar el mensaje como una secuencia de bytes, especificar el número de la llamada al sistema (\texttt{syscall}) para escritura en pantalla, cargar los registros del procesador con los parámetros correspondientes y finalmente invocar la instrucción de salida. Lo que Python resuelve en una línea, en ensamblador requiere más de una docena de instrucciones explícitas.
+	
+	\begin{center}
+		\singlespacing
+		\begin{tabular}{|p{4cm}|p{4.5cm}|p{4.5cm}|}
+			\hline
+			\textbf{Característica} & \textbf{Alto nivel (Python)} & \textbf{Bajo nivel (Ensamblador)} \\ \hline
+			Legibilidad & Muy alta; similar al lenguaje natural. & Muy baja; orientada al procesador. \\ \hline
+			Velocidad de desarrollo & Rápida; pocas líneas de código. & Lenta; instrucciones muy detalladas. \\ \hline
+			Control del hardware & Limitado; lo gestiona el intérprete. & Total; el programador controla registros y memoria. \\ \hline
+			Portabilidad & Alta; ejecutable en múltiples sistemas. & Baja; dependiente de la arquitectura del CPU. \\ \hline
+			Rendimiento & Aceptable para la mayoría de tareas. & Máximo; ideal para sistemas críticos. \\ \hline
+			Uso principal & Desarrollo web, IA, scripting, ciencia de datos. & Sistemas embebidos, firmware, drivers. \\ \hline
+		\end{tabular}
+		
+		\vspace{0.3cm}
+		\textit{Tabla 4. Comparativa entre lenguajes de alto nivel y bajo nivel.}
+	\end{center}
+	
+	\doublespacing
+	
+	\section{Conclusiones}
+	
+	La clasificación del software en categorías funcionales y por tipo de licencia no es un ejercicio meramente teórico: tiene consecuencias directas en las decisiones tecnológicas que toman las organizaciones, desde la elección de herramientas de desarrollo hasta la estrategia de implementación de sistemas. Conocer estas categorías permite evaluar opciones con criterio técnico y económico.
+	
+	La norma ISO/IEC 25010 ofrece un marco riguroso y estandarizado para evaluar la calidad del software más allá de si «funciona» o no. El análisis de WhatsApp demuestra que incluso los productos más populares presentan debilidades significativas en dimensiones como seguridad de metadatos o dependencia de conectividad. Esta perspectiva crítica es fundamental para el ejercicio profesional en TI.
+	
+	La comparación entre lenguajes de alto y bajo nivel ilustra que no existe una opción universalmente superior: cada nivel responde a necesidades distintas. Python permite desarrollar soluciones rápidas y portables, mientras que el ensamblador es insustituible cuando se requiere máximo control sobre el hardware. Un ingeniero en TI competente debe comprender ambos extremos del espectro para tomar decisiones de diseño fundamentadas.
+	
+	% =========================
+	% REFERENCIAS EN ÚLTIMA HOJA
+	% =========================
+	\clearpage
+	\ClearShipoutPictureBG
+	\FondoFinal
+	\thispagestyle{fancy}
+	
+	\section{Referencias}
+	
+	\begin{hangparas}{1.27cm}{1}
+		
+		ISO/IEC 25010. (2011). \textit{Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models}. International Organization for Standardization.
+		
+		Pressman, R. S. (2014). \textit{Ingeniería del software: Un enfoque práctico} (8.a ed.). McGraw-Hill Education.
+		
+		Stallman, R. M. (2002). \textit{Free software, free society: Selected essays of Richard M. Stallman}. GNU Press.
+		
+		Tanenbaum, A. S. (2016). \textit{Structured computer organization} (6.a ed.). Pearson.
+		
+		WhatsApp LLC. (2023). \textit{WhatsApp privacy policy}. Meta Platforms. https://www.whatsapp.com/legal/privacy-policy
+		
+	\end{hangparas}
+	
+\end{document}

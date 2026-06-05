@@ -1,0 +1,523 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% --- PAQUETES ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% --- CONFIGURACIÓN DE DISEÑO PROFESIONAL (LIENZO TRANSPARENTE) ---
+\usetheme{default}
+\setbeamercolor{background canvas}{bg=}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+
+% Colores institucionales
+\definecolor{unemiAzul}{RGB}{20,40,90}
+\definecolor{unemiNaranja}{RGB}{255,102,0}
+
+% Tipografía
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamercolor{frametitle}{fg=unemiAzul}
+
+% --- FONDO DE LA PRESENTACIÓN ---
+\setbeamertemplate{background}{
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[inner sep=0pt] at (current page.center) {
+			\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI2}
+		};
+	\end{tikzpicture}
+}
+
+\begin{document}
+	
+	% --- PORTADA ---
+	{
+		\setbeamertemplate{background}{\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI}}
+		\begin{frame}[plain]
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[fill=unemiAzul, fill opacity=0.8, text opacity=1, rounded corners, inner sep=20pt] at (current page.center) {
+					\begin{minipage}{0.7\textwidth}
+						\centering
+						{\Huge \textbf{\textcolor{white}{Sistema de Ecuaciones}}} \\
+						\vspace{0.4cm}
+						{\Large \textcolor{white}{Método Matricial $Ax=b$}} \\
+						\vspace{1cm}
+						{\small \textcolor{white}{Estudiante:}} \\
+						\textbf{\textcolor{unemiNaranja}{Angel Fernando Calero Maldonado}} \\
+						\vspace{0.3cm}
+						{\small \textcolor{white}{Universidad Estatal de Milagro}}
+					\end{minipage}
+				};
+			\end{tikzpicture}
+		\end{frame}
+	}
+	
+	% --- DIAPOSITIVA 1: PLANTEAMIENTO ---
+	\begin{frame}{Planteamiento del Ejercicio}
+		Resolver el siguiente sistema de ecuaciones:
+		
+		\[
+		\begin{cases}
+			x+y+z=6\\
+			2x-y+z=3\\
+			3x+2y-2z=2
+		\end{cases}
+		\]
+		
+		\vspace{0.5cm}
+		\begin{block}{Objetivo}
+			Resolver el sistema mediante el método matricial:
+			\[
+			x=A^{-1}b
+			\]
+		\end{block}
+	\end{frame}
+	
+	% --- DIAPOSITIVA 2: FORMA MATRICIAL ---
+	\begin{frame}{Paso 1: Forma Matricial}
+		El sistema se expresa en la forma:
+		
+		\[
+		Ax=b
+		\]
+		
+		\[
+		A=
+		\begin{bmatrix}
+			1 & 1 & 1\\
+			2 & -1 & 1\\
+			3 & 2 & -2
+		\end{bmatrix}
+		\quad
+		x=
+		\begin{bmatrix}
+			x\\y\\z
+		\end{bmatrix}
+		\quad
+		b=
+		\begin{bmatrix}
+			6\\3\\2
+		\end{bmatrix}
+		\]
+	\end{frame}
+	
+	% --- DIAPOSITIVA 3: DETERMINANTE ---
+	\begin{frame}{Paso 2: Determinante de la Matriz $A$}
+		Calculamos el determinante:
+		
+		\[
+		\det(A)=
+		\begin{vmatrix}
+			1 & 1 & 1\\
+			2 & -1 & 1\\
+			3 & 2 & -2
+		\end{vmatrix}
+		\]
+		
+		\pause
+		
+		\[
+		\det(A)=14
+		\]
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Conclusión}
+			Como $\det(A)\neq 0$, la matriz $A$ tiene inversa.
+		\end{block}
+	\end{frame}
+	
+	% --- DIAPOSITIVA 4: MATRIZ INVERSA ---
+	\begin{frame}{Paso 3: Matriz Inversa $A^{-1}$}
+		La matriz inversa de $A$ es:
+		
+		\[
+		A^{-1}=
+		\begin{bmatrix}
+			0 & \frac{2}{7} & \frac{1}{7}\\
+			\frac{1}{2} & -\frac{5}{14} & \frac{1}{14}\\
+			\frac{1}{2} & \frac{1}{14} & -\frac{3}{14}
+		\end{bmatrix}
+		\]
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Fórmula del método}
+			\[
+			x=A^{-1}b
+			\]
+		\end{block}
+	\end{frame}
+	
+	% --- DIAPOSITIVA 5: MULTIPLICACIÓN ---
+	\begin{frame}{Paso 4: Multiplicación $A^{-1}b$}
+		Multiplicamos la matriz inversa por el vector independiente:
+		
+		\[
+		x=
+		\begin{bmatrix}
+			0 & \frac{2}{7} & \frac{1}{7}\\
+			\frac{1}{2} & -\frac{5}{14} & \frac{1}{14}\\
+			\frac{1}{2} & \frac{1}{14} & -\frac{3}{14}
+		\end{bmatrix}
+		\begin{bmatrix}
+			6\\3\\2
+		\end{bmatrix}
+		\]
+		
+		\pause
+		
+		\[
+		x=
+		\begin{bmatrix}
+			0(6)+\frac{2}{7}(3)+\frac{1}{7}(2)\\
+			\frac{1}{2}(6)-\frac{5}{14}(3)+\frac{1}{14}(2)\\
+			\frac{1}{2}(6)+\frac{1}{14}(3)-\frac{3}{14}(2)
+		\end{bmatrix}
+		\]
+	\end{frame}
+	
+	% --- DIAPOSITIVA 6: RESULTADO FINAL ---
+	\begin{frame}{Resultado Final}
+		\centering
+		
+		\begin{block}{Vector Solución}
+			\[
+			x=
+			\begin{bmatrix}
+				\frac{8}{7}\\
+				\frac{29}{14}\\
+				\frac{39}{14}
+			\end{bmatrix}
+			\]
+		\end{block}
+		
+		\vspace{0.5cm}
+		
+		Por lo tanto:
+		
+		\[
+		\boxed{x=\frac{8}{7}}
+		\qquad
+		\boxed{y=\frac{29}{14}}
+		\qquad
+		\boxed{z=\frac{39}{14}}
+		\]
+	\end{frame}
+	
+	% --- DIAPOSITIVA 7: VERIFICACIÓN ---
+	\begin{frame}{Verificación}
+		Sustituimos los valores encontrados:
+		
+		\[
+		\frac{8}{7}+\frac{29}{14}+\frac{39}{14}=6
+		\]
+		
+		\[
+		2\left(\frac{8}{7}\right)-\frac{29}{14}+\frac{39}{14}=3
+		\]
+		
+		\[
+		3\left(\frac{8}{7}\right)+2\left(\frac{29}{14}\right)-2\left(\frac{39}{14}\right)=2
+		\]
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Conclusión}
+			Los valores encontrados satisfacen correctamente las tres ecuaciones.
+		\end{block}
+	\end{frame}
+	% --- DIAPOSITIVA 8: VERIFICACIÓN ---
+	\begin{frame}{Prompt en GEMINI}
+	\bigskip
+	
+	Actúa como el poderosísimo Ingeniero Sánchez Mendoza Alejandro Sebastián, profesor de la UNEMI y
+	experto en Álgebra Lineal. Resuelve paso a paso el sistema mediante $X = A^{-1}B$. Construye $A$, $X$ y $B$.
+	Calcula el determinante usando el método de matriz ampliada. Verifica que $\det(A) \neq 0$. Luego calcula $A^{-1}$
+	obligatoriamente por Gauss-Jordan, ampliando $A$ con la matriz identidad $[A|I]$, hasta obtener $[I|A^{-1}]$.
+	Finalmente multiplica $A^{-1}B$ y presenta la solución ordenada.
+	
+	\medskip
+	\noindent Sistema:
+	
+	\[
+	\begin{cases}
+		x + y + z = 6 \\
+		2x - y + z = 3 \\
+		3x + 2y - 2z = 2
+	\end{cases}
+	\]
+	\end{frame}
+		% --- DIAPOSITIVA 9: VERIFICACIÓN ---
+	\begin{frame}{1. Construcción de Matrices $A$, $X$ y $B$}
+
+	
+	Primero, expresamos el sistema en forma matricial $AX = B$:
+	
+	\bigskip
+	
+	\[
+	\underbrace{
+		\begin{pmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 3 & 2 & -2 \end{pmatrix}
+	}_{\text{Matriz de coeficientes } (A)}
+	\qquad
+	\underbrace{
+		\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	}_{\text{Vector de incógnitas } (X)}
+	\qquad
+	\underbrace{
+		\begin{pmatrix} 6 \\ 3 \\ 2 \end{pmatrix}
+	}_{\text{Vector de términos independientes } (B)}
+	\]
+	
+	\bigskip
+	
+	\noindent Es decir:
+	
+	\[
+	A = \begin{pmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 3 & 2 & -2 \end{pmatrix},
+	\qquad
+	X = \begin{pmatrix} x \\ y \\ z \end{pmatrix},
+	\qquad
+	B = \begin{pmatrix} 6 \\ 3 \\ 2 \end{pmatrix}
+	\]
+	\end{frame}
+		% --- DIAPOSITIVA 10: VERIFICACIÓN ---
+	\begin{frame}{2. Cálculo del Determinante $\det(A)$}
+		
+		
+	Usaremos el método de la \textbf{matriz ampliada} (Regla de Sarrus) para verificar que la matriz es
+	invertible ($\det(A) \neq 0$).
+	
+	\bigskip
+	
+	\[
+	\left|
+	\begin{array}{ccc|cc}
+		1 &  1 &  1 & 1 &  1 \\
+		2 & -1 &  1 & 2 & -1 \\
+		3 &  2 & -2 & 3 &  2
+	\end{array}
+	\right|
+	\]
+	
+	\bigskip
+	
+	\begin{itemize}
+		\item \textbf{Diagonales principales:}
+		$(1)(-1)(-2) + (1)(1)(3) + (1)(2)(2) = 2 + 3 + 4 = 9$
+		
+		\item \textbf{Diagonales secundarias:}
+		$(3)(-1)(1) + (2)(1)(1) + (-2)(2)(1) = -3 + 2 - 4 = -5$
+	\end{itemize}
+	
+	\bigskip
+	
+	\[
+	\det(A) = 9 - (-5) = \mathbf{14}
+	\]
+	
+	\bigskip
+	
+	\noindent Como $14 \neq 0$, el sistema tiene solución única y la inversa $A^{-1}$ existe.
+	\end{frame}
+		% --- DIAPOSITIVA 11: VERIFICACIÓN ---
+	\begin{frame}{3. Cálculo de la Inversa $A^{-1}$ por Gauss-Jordan}
+		
+			Ampliamos $A$ con la matriz identidad $I$:
+		
+		\bigskip
+		
+		\[
+		\left(
+		\begin{array}{ccc|ccc}
+			1 &  1 &  1 & 1 & 0 & 0 \\
+			2 & -1 &  1 & 0 & 1 & 0 \\
+			3 &  2 & -2 & 0 & 0 & 1
+		\end{array}
+		\right)
+		\]
+		
+		\bigskip
+		
+		\noindent \textbf{Paso 1: Hacer ceros debajo del primer pivote
+			$(R_2 \rightarrow R_2 - 2R_1)$ y $(R_3 \rightarrow R_3 - 3R_1)$}
+		
+		\bigskip
+		
+		\[
+		\left(
+		\begin{array}{ccc|ccc}
+			1 &  1 &  1 &  1 & 0 & 0 \\
+			0 & -3 & -1 & -2 & 1 & 0 \\
+			0 & -1 & -5 & -3 & 0 & 1
+		\end{array}
+		\right)
+		\]
+		\end{frame}
+		% --- DIAPOSITIVA 12: VERIFICACIÓN ---
+	\begin{frame}{3. Paso 2 y Paso 3}
+		
+		\noindent \textbf{Paso 2: Simplificar la fila 2
+		$\left(R_2 \rightarrow -\dfrac{1}{3}R_2\right)$ o intercambiar filas.
+		Intercambiemos $R_2$ y $R_3$ (multiplicando por $-1$) para facilitar:}
+	
+	\bigskip
+	
+	\[
+	\left(
+	\begin{array}{ccc|ccc}
+		1 &  1 &  1 &  1 & 0 &  0 \\
+		0 &  1 &  5 &  3 & 0 & -1 \\
+		0 & -3 & -1 & -2 & 1 &  0
+	\end{array}
+	\right)
+	\]
+	
+	\bigskip
+	
+	\noindent \textbf{Paso 3: Hacer ceros en la columna 2
+		$(R_1 \rightarrow R_1 - R_2)$ y $(R_3 \rightarrow R_3 + 3R_2)$}
+	
+	\bigskip
+	
+	\[
+	\left(
+	\begin{array}{ccc|ccc}
+		1 & 0 &  -4 & -2 & 0 &  1 \\
+		0 & 1 &   5 &  3 & 0 & -1 \\
+		0 & 0 &  14 &  7 & 1 & -3
+	\end{array}
+	\right)
+	\]
+	
+	\end{frame}
+		% --- DIAPOSITIVA 13: VERIFICACIÓN ---
+	\begin{frame}{3. Paso 4 y Paso 5}
+		
+		\noindent \textbf{Paso 4: Normalizar la última fila
+			$\left(R_3 \rightarrow \dfrac{1}{14}R_3\right)$}
+		
+		\bigskip
+		
+		\[
+		\left(
+		\begin{array}{ccc|ccc}
+			1 & 0 & -4 & -2    & 0      &  1      \\
+			0 & 1 &  5 &  3    & 0      & -1      \\
+			0 & 0 &  1 &  1/2  & 1/14   & -3/14
+		\end{array}
+		\right)
+		\]
+		
+		\bigskip
+		
+		\noindent \textbf{Paso 5: Hacer ceros en la columna 3
+			$(R_1 \rightarrow R_1 + 4R_3)$ y $(R_2 \rightarrow R_2 - 5R_3)$}
+		
+		\begin{itemize}
+			\item $R_1 : -2 + 4(1/2) = 0;\quad 0 + 4(1/14) = 4/14 = 2/7;\quad
+			1 + 4(-3/14) = 1 - 6/7 = 1/7$
+			
+			\item $R_2 : 3 - 5(1/2) = 1/2;\quad 0 - 5(1/14) = -5/14;\quad
+			-1 - 5(-3/14) = -1 + 15/14 = 1/14$
+		\end{itemize}
+	\end{frame}
+	
+	
+		% --- DIAPOSITIVA 14: VERIFICACIÓN ---
+	\begin{frame}{Matriz Inversa $A^{-1}$:}
+
+	
+	\bigskip
+	
+	\[
+	A^{-1} =
+	\begin{pmatrix}
+		0   &  2/7   &  1/7   \\
+		1/2 & -5/14  &  1/14  \\
+		1/2 &  1/14  & -3/14
+	\end{pmatrix}
+	= \dfrac{1}{14}
+	\begin{pmatrix}
+		0 &  4 &  2 \\
+		7 & -5 &  1 \\
+		7 &  1 & -3
+	\end{pmatrix}
+	\]
+	
+	\end{frame}
+		% --- DIAPOSITIVA 15: VERIFICACIÓN ---
+	\begin{frame}{4. Multiplicación $X = A^{-1}B$ y Solución Final}
+		
+			\[
+		X = \dfrac{1}{14}
+		\begin{pmatrix}
+			0 &  4 &  2 \\
+			7 & -5 &  1 \\
+			7 &  1 & -3
+		\end{pmatrix}
+		\begin{pmatrix} 6 \\ 3 \\ 2 \end{pmatrix}
+		\]
+		
+		\bigskip
+		
+		\begin{itemize}
+			\item $x = \dfrac{1}{14}\left[(0)(6) + (4)(3) + (2)(2)\right]
+			= \dfrac{1}{14}\left[0 + 12 + 4\right]
+			= \dfrac{16}{14} = \mathbf{8/7}$
+			
+			\item $y = \dfrac{1}{14}\left[(7)(6) + (-5)(3) + (1)(2)\right]
+			= \dfrac{1}{14}\left[42 - 15 + 2\right]
+			= \dfrac{29}{14} = \mathbf{29/14}$
+			
+			\item $z = \dfrac{1}{14}\left[(7)(6) + (1)(3) + (-3)(2)\right]
+			= \dfrac{1}{14}\left[42 + 3 - 6\right]
+			= \dfrac{39}{14} = \mathbf{39/14}$
+		\end{itemize}
+		
+		
+	\end{frame}
+	% --- DIAPOSITIVA 15: VERIFICACIÓN ---
+\begin{frame}{Solución Ordenada:}
+	
+			
+	\bigskip
+	
+	\[
+	x = \dfrac{8}{7} \approx 1.14
+	\]
+	
+	\[
+	y = \dfrac{29}{14} \approx 2.07
+	\]
+	
+	\[
+	z = \dfrac{39}{14} \approx 2.78
+	\]
+	
+	
+\end{frame}	
+	
+	
+	
+	% --- DIAPOSITIVA FINAL: GRACIAS ---
+	{
+		\setbeamertemplate{background}{\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI}}
+		\begin{frame}[plain]
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[fill=unemiAzul, fill opacity=0.8, text opacity=1, rounded corners, inner sep=20pt] at (current page.center) {
+					\begin{minipage}{0.9\textwidth}
+						\centering
+						{\Huge \textbf{\textcolor{white}{Gracias}}} \\
+					\end{minipage}
+				};
+			\end{tikzpicture}
+		\end{frame}
+	}
+	
+\end{document}

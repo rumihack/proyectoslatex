@@ -1,0 +1,311 @@
+% =========================================================
+% DOCUMENTO APA 7 - UNIVERSIDAD ESTATAL DE MILAGRO
+% Compilar con XeLaTeX
+% Fondos PDF en: plantillasTrabajosUNEMI
+% =========================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% =========================
+% PREÁMBULO
+% =========================
+\usepackage[a4paper,margin=2.54cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage[spanish]{babel}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{hanging}
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=black,
+	citecolor=black
+}
+
+% =========================
+% FORMATO APA 7
+% =========================
+\doublespacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% =========================
+% NUMERACIÓN CENTRO INFERIOR
+% =========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\fontsize{11}{11}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}
+{\normalfont\bfseries\centering}{\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+
+\renewcommand{\contentsname}{Índice de contenidos}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% =========================
+% FONDOS PDF
+% =========================
+\newcommand{\FondoPortada}{
+	\AddToShipoutPictureBG*{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/portadaLibroUNEMI.pdf}
+}}}
+
+\newcommand{\FondoCuerpo}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaDocumento.pdf}
+}}}
+
+\newcommand{\FondoFinal}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaFinal.pdf}
+}}}
+
+\begin{document}
+	
+	% =========================
+	% PORTADA SIN NUMERACIÓN
+	% =========================
+	\FondoPortada
+	
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\centering
+		\singlespacing
+		
+		\vspace*{10cm}
+		
+		{\color{white}
+			\fontsize{30}{34}\selectfont
+			\bfseries Historia de las TI\par}
+		
+	\end{titlepage}
+	
+	% =========================
+	% NUMERACIÓN DESDE LA SEGUNDA HOJA
+	% =========================
+	\clearpage
+	\setcounter{page}{1}
+	
+	% =========================
+	% SEGUNDA HOJA: DATOS GENERALES
+	% =========================
+	\FondoCuerpo
+	\thispagestyle{fancy}
+	
+	\begin{center}
+		\singlespacing
+		
+		\vspace*{2cm}
+		
+		{\fontsize{14}{16}\selectfont\bfseries UNIVERSIDAD ESTATAL DE MILAGRO\par}
+		\vspace{0.5cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries FACULTAD DE CIENCIAS E INGENIERÍA\par}
+		\vspace{0.5cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries CARRERA DE TECNOLOGÍAS DE LA INFORMACIÓN\par}
+		
+		\vspace{1.5cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries TEMA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Historia de las TI\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries AUTOR:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Ángel Fernando Calero Maldonado\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries ASIGNATURA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Fundamentos de tecnologías de información\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries DOCENTE:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Díaz Sandoya Eduardo Luis\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries FECHA DE ENTREGA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont jueves, 23 de abril de 2026\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries PERIODO:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont abril 2026 a julio 2026\par}
+		
+		\vfill
+		
+		{\fontsize{13}{15}\selectfont\bfseries MILAGRO -- ECUADOR\par}
+		
+		\vspace*{1cm}
+		
+	\end{center}
+	
+	% =========================
+	% ÍNDICE AUTOMÁTICO
+	% =========================
+	\clearpage
+	\thispagestyle{fancy}
+	\tableofcontents
+	\clearpage
+	
+	% =========================
+	% CUERPO DEL DOCUMENTO
+	% =========================
+	
+	\section{Introducción general}
+	
+	El presente informe académico tiene como propósito integrar los conceptos fundamentales que definen y articulan las Tecnologías de la Información (TI) en el contexto del siglo XXI. Como estudiante de Ingeniería en Tecnologías de la Información, reconozco que comprender estos fundamentos no solo es un requisito académico, sino una necesidad profesional ante un entorno laboral en constante transformación digital.
+	
+	El trabajo aborda las Tecnologías de la Información y Comunicación (TIC), su historia y conceptos clave, la arquitectura de la computadora, los sistemas operativos y la seguridad de la información. El enfoque busca ir más allá de simples definiciones, ilustrando la importancia práctica de cada concepto con ejemplos del mundo real y reflexionando críticamente sobre su impacto en la sociedad actual y futura.
+	
+	\section{¿Qué son las TIC? Ventajas y características}
+	
+	\subsection{Definición}
+	
+	Las Tecnologías de la Información y Comunicación (TIC) son el conjunto de recursos, herramientas y procesos tecnológicos que permiten la adquisición, almacenamiento, procesamiento, transmisión y presentación de información en formato digital (Cobo, 2009). Engloban tanto el hardware como el software, las redes de comunicación e Internet, y los servicios digitales derivados de su convergencia.
+	
+	\subsection{Características principales}
+	
+	Las TIC presentan cinco características esenciales: interactividad, instantaneidad, digitalización, interconexión y penetración transversal. Estas características permiten que la comunicación, el aprendizaje, el trabajo remoto, la salud digital y los servicios financieros sean más eficientes y accesibles.
+	
+	\subsection{Ventajas con ejemplos reales}
+	
+	Entre sus ventajas se encuentran el acceso democratizado al conocimiento, el incremento de la productividad empresarial y la mejora en la atención médica. Plataformas educativas, sistemas ERP, herramientas de colaboración digital y servicios de telemedicina demuestran el impacto práctico de las TIC en la sociedad contemporánea.
+	
+	\section{Historia de las TI y conceptos clave de informática}
+	
+	\subsection{Recorrido histórico}
+	
+	La evolución de las Tecnologías de la Información puede dividirse en cinco grandes eras. En la era mecánica, Charles Babbage diseñó la Máquina Analítica en 1837. La era electrónica dio origen al ENIAC en 1945. Posteriormente, la era del transistor y el circuito integrado permitió la miniaturización de componentes y el surgimiento de sistemas operativos modernos como UNIX. La era del computador personal impulsó el uso doméstico y empresarial de la informática. Finalmente, la era digital y móvil se caracteriza por la computación en la nube, el big data, la inteligencia artificial y el 5G.
+	
+	\begin{center}
+		\begin{tabular}{|p{3cm}|p{4cm}|p{6cm}|}
+			\hline
+			\textbf{Período} & \textbf{Hito clave} & \textbf{Impacto} \\ \hline
+			Antes de 1940 & Máquina de Babbage & Base conceptual del computador moderno. \\ \hline
+			1940--1960 & ENIAC & Primer computador digital general. \\ \hline
+			1960--1980 & UNIX & Surgimiento de sistemas operativos modernos. \\ \hline
+			1980--2000 & IBM PC e Internet & Computación personal y World Wide Web. \\ \hline
+			2000--hoy & Cloud, IA y 5G & Economía digital globalizada. \\ \hline
+		\end{tabular}
+		
+		\textit{Tabla 1. Línea del tiempo de las Tecnologías de la Información.}
+	\end{center}
+	
+	\subsection{Conceptos clave de informática}
+	
+	La informática estudia el tratamiento automático y racional de la información mediante computadoras. El hardware corresponde a los componentes físicos del sistema, mientras que el software representa el conjunto de instrucciones y programas que permiten ejecutar tareas. Los datos son hechos crudos sin contexto, mientras que la información surge cuando esos datos son procesados y adquieren significado.
+	
+	\section{La computadora y el sistema operativo}
+	
+	\subsection{Partes fundamentales de una computadora}
+	
+	Una computadora moderna se compone de hardware y software. Entre sus componentes físicos esenciales se encuentran la unidad central de procesamiento, la memoria RAM, el almacenamiento secundario, la tarjeta madre, los periféricos de entrada y salida, la fuente de poder y el sistema de refrigeración.
+	
+	\subsection{¿Qué es un sistema operativo y cuál es su función?}
+	
+	Un sistema operativo es el software fundamental que actúa como intermediario entre el hardware del computador y las aplicaciones del usuario (Tanenbaum \& Bos, 2015). Sus funciones principales incluyen la gestión de procesos, memoria, archivos, dispositivos, seguridad y control de acceso.
+	
+	\subsection{Ejemplos de sistemas operativos y sus diferencias}
+	
+	\begin{center}
+		\begin{tabular}{|p{3cm}|p{3cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Sistema operativo} & \textbf{Licencia} & \textbf{Uso principal} & \textbf{Característica distintiva} \\ \hline
+			Windows 11 & Propietario & Escritorio empresarial y doméstico & Alta compatibilidad con software comercial. \\ \hline
+			Linux & Código abierto & Servidores, desarrollo y ciberseguridad & Estabilidad, personalización y bajo costo. \\ \hline
+			macOS & Propietario & Diseño gráfico y desarrollo & Optimización entre hardware y software. \\ \hline
+			Android / iOS & Mixto & Dispositivos móviles & Ecosistemas móviles con enfoques distintos. \\ \hline
+		\end{tabular}
+		
+		\textit{Tabla 2. Comparativa de sistemas operativos representativos.}
+	\end{center}
+	
+	\section{Seguridad de la información}
+	
+	\subsection{Definición}
+	
+	La seguridad de la información es el conjunto de medidas, políticas, procedimientos y controles técnicos diseñados para proteger la información de accesos no autorizados, alteraciones, destrucción o divulgación indebida, asegurando su valor y utilidad (ISO/IEC 27001, 2022).
+	
+	\subsection{Pilares fundamentales: la tríada CIA}
+	
+	Los pilares fundamentales de la seguridad de la información son la confidencialidad, la integridad y la disponibilidad. La confidencialidad permite que solo personas autorizadas accedan a la información. La integridad asegura que la información permanezca exacta y completa. La disponibilidad garantiza que los sistemas y datos estén accesibles cuando los usuarios autorizados los necesiten.
+	
+	\subsection{Buenas prácticas para proteger la información}
+	
+	Entre las buenas prácticas se encuentran el uso de contraseñas fuertes, autenticación multifactor, actualización constante del software, copias de seguridad periódicas, capacitación del personal, cifrado de información sensible y aplicación del principio de privilegio mínimo.
+	
+	\section{Conclusiones grupales}
+	
+	Las TIC constituyen un motor de transformación social, ya que han redefinido la forma en que las personas se comunican, aprenden y trabajan. La pandemia de COVID-19 demostró que los países con mayor madurez digital pudieron adaptar sus economías y sistemas educativos con mayor resiliencia.
+	
+	Los fundamentos de la informática continúan siendo la base sobre la cual se construyen tecnologías emergentes como la inteligencia artificial, el blockchain y la computación cuántica. Asimismo, la seguridad de la información es responsabilidad de todos los usuarios, no solo de los departamentos de TI.
+	
+	Como futuros ingenieros en Tecnologías de la Información, el rol profesional no se limita a operar sistemas existentes, sino a diseñar soluciones seguras, eficientes, éticas e inclusivas.
+	
+	% =========================
+	% REFERENCIAS EN ÚLTIMA HOJA
+	% =========================
+	\clearpage
+	\ClearShipoutPictureBG
+	\FondoFinal
+	\thispagestyle{fancy}
+	
+	\section{Referencias}
+	
+	\begin{hangparas}{1.27cm}{1}
+		
+		Cobo, C. (2009). El concepto de tecnologías de la información. Benchmarking sobre las definiciones de las TIC en la sociedad del conocimiento. \textit{Zer: Revista de Estudios de Comunicación, 14}(27), 295--318.
+		
+		Cybersecurity Ventures. (2023). \textit{Cybercrime to cost the world \$8 trillion annually in 2023}. https://cybersecurityventures.com
+		
+		ISO/IEC 27001. (2022). \textit{Information security, cybersecurity and privacy protection — Information security management systems — Requirements} (3.a ed.). International Organization for Standardization.
+		
+		Laudon, K. C., \& Laudon, J. P. (2020). \textit{Sistemas de información gerencial} (16.a ed.). Pearson Educación.
+		
+		Microsoft Security. (2023). \textit{Your pa\$\$word doesn't matter}. https://techcommunity.microsoft.com/t5/microsoft-entra-blog
+		
+		Pressman, R. S. (2014). \textit{Ingeniería del software: Un enfoque práctico} (8.a ed.). McGraw-Hill Education.
+		
+		Tanenbaum, A. S., \& Bos, H. (2015). \textit{Modern operating systems} (4.a ed.). Pearson.
+		
+		UNESCO. (2023). \textit{ICT in education}. United Nations Educational, Scientific and Cultural Organization. https://www.unesco.org/en/digital-education/ict-in-education
+		
+		Verizon. (2023). \textit{2023 data breach investigations report}. https://www.verizon.com/business/resources/reports/dbir/
+		
+	\end{hangparas}
+	
+\end{document}

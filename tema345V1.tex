@@ -1,0 +1,697 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% =========================================================
+% PAQUETES
+% =========================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+
+% =========================================================
+% CONFIGURACIÓN GENERAL
+% =========================================================
+\usetheme{default}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+
+% =========================================================
+% COLORES
+% =========================================================
+\definecolor{unemiAzul}{RGB}{20,40,90}
+\definecolor{unemiNaranja}{RGB}{255,102,0}
+
+% =========================================================
+% TIPOGRAFÍAS
+% =========================================================
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamercolor{frametitle}{fg=unemiAzul}
+
+% =========================================================
+% FONDO GENERAL
+% =========================================================
+\setbeamertemplate{background}{
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[inner sep=0pt] at (current page.center){
+			\includegraphics[width=\paperwidth,height=\paperheight]{portadaUNEMI2}
+		};
+	\end{tikzpicture}
+}
+
+% =========================================================
+% DOCUMENTO
+% =========================================================
+\begin{document}
+	
+	% =========================================================
+	% PORTADA
+	% =========================================================
+	{
+		\setbeamertemplate{background}{
+			\includegraphics[width=\paperwidth,height=\paperheight]{portadaUNEMI}
+		}
+		
+		\begin{frame}[plain]
+			
+			\begin{tikzpicture}[remember picture,overlay]
+				
+				\node[
+				fill=unemiAzul,
+				fill opacity=0.82,
+				text opacity=1,
+				rounded corners,
+				inner sep=18pt
+				] at (current page.center){
+					
+					\begin{minipage}{0.72\textwidth}
+						
+						\centering
+						
+						{\Huge\bfseries\textcolor{white}{
+								Aritmética del Computador, Fundamentos de TI y Hardware
+						}}
+						
+						
+						
+						\vspace{1cm}
+						
+						{\small\textcolor{white}{Estudiante}}
+						
+						\vspace{0.2cm}
+						
+						{\Large\bfseries\textcolor{unemiNaranja}{
+								Angel Fernando Calero Maldonado
+						}}
+						
+						\vspace{0.4cm}
+						
+						{\small\textcolor{white}{
+								Universidad Estatal de Milagro
+						}}
+						
+					\end{minipage}
+					
+				};
+				
+			\end{tikzpicture}
+			
+		\end{frame}
+	}
+	
+	% =========================================================
+	% ÍNDICE
+	% =========================================================
+	\begin{frame}{Índice de la Presentación}
+		
+		\small
+		
+		\begin{block}{Tema 3.- Aritmética del computador}
+			\begin{itemize}
+				\item Presentación
+				\item Aritmética del computador
+				\item Unidades de medida
+				\item Lógica
+			\end{itemize}
+		\end{block}
+		
+		\begin{block}{Tema 4.- Fundamentos de TI}
+			\begin{itemize}
+				\item Presentación
+				\item Elementos de un computador
+				\item Representación de la información
+				\item La computadora en la actualidad
+			\end{itemize}
+		\end{block}
+		
+		\begin{block}{Tema 5.- Fundamentos de hardware}
+			\begin{itemize}
+				\item Presentación
+				\item Estructura y organización de un computador
+				\item Funcionamiento interno del computador
+				\item Memoria y periféricos
+			\end{itemize}
+		\end{block}
+		
+	\end{frame}
+	
+	
+	% =========================================================
+	% TEMA 3
+	% =========================================================
+	\begin{frame}{Tema 3.- Aritmética del computador}
+		
+		\begin{block}{Definición:}
+			La aritmética del computador estudia cómo las computadoras realizan operaciones matemáticas utilizando señales binarias representadas por 0 y 1.
+		\end{block}
+		
+		\begin{itemize}
+			\item Los computadores trabajan usando lógica digital.
+			\item Todo dato se convierte en bits.
+			\item Las operaciones son ejecutadas por circuitos electrónicos.
+			\item La Unidad Aritmético Lógica (ALU) realiza cálculos matemáticos.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 3.1
+	% =========================================================
+	\begin{frame}{Presentación}
+		
+		\begin{block}{Analogía}
+			Una computadora es como una calculadora extremadamente rápida que sigue instrucciones exactas millones de veces por segundo.
+		\end{block}
+		
+		\begin{itemize}
+			\item No piensa como un ser humano.
+			\item Solo interpreta señales eléctricas.
+			\item Usa reglas matemáticas precisas.
+			\item Convierte información en lenguaje binario.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 3.2
+	% =========================================================
+	\begin{frame}{Aritmética del computador}
+		
+		\small
+		
+		\begin{block}{Sistema binario}
+			El sistema binario utiliza únicamente dos dígitos: 0 y 1.
+		\end{block}
+		
+		\[
+		1011_2 =
+		1(2^3)+0(2^2)+1(2^1)+1(2^0)=11_{10}
+		\]
+		
+		\vspace{0.3cm}
+		
+		\begin{itemize}
+			\item Las computadoras representan números usando bits.
+			\item Cada posición binaria tiene un valor basado en potencias de 2.
+			\item Las operaciones matemáticas se realizan mediante circuitos lógicos.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% COMPLEMENTO A DOS
+	% =========================================================
+	\begin{frame}{Complemento a dos}
+		
+		\begin{block}{Por qué se utiliza?}
+			Permite representar números negativos dentro del computador.
+		\end{block}
+		
+		\vspace{0.005cm}
+		
+		\begin{block}{Ejemplo}
+			Representar $-5$ en 8 bits:
+		\end{block}
+		
+		\[
+		5 = 00000101
+		\]
+		
+		Invertir bits:
+		
+		\[
+		11111010
+		\]
+		
+		Sumar 1:
+		
+		\[
+		11111011
+		\]
+		
+		\vspace{0.005cm}
+		
+		\begin{block}{Idea}
+			Es como poner un número ``al revés'' para que el computador entienda que es negativo.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% PUNTO FLOTANTE
+	% =========================================================
+	\begin{frame}{Representación de punto flotante}
+		
+		\small
+		
+		\begin{block}{Explicación}
+			Los números decimales se almacenan usando una estructura parecida a la notación científica.
+		\end{block}
+		
+		\begin{itemize}
+			\item Se divide en signo, exponente y mantisa.
+			\item Permite representar números muy grandes o pequeños.
+			\item Sigue estándares internacionales como IEEE 754.
+			\item Algunos decimales no pueden representarse exactamente.
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+		\begin{block}{Ejemplo}
+			Por eso operaciones como:
+			
+			\[
+			0.1 + 0.2
+			\]
+			
+			a veces no producen exactamente:
+			
+			\[
+			0.3
+			\]
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 3.3
+	% =========================================================
+	\begin{frame}{Unidades de medida}
+		
+		\small
+		
+		\begin{block}{Bit y byte}
+			Un bit es la unidad mínima de información. Ocho bits forman un byte.
+		\end{block}
+		
+		\vspace{0.3cm}
+		
+		\begin{center}
+			
+			\begin{tabular}{>{\bfseries}c c}
+				
+				\toprule
+				Unidad & Equivalencia \\
+				\midrule
+				Bit & 0 o 1 \\
+				Byte & 8 bits \\
+				Kilobyte & 1024 bytes \\
+				Megabyte & 1024 KB \\
+				Gigabyte & 1024 MB \\
+				Terabyte & 1024 GB \\
+				\bottomrule
+				
+			\end{tabular}
+			
+		\end{center}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 3.4
+	% =========================================================
+	\begin{frame}{Lógica}
+		
+		\begin{block}{Lógica digital}
+			La lógica digital permite que el computador tome decisiones usando verdadero o falso.
+		\end{block}
+		
+		\begin{itemize}
+			\item AND: ambas condiciones deben cumplirse.
+			\item OR: basta una condición verdadera.
+			\item NOT: invierte el valor.
+			\item XOR: verdadero solo si las entradas son diferentes.
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+		\begin{block}{Analogía}
+			AND funciona como una puerta con dos cerraduras: ambas deben abrirse.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% TEMA 4
+	% =========================================================
+	\begin{frame}{Tema 4.- Fundamentos de TI}
+		
+		\begin{block}{Definición}
+			Las Tecnologías de la Información integran hardware, software, redes y datos para resolver problemas y facilitar la comunicación.
+		\end{block}
+		
+		\begin{itemize}
+			\item Automatizan procesos.
+			\item Permiten almacenar información.
+			\item Facilitan comunicación global.
+			\item Apoyan la toma de decisiones.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 4.1
+	% =========================================================
+	\begin{frame}{Presentación}
+		
+		\begin{block}{Analogía}
+			La TI es como el sistema nervioso de una empresa: recibe información, la procesa y genera respuestas.
+		\end{block}
+		
+		\begin{itemize}
+			\item Hardware: parte física.
+			\item Software: instrucciones.
+			\item Redes: comunicación.
+			\item Datos: información procesada.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 4.2
+	% =========================================================
+	\begin{frame}{Elementos de un computador}
+		
+		\small
+		
+		\begin{center}
+			
+			\begin{tabular}{>{\bfseries}p{3cm} p{8cm}}
+				
+				\toprule
+				Elemento & Función \\
+				\midrule
+				CPU & Ejecuta instrucciones. \\
+				RAM & Guarda datos temporales. \\
+				Disco SSD/HDD & Almacena información permanentemente. \\
+				Teclado y mouse & Permiten entrada de datos. \\
+				Monitor & Muestra resultados. \\
+				Tarjeta de red & Conecta dispositivos. \\
+				\bottomrule
+				
+			\end{tabular}
+			
+		\end{center}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 4.3
+	% =========================================================
+	\begin{frame}{Representación de la información}
+		
+		\begin{block}{Idea principal}
+			Todo dentro del computador se representa usando bits.
+		\end{block}
+		
+		\begin{itemize}
+			\item Texto: ASCII y Unicode.
+			\item Imágenes: píxeles.
+			\item Audio: muestras digitales.
+			\item Video: secuencia de imágenes.
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+		\begin{block}{Explicación}
+			Para una computadora, una canción, una imagen y un texto son diferentes combinaciones de ceros y unos.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 4.4
+	% =========================================================
+	\begin{frame}{La computadora en la actualidad}
+		
+		\small
+		
+		\begin{itemize}
+			\item Computación en la nube.
+			\item Inteligencia artificial.
+			\item Internet de las cosas.
+			\item Big Data.
+			\item Ciberseguridad.
+			\item Educación virtual.
+		\end{itemize}
+		
+		\vspace{0.4cm}
+		
+		\begin{block}{Idea central}
+			La computadora ya no es solo una máquina de oficina: está presente en prácticamente todos los sectores de la sociedad.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% TEMA 5
+	% =========================================================
+	\begin{frame}{Tema 5.- Fundamentos de hardware}
+		
+		\begin{block}{Definición}
+			El hardware corresponde a todos los componentes físicos de un sistema computacional.
+		\end{block}
+		
+		\begin{itemize}
+			\item Procesador.
+			\item Memoria.
+			\item Tarjeta madre.
+			\item Dispositivos de entrada y salida.
+			\item Unidades de almacenamiento.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 5.1
+	% =========================================================
+	\begin{frame}{Presentación}
+		
+		\begin{block}{Analogía}
+			El hardware funciona como una fábrica donde cada componente cumple una tarea específica.
+		\end{block}
+		
+		\begin{itemize}
+			\item CPU: director de operaciones.
+			\item Memoria: espacio de trabajo.
+			\item Disco: almacén.
+			\item Buses: carreteras de información.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 5.2
+	% =========================================================
+	\begin{frame}{Estructura y organización de un computador}
+		
+		\small
+		
+		\begin{block}{Arquitectura de Von Neumann}
+			Modelo clásico utilizado en la mayoría de computadores modernos.
+		\end{block}
+		
+		\begin{itemize}
+			\item Unidad de control.
+			\item Unidad aritmético lógica.
+			\item Memoria principal.
+			\item Entrada y salida.
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+		\begin{block}{Ciclo básico}
+			Buscar \textrightarrow\ Decodificar \textrightarrow\ Ejecutar.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 5.3
+	% =========================================================
+	\begin{frame}{Funcionamiento interno del computador}
+		
+		\small
+		
+		\begin{enumerate}
+			\item La CPU busca una instrucción.
+			\item Interpreta qué debe hacer.
+			\item Ejecuta la operación.
+			\item Guarda el resultado.
+		\end{enumerate}
+		
+		\vspace{0.4cm}
+		
+		\begin{block}{Explicación sencilla}
+			La computadora sigue instrucciones paso a paso igual que una receta de cocina.
+		\end{block}
+		
+		\vspace{0.2cm}
+		
+		\begin{itemize}
+			\item Registros: memoria ultrarrápida.
+			\item Caché: acceso rápido frecuente.
+			\item Buses: transporte interno.
+			\item Reloj: sincroniza operaciones.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% SUBTEMA 5.4
+	% =========================================================
+	\begin{frame}{Memoria y periféricos}
+		
+		\small
+		
+		\begin{center}
+			
+			\begin{tabular}{>{\bfseries}p{3cm} p{8cm}}
+				
+				\toprule
+				Componente & Función \\
+				\midrule
+				RAM & Memoria temporal y rápida. \\
+				ROM & Instrucciones de arranque. \\
+				SSD/HDD & Almacenamiento permanente. \\
+				Periféricos de entrada & Capturan datos. \\
+				Periféricos de salida & Presentan resultados. \\
+				\bottomrule
+				
+			\end{tabular}
+			
+		\end{center}
+		
+	\end{frame}
+	
+	% =========================================================
+	% COMPARACIÓN GENERAL
+	% =========================================================
+	\begin{frame}{Comparación general}
+		
+		\small
+		
+		\begin{center}
+			
+			\begin{tabular}{>{\bfseries}p{3.2cm} p{8cm}}
+				
+				\toprule
+				Tema & Pregunta principal \\
+				\midrule
+				Aritmética del computador & Cómo calcula una computadora? \\
+				Fundamentos de TI & Cómo se usa la información? \\
+				Fundamentos de hardware & Qué partes físicas permiten funcionar al sistema? \\
+				\bottomrule
+				
+			\end{tabular}
+			
+		\end{center}
+		
+		\vspace{0.3cm}
+		
+		\begin{block}{Síntesis}
+			El hardware es el cuerpo, la aritmética binaria es el lenguaje interno y la TI es la aplicación práctica de todo el sistema.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% CONCLUSIONES
+	% =========================================================
+	\begin{frame}{Conclusiones}
+		
+		\begin{itemize}
+			\item La aritmética del computador permite realizar cálculos mediante lógica binaria.
+			\item Las Tecnologías de la Información integran personas, datos y sistemas computacionales.
+			\item El hardware proporciona la estructura física para ejecutar programas.
+			\item Comprender estos temas ayuda a entender cómo funciona realmente la tecnología moderna.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% REFERENCIAS
+	% =========================================================
+	\begin{frame}{Bibliografía}
+		
+		\tiny
+		
+		\begin{itemize}
+			
+			\item Patterson, D. A., \& Hennessy, J. L. (2021). \textit{Computer Organization and Design: The Hardware/Software Interface}. Morgan Kaufmann.
+			
+			\item Stallings, W. (2022). \textit{Computer Organization and Architecture}. Pearson.
+			
+			\item Bryant, R. E., \& O'Hallaron, D. R. (2016). \textit{Computer Systems: A Programmer's Perspective}. Pearson.
+			
+			\item Tanenbaum, A. S. (2013). \textit{Structured Computer Organization}. Pearson.
+			
+			\item Mano, M. M., \& Ciletti, M. D. (2017). \textit{Digital Design}. Pearson.
+			
+			\item IEEE Computer Society. (2019). \textit{IEEE Standard for Floating-Point Arithmetic IEEE 754-2019}.
+			
+			\item MIT OpenCourseWare. \textit{Computation Structures}. Massachusetts Institute of Technology.
+			
+			\item Harvard University. \textit{CS50: Introduction to Computer Science}.
+			
+			\item NIST. \textit{Guide for the Use of the International System of Units}.
+			
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% DIAPOSITIVA FINAL
+	% =========================================================
+	{
+		\setbeamertemplate{background}{
+			\includegraphics[width=\paperwidth,height=\paperheight]{portadaUNEMI}
+		}
+		
+		\begin{frame}[plain]
+			
+			\begin{tikzpicture}[remember picture,overlay]
+				
+				\node[
+				fill=unemiAzul,
+				fill opacity=0.82,
+				text opacity=1,
+				rounded corners,
+				inner sep=18pt
+				] at (current page.center){
+					
+					\begin{minipage}{0.8\textwidth}
+						
+						\centering
+						
+						{\Huge\bfseries\textcolor{white}{
+								Gracias
+						}}
+						
+						\vspace{0.5cm}
+						
+						
+					\end{minipage}
+					
+				};
+				
+			\end{tikzpicture}
+			
+		\end{frame}
+	}
+	
+	% =========================================================
+	% FIN
+	% =========================================================
+\end{document}

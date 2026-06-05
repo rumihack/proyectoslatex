@@ -1,0 +1,1319 @@
+\documentclass[12pt,a4paper]{article}
+
+% ================= PAQUETES =================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{hanging}
+\usepackage{hyperref}
+\usepackage[absolute,overlay]{textpos}
+
+\pgfplotsset{compat=1.18}
+
+% ================= FORMATO =================
+\geometry{left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm}
+
+\definecolor{azulunemi}{RGB}{11,36,71}
+\definecolor{azulclaro}{RGB}{220,235,250}
+\definecolor{gris}{RGB}{245,247,250}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=azulunemi,
+	urlcolor=azulunemi
+}
+
+
+\titleformat{\section}
+{\color{azulunemi}\normalfont\Large\bfseries}
+{\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+{\color{azulunemi}\normalfont\large\bfseries}
+{\thesubsection.}{0.5em}{}
+
+% =========================
+% FONDOS PDF
+% =========================
+\newcommand{\FondoPortada}{
+	\AddToShipoutPictureBG*{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/portadaLibroUNEMI.pdf}
+}}}
+
+\newcommand{\FondoCuerpo}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaDocumento.pdf}
+}}}
+
+\newcommand{\FondoFinal}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaFinal.pdf}
+}}}
+% ================= PORTADA=================
+\begin{document}
+\FondoPortada
+%======================
+\begin{titlepage}
+	\thispagestyle{empty}
+	
+	\vspace*{10cm}
+	
+	\begin{textblock*}{18cm}(0.1cm,13cm)
+		
+		{\color{white}
+			
+			{\fontsize{24}{28}\selectfont
+				\bfseries COMPONENTE PRÁCTICO 1\par}
+			
+			\vspace{0.4cm}
+			
+		
+			\vspace{1cm}
+			
+			{\fontsize{20}{24}\selectfont
+				\bfseries Estudio sobre el Consumo de Datos\par}
+			
+			{\fontsize{20}{24}\selectfont
+				\bfseries Móviles de Estudiantes de TI\par}
+			
+		}
+		
+	\end{textblock*}
+	
+\end{titlepage}
+	
+	% ================= DOCUMENTO =================
+	\FondoCuerpo
+	\begin{titlepage}
+		\centering
+		
+		% Colores
+		\definecolor{azulUNEMI}{RGB}{0,31,63}
+		\definecolor{naranjaUNEMI}{RGB}{255,140,0}
+		\definecolor{grisClaro}{RGB}{220,220,220}
+		
+		\vspace*{0.5cm}
+		
+		{\fontsize{24}{28}\selectfont
+			\color{azulUNEMI}
+			\textbf{UNIVERSIDAD ESTATAL DE MILAGRO}\par}
+		
+		\vspace{0.2cm}
+		
+		{\large
+			\color{azulUNEMI}
+			Facultad de Ciencias e Ingeniería\par}
+		
+		{\large
+			\color{azulUNEMI}
+			Carrera: Tecnologías de la Información -- Modalidad en Línea\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{28}{34}\selectfont
+			\color{naranjaUNEMI}
+			\textbf{COMPONENTE PRÁCTICO 1}\par}
+		
+		\vspace{0.3cm}
+		
+		{\fontsize{18}{22}\selectfont
+			\color{naranjaUNEMI}
+			\textbf{PROYECTO INTEGRADOR -- PARTE 1}\par}
+		
+		\vspace{1cm}
+		
+		\begin{minipage}{0.88\textwidth}
+			\centering
+			
+			{\fontsize{22}{28}\selectfont
+				\color{azulUNEMI}
+				\textbf{Estudio sobre el Consumo de\\[0.2cm]
+					Datos Móviles de Estudiantes de TI}\par}
+		\end{minipage}
+		
+		\vspace{1.8cm}
+		
+		\begin{minipage}{0.95\textwidth}
+			\raggedright
+			
+			{\large\color{naranjaUNEMI}\textbf{Estudiantes:}}
+			
+			\vspace{0.2cm}
+			
+			{\Large\color{azulUNEMI}
+				\hspace*{1cm}Ángel Fernando Calero Maldonado\\
+				\hspace*{1cm}Silvio Antonio Villanueva García\\
+				\hspace*{1cm}\color{azulUNEMI}Christian Javier Rodríguez Barzola\\
+				\hspace*{1cm}\color{azulUNEMI}Julissa Piedad Vargas Rodríguez}
+			
+			\vspace{1.2cm}
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Asignatura:}}
+			{\Large\color{azulUNEMI} Fundamentos Matemáticos para Ingeniería}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Docente:}}
+			{\Large\color{azulUNEMI} PhD. Marcos Francisco Guerrero Zambrano}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Período académico:}}
+			{\Large\color{azulUNEMI} Abril -- Julio 2026}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Nivel:}}
+			{\Large\color{azulUNEMI} 1.er Semestre}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Código:}}
+			{\Large\color{azulUNEMI} PI\_G\_P1}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Fecha de entrega:}}
+			{\Large\color{azulUNEMI} 2 de Junio de 2026}
+			
+		\end{minipage}
+		
+		\vfill
+		
+		{\large
+			\color{azulUNEMI}
+			\textbf{Milagro -- Ecuador}\par}
+		
+	\end{titlepage}
+
+	% ================= DATOS DEL EQUIPO =================
+	\section*{Datos del equipo}
+	
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.4}
+		\begin{tabular}{|p{6cm}|p{8cm}|}
+			\hline
+			\rowcolor{azulclaro}
+			\textbf{Elemento} & \textbf{Información} \\ \hline
+			Nombre del proyecto & Consumo de Datos Móviles de Estudiantes de TI \\ \hline
+			Contexto seleccionado & Contexto 1 -- Consumo de datos móviles \\ \hline
+			Integrante 1 -- Modelador matemático & Ángel Fernando Calero Maldonado \\ \hline
+			Integrante 2 -- Analista de datos y calculista & Silvio Antonio Villanueva García \\ \hline
+			Integrante 3 -- Visualizador y diseñador STEAM & Christian Javier Rodríguez Barzola \\ \hline
+			Integrante 4 -- Comunicadora y redactora & Julissa Piedad Vargas Rodríguez \\ \hline
+			Asignatura & Fundamentos Matemáticos para Ingeniería \\ \hline
+			Docente & PhD. Marcos Francisco Guerrero Zambrano \\ \hline
+		\end{tabular}
+	\end{table}
+	
+	\vspace{1.5cm}
+	\subsection*{\Large \color {red} Link de presentación del proyecto}
+	
+	\url {https://drive.google.com/file/d/1CLDgGVUX5Aix4ICjIoS7PpIOFIrH08CC/view?usp=sharing}
+	
+	
+	\newpage
+	
+	% ================= ÍNDICE =================
+	\tableofcontents
+	\newpage
+	
+	% ================= INTRODUCCIÓN =================
+	\section{Introducción}
+	
+	Este informe corresponde al Componente Práctico 1 del Proyecto Integrador de la asignatura Fundamentos Matemáticos para Ingeniería de la Universidad Estatal de Milagro. Este trabajo se desarrolló  bajo la metodología de Aprendizaje Basado en Proyectos con enfoque STEAM cuyo objetivo es el contexto del consumo de datos móviles de estudiantes de Tecnologías de la Información.
+	
+	Los conceptos y procedimientos matemáticos se utilizan para analizar información y de esta para ser utilizada como herramienta de control, realizar proyecciones útiles que mejoran el bienestar de la gente, de la misma manera permite hacer recomendaciones para optimizar los recursos, tal es el enfoque en el presente caso de estudio donde se tendrá en consideración el consumo de datos móviles de estudiantes de TI. Con las diferentes variables consideradas correspondientes a las diferentes aplicaciones las cuales utilizan datos para realizar su trabajo.
+	
+	% ================= OBJETIVOS =================
+	\section{Objetivos}
+	
+	\subsection{Objetivo general}
+	
+	Modelar matemáticamente el consumo mensual de datos móviles de un grupo de estudiantes de TI mediante expresiones algebraicas, ecuaciones, inecuaciones y funciones trigonométricas con el objetivo de predecir el momento cuando dicho  umbral del plan contratado es superado y proponer decisiones para el consumo óptimo de los datos.
+	
+	\subsection{Objetivos específicos}
+	
+	\begin{itemize}
+		\item Reconocer y cuantificar las variables que influyen en el consumo de datos móviles por tipo de aplicación.
+		\item Plantear y simplificar expresiones algebraicas que muestran el consumo total, el consumo por aplicación y muestre el porcentaje del plan de datos.
+		\item Identificar el agotamiento del plan de datos mediante la resolución de las ecuaciones lineales, y con valor absoluto.
+		\item Plantear inecuaciones que me permitan identificar regiones de consumo asociado con el agotamiento del consumo del plan de datos.
+		\item Incorporar un primer componente trigonométrico el cual me permita verificar el comportamiento cíclico del consumo de datos semanalmente.
+		
+	\end{itemize}
+	
+	% ================= CONTEXTO =================
+	\section{Contexto del proyecto}
+	
+	Consumo de datos móviles de estudiantes de TI El escenario describe un grupo de estudiantes de TI que utilizan sus planes de datos móviles para clases en línea, videos educativos, redes sociales, navegación y juegos. El equipo debe estimar cuántos GB consume cada tipo de actividad por semana, modelar el consumo mensual total y determinar en qué momento se supera el límite del plan contratado. Este contexto permite organizar datos en tablas, construir expresiones algebraicas para el consumo por actividad, plantear ecuaciones para encontrar el consumo exacto en un mes determinado e inecuaciones para identificar cuándo el uso excede el límite disponible. El grupo puede proponer decisiones como reducir horas de video, cambiar de plan o redistribuir el uso entre aplicaciones para mantenerse dentro del presupuesto de datos. Qué se busca modelar: 
+	
+	\begin{itemize}
+		\item  Consumo mensual de datos móviles según horas de uso por tipo de actividad.
+		\item Momento en que se supera el límite del plan contratado.
+		\item Relación entre el uso de distintas aplicaciones y el consumo total. Variables frecuentes:
+		\item Número de horas de clases en línea, videos, redes sociales y juegos por semana.
+		\item Consumo aproximado de datos por hora de cada actividad (en MB o GB).
+		\item Límite de datos del plan mensual (GB).
+		\item Número de semanas del mes.
+	\end{itemize}
+	 Contenidos matemáticos con mayor protagonismo:
+	 \begin{itemize}
+		 \item Expresiones algebraicas.
+		 \item Ecuaciones e inecuaciones.
+		 \item Interpretación de gráficas de consumo.
+		 \item Vectores (opcional, para representar perfiles de uso como combinaciones de actividades).
+	\end{itemize}
+	
+	
+	% ================= DATOS BASE =================
+	\section{Datos base del modelo}
+	
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{|p{4.5cm}|c|c|c|c|}
+			\hline
+			\rowcolor{azulclaro}
+			\textbf{Actividad} & \textbf{Horas/día} & \textbf{MB/h} & \textbf{Consumo diario (MB)} & \textbf{Participación} \\ \hline
+			Clases en línea & 2 & 1024 & 2048 & 60.0\% \\ \hline
+			Videos educativos & 1.5 & 700 & 1050 & 30.8\% \\ \hline
+			Redes sociales & 1.5 & 150 & 225 & 6.6\% \\ \hline
+			Navegación web & 0.5 & 80 & 40 & 1.2\% \\ \hline
+			Juegos en línea & 0.5 & 100 & 50 & 1.5\% \\ \hline
+			\rowcolor{gris}
+			\textbf{Total} & 6 & -- & 3413 & 100\% \\ \hline
+		\end{tabular}
+		\caption{Consumo diario por actividad en días normales.}
+	\end{table}
+	
+	% ================= VARIABLES =================
+	\section{Variables y supuestos}
+	
+	\subsection{Variables principales}
+	Definimos el nombre de las variables para los calculos correspondientes.
+	
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{|c|p{7cm}|c|}
+			\hline
+			\rowcolor{azulclaro}
+			\textbf{Variable} & \textbf{Significado} & \textbf{Unidad} \\ \hline
+			$c$ & Consumo por hora de clases en línea & MB/h \\ \hline
+			$v$ & Consumo por hora de videos educativos & MB/h \\ \hline
+			$s$ & Consumo por hora de redes sociales & MB/h \\ \hline
+			$n$ & Consumo por hora de navegación web & MB/h \\ \hline
+			$j$ & Consumo por hora de juegos en línea & MB/h \\ \hline
+			$t_c$ & Tiempo diario de clases en línea & h \\ \hline
+			$t_v$ & Tiempo diario de videos educativos & h \\ \hline
+			$t_s$ & Tiempo diario de redes sociales & h \\ \hline
+			$t_n$ & Tiempo diario de navegación web & h \\ \hline
+			$t_j$ & Tiempo diario de juegos en línea & h \\ \hline
+			$C(d)$ & Consumo total hasta el día $d$ & GB \\ \hline
+			$P$ & Plan contratado & GB \\ \hline
+			$\overline{C}$ & Consumo promedio diario corregido & GB/día \\ \hline
+		\end{tabular}
+		\caption{Variables del modelo matemático.}
+	\end{table}
+	
+	\subsection{Supuestos manejados}
+	
+	\begin{itemize}
+		\item El plan contratado es de $P=70$ GB mensuales.
+		\item En días normales se consume $3413$ MB diarios.
+		\item Los fines de semana se usan la mitad de los datos ya que no se tiene clases sincrónicas entonces se infiere que se consume la mitad de los datos diarios.
+		\item Por tanto, el consumo de fin de semana es:
+		\[
+		C_f=\frac{3413}{2}=1706.5\text{ MB}=1.667\text{ GB/día}
+		\]
+		\item Se considera un mes de 30 días con 22 días normales y 8 días de fin de semana.
+		\item No se considera consumo de Wi-Fi.
+		\item El consumo acumulado al inicio del mes es $C(0)=0$.
+	\end{itemize}
+	
+	% ================= MODELADO ALGEBRAICO =================
+	\section{Modelado algebraico}
+	
+	\subsection{Expresión 1: Consumo diario total}
+	
+	El consumo total diario se calcula con la sumatoria del produnto de cada una de sus componentes:
+	
+	\[
+	C=ct_c+vt_v+st_s+nt_n+jt_j
+	\]
+	
+	Sustituyendo se obtine:
+	
+	\[
+	C=1024(2)+700(1.5)+150(1.5)+80(0.5)+100(0.5)
+	\]
+	
+	\[
+	C=2048+1050+225+40+50
+	\]
+	
+	\[
+	C=3413\text{ MB}
+	\]
+	
+	\[
+	C=\frac{3413}{1024}=3.333\text{ GB/día}
+	\]
+	%========
+	\begin{center}
+		{\Large\bfseries Gráfico. consumo de datos móviles por día}
+	\end{center}
+	
+	\vspace{0.3cm}
+	
+	\begin{figure}[H]
+		\centering
+		
+		\resizebox{0.95\textwidth}{!}{
+			\begin{tikzpicture}
+				
+				% Colores
+				\definecolor{clases}{RGB}{196,48,178}
+				\definecolor{videos}{RGB}{105,33,205}
+				\definecolor{redes}{RGB}{42,55,205}
+				\definecolor{web}{RGB}{36,184,190}
+				\definecolor{juegos}{RGB}{255,100,0}
+				
+				% Radio
+				\def\r{3.4}
+				
+				% Gráfico de pastel
+				\fill[clases] (0,0) -- (93.36:\r) arc (93.36:309.36:\r) -- cycle;
+				\fill[videos] (0,0) -- (309.36:\r) arc (309.36:420.24:\r) -- cycle;
+				\fill[redes]  (0,0) -- (420.24:\r) arc (420.24:444.00:\r) -- cycle;
+				\fill[juegos] (0,0) -- (84.60:\r) arc (84.60:90.00:\r) -- cycle;
+				\fill[web]    (0,0) -- (90.00:\r) arc (90.00:94.32:\r) -- cycle;
+				
+				% Bordes blancos
+				\draw[white,line width=3pt] (0,0) -- (93.36:\r) arc (93.36:309.36:\r) -- cycle;
+				\draw[white,line width=3pt] (0,0) -- (309.36:\r) arc (309.36:420.24:\r) -- cycle;
+				\draw[white,line width=3pt] (0,0) -- (420.24:\r) arc (420.24:444.00:\r) -- cycle;
+				\draw[white,line width=3pt] (0,0) -- (84.60:\r) arc (84.60:90.00:\r) -- cycle;
+				\draw[white,line width=3pt] (0,0) -- (90.00:\r) arc (90.00:94.32:\r) -- cycle;
+				
+				% Etiqueta clases
+				\node[
+				draw=clases,
+				text=clases,
+				fill=white,
+				rounded corners=5pt,
+				line width=1.4pt,
+				font=\bfseries\small,
+				align=center,
+				minimum width=2.7cm
+				] at (-5.3,0.8) {Clases en línea\\60.0 \%};
+				
+				\draw[clases,line width=1.4pt] 
+				(-3.95,0.8) -- (-3.45,0.8) -- (-2.95,1.15);
+				
+				% Etiqueta web
+				\node[
+				draw=web,
+				text=web,
+				fill=white,
+				rounded corners=5pt,
+				line width=1.4pt,
+				font=\bfseries\small,
+				align=center,
+				minimum width=2.8cm
+				] at (-1.1,4.7) {Navegación web\\1.2 \%};
+				
+				\draw[web,line width=1.4pt]
+				(-1.1,4.15) -- (-1.1,3.75) -- (-0.55,3.35);
+				
+				% Etiqueta juegos
+				\node[
+				draw=juegos,
+				text=juegos,
+				fill=white,
+				rounded corners=5pt,
+				line width=1.4pt,
+				font=\bfseries\small,
+				align=center,
+				minimum width=2.8cm
+				] at (2.0,4.7) {Juegos en línea\\1.5 \%};
+				
+				\draw[juegos,line width=1.4pt]
+				(2.0,4.15) -- (2.0,3.75) -- (0.55,3.35);
+				
+				% Etiqueta redes
+				\node[
+				draw=redes,
+				text=redes,
+				fill=white,
+				rounded corners=5pt,
+				line width=1.4pt,
+				font=\bfseries\small,
+				align=center,
+				minimum width=2.8cm
+				] at (5.2,2.2) {Redes sociales\\6.6 \%};
+				
+				\draw[redes,line width=1.4pt]
+				(3.8,2.2) -- (3.25,2.2) -- (2.65,2.6);
+				
+				% Etiqueta videos
+				\node[
+				draw=videos,
+				text=videos,
+				fill=white,
+				rounded corners=5pt,
+				line width=1.4pt,
+				font=\bfseries\small,
+				align=center,
+				minimum width=3.1cm
+				] at (5.0,-1.0) {Videos educativos\\30.8 \%};
+				
+				\draw[videos,line width=1.4pt]
+				(3.45,-1.0) -- (3.05,-1.0) -- (2.7,-1.55);
+				
+			\end{tikzpicture}
+		}
+		
+		\caption{Distribución porcentual del consumo total de datos móviles por actividad}
+		\label{fig:pastel_consumo}
+		
+	\end{figure}
+	%================================================================
+	\textbf{Interpretación:} Cada aplicación tiene un peso en consumo diario de datos moviles particular que necesita ser analizado matematicamente y contextualmente y con esto podemos demostrar en como se clasifica el consumo diario orientado a cada aplicacion.
+	
+	\subsection{Expresión 2: Consumo mensual corregido}
+	
+	Como los fines de semana se consume la mitad, se separan dos tipos de días:
+	
+	\[
+	C_m=22C_s+8C_f
+	\]
+	
+	donde:
+	
+	\[
+	C_s=3.333\text{ GB/día}
+	\]
+	
+	\[
+	C_f=1.667\text{ GB/día}
+	\]
+	
+	Entonces:
+	
+	\[
+	C_m=22(3.333)+8(1.667)
+	\]
+	
+	\[
+	C_m=73.326+13.336
+	\]
+	
+	\[
+	C_m=86.662\text{ GB}
+	\]
+	
+	Por cuanto:
+	
+	\[
+	\boxed{C_m\approx 86.66\text{ GB}}
+	\]
+	
+	\subsection{Expresión 3: Porcentaje de uso del plan}
+	
+	El porcentaje consumido del plan se calcula como:
+	
+	\[
+	U(d)=\frac{C(d)}{P}\times 100
+	\]
+	
+	Como:
+	
+	\[
+	C(d)=\overline{C}d
+	\]
+	
+	entonces:
+	
+	\[
+	U(d)=\frac{\overline{C}d}{70}\times100
+	\]
+		% ================= PROMEDIO =================
+	\section{Promedio diario corregido}
+	
+	El promedio diario se calcula poniendo 5 días normales y 2 días de fin lo que corresponde al fin de semana:
+	
+	\[
+	\overline{C}=\frac{5(3.333)+2(1.667)}{7}
+	\]
+	
+	\[
+	\overline{C}=\frac{16.665+3.334}{7}
+	\]
+	
+	\[
+	\overline{C}=\frac{19.999}{7}
+	\]
+	
+	\[
+	\overline{C}=2.857\text{ GB/día}
+	\]
+	
+	Por lo tanto, el modelo acumulado y corregido nos queda:
+	
+	\[
+	\boxed{C(d)=2.857d}
+	\]
+	
+	% ================= GRÁFICO 1 =================
+	\section{Pregunta 1: Relación entre aplicaciones y consumo total}
+	
+	La primera pregunta del proyecto es:
+	
+	\begin{quote}
+		\textquestiondown{Qué actividades generan mayor consumo de datos móviles?}
+	\end{quote}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				ybar,
+				width=14cm,
+				height=8cm,
+				bar width=18pt,
+				ylabel={Consumo diario (MB)},
+				symbolic x coords={Clases,Videos,Redes,Navegacion,Juegos},
+				xtick=data,
+				nodes near coords,
+				nodes near coords align={vertical},
+				x tick label style={rotate=25,anchor=east},
+				ymin=0,
+				grid=major
+				]
+				\addplot coordinates {
+					(Clases,2048)
+					(Videos,1050)
+					(Redes,225)
+					(Navegacion,40)
+					(Juegos,50)
+				};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Consumo diario por actividad.}
+	\end{figure}
+	
+	\textbf{Interpretación:} las clases en línea y los videos educativos concentran la mayor parte del consumo. Juntas representan aproximadamente el 90.8\% del gasto diario.
+	
+	% ================= GRÁFICO 2 =================
+	\section{Pregunta 2: Momento en que se supera el plan contratado}
+	
+	La segunda pregunta es:
+	
+	\begin{quote}
+		\textbf{¿En qué día del mes se supera el plan contratado de 70 GB?}
+	\end{quote}
+	
+	Se usa el modelo corregido:
+	
+	\[
+	C(d)=2.857d
+	\]
+	
+	Igualamos al plan:
+	
+	\[
+	2.857d=70
+	\]
+	
+	\[
+	d=\frac{70}{2.857}
+	\]
+	
+	\[
+	d=24.50
+	\]
+	
+	\[
+	\boxed{d\approx24.5}
+	\]
+	
+	\textbf{Interpretación:} el plan se terminará aproximadamente durante el inicio del día 25.
+	%============otra figura inicio ======================
+	
+	
+	\begin{figure}[H]
+		\centering
+		
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=14cm,
+				height=8cm,
+				xlabel={Día del mes},
+				ylabel={Consumo acumulado (GB)},
+				xmin=0, xmax=30,
+				ymin=0, ymax=90,
+				grid=both,
+				major grid style={gray!45, line width=0.4pt},
+				minor grid style={gray!20, line width=0.2pt},
+				axis background/.style={fill=blue!3},
+				xlabel style={font=\bfseries},
+				ylabel style={font=\bfseries},
+				legend style={
+					draw=black!30,
+					fill=white,
+					rounded corners=3pt,
+					at={(0.03,0.97)},
+					anchor=north west
+				}
+				]
+				
+				% Area bajo la curva
+				\addplot[
+				draw=none,
+				fill=cyan!20
+				]
+				coordinates{
+					(0,0)
+					(5,14.285)
+					(10,28.57)
+					(15,42.855)
+					(20,57.14)
+					(24.5,70)
+					(30,85.71)
+					(30,0)
+					(0,0)
+				};
+				
+				% Curva principal
+				\addplot[
+				color=blue!80!black,
+				ultra thick,
+				mark=*,
+				mark size=3pt,
+				mark options={
+					fill=green!70!black,
+					draw=white
+				}
+				]
+				coordinates{
+					(0,0)
+					(5,14.285)
+					(10,28.57)
+					(15,42.855)
+					(20,57.14)
+					(24.5,70)
+					(30,85.71)
+				};
+				
+				\addlegendentry{$C(d)=2.857d$}
+				
+				% Linea del plan
+				\addplot[
+				color=red!85!black,
+				very thick,
+				dashed
+				]
+				coordinates{
+					(0,70)
+					(30,70)
+				};
+				
+				\addlegendentry{Plan de 70 GB}
+				
+				% Punto critico
+				\addplot[
+				only marks,
+				mark=*,
+				mark size=5pt,
+				color=red!85!black
+				]
+				coordinates{
+					(24.5,70)
+				};
+				
+				% Linea vertical del dia 24.5
+				\addplot[
+				orange!90!black,
+				thick,
+				densely dotted
+				]
+				coordinates{
+					(24.5,0)
+					(24.5,70)
+				};
+				
+				\addlegendentry{Dia 24.5}
+				
+			\end{axis}
+		\end{tikzpicture}
+		
+		\caption{Consumo acumulado frente al límite del plan de datos.}
+		\label{fig:consumo_acumulado}
+		
+	\end{figure}
+	
+	% ================= GRÁFICO 3 =================
+	\section{Pregunta 3: Actividad que conviene reducir}
+	
+	La tercera pregunta es:
+	
+	\begin{quote}
+		\textquestiondown{Qué actividad conviene reducir para extender la duración del plan?}
+	\end{quote}
+	
+	Como las clases y los videos educativos son las actividades que tienen el mayor consumo, una estrategia razonable es reducir el consumo de videos.
+	
+	Si se reduce el consumo por hora de videos de $700$ MB/h a $350$ MB/h, entonces:
+	
+	\[
+	C(v)=2363+1.5v
+	\]
+	
+	Con $v=700$:
+	
+	\[
+	C(700)=2363+1.5(700)=3413\text{ MB}
+	\]
+	
+	Con $v=350$:
+	
+	\[
+	C(350)=2363+1.5(350)=2888\text{ MB}
+	\]
+	
+	Ahorro diario:
+	
+	\[
+	3413-2888=525\text{ MB}
+	\]
+	
+	\[
+	525\text{ MB}=0.513\text{ GB}
+	\]
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				ybar,
+				width=12cm,
+				height=7cm,
+				bar width=30pt,
+				ylabel={Consumo diario (MB)},
+				symbolic x coords={Actual,Video reducido},
+				xtick=data,
+				nodes near coords,
+				ymin=0,
+				grid=major
+				]
+				\addplot coordinates {
+					(Actual,3413)
+					(Video reducido,2888)
+				};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Comparación del consumo diario antes y después de reducir videos.}
+	\end{figure}
+	
+	% ================= ECUACIONES =================
+	\section{Resolución de ecuaciones}
+	
+	\subsection{Ecuación 1: Límite del plan}
+	
+	\[
+	2.857d=70
+	\]
+	
+	\[
+	d=\frac{70}{2.857}
+	\]
+	
+	\[
+	d=24.50
+	\]
+	
+	\textbf{Respuesta:} el plan se supera aproximadamente durante el día 24 o al inicio del día 25.
+	
+	\subsection{Ecuación 2: Reducción necesaria para llegar a 30 días}
+	
+	Para que el plan nos alcance 30 días:
+	
+	\[
+	\frac{70}{30}=2.333\text{ GB/día}
+	\]
+	
+	El consumo promedio actual es:
+	
+	\[
+	2.857\text{ GB/día}
+	\]
+	
+	El Ahorro necesario diario:
+	
+	\[
+	2.857-2.333=0.524\text{ GB/día}
+	\]
+	
+	Como una hora de video consume aproximadamente:
+	
+	\[
+	700\text{ MB}=0.684\text{ GB}
+	\]
+	
+	Sea $x$ el número de horas de video que se deben reducir por día:
+	
+	\[
+	0.684x=0.524
+	\]
+	
+	\[
+	x=\frac{0.524}{0.684}
+	\]
+	
+	\[
+	x=0.766\text{ horas}
+	\]
+	
+	\[
+	0.766(60)=45.96\text{ minutos}
+	\]
+	
+	\[
+	\boxed{x\approx46\text{ minutos}}
+	\]
+	
+	\textbf{Interpretación:} reducir aproximadamente 46 minutos diarios de videos educativos permitiría acercarse al objetivo de que el plan dure 30 días.
+	
+	\subsection{Ecuación 3: Valor absoluto respecto al punto medio del plan}
+	
+	El punto medio del plan es:
+	
+	\[
+	\frac{70}{2}=35\text{ GB}
+	\]
+	
+	Buscamos los días en los que el consumo está a 5 GB del punto medio:
+	
+	\[
+	|2.857d-35|=5
+	\]
+	
+	Caso 1:
+	
+	\[
+	2.857d-35=5
+	\]
+	
+	\[
+	2.857d=40
+	\]
+	
+	\[
+	d=14.00
+	\]
+	
+	Caso 2:
+	
+	\[
+	2.857d-35=-5
+	\]
+	
+	\[
+	2.857d=30
+	\]
+	
+	\[
+	d=10.50
+	\]
+	
+	\textbf{Interpretación:} alrededor del día 11 el consumo llega a 30 GB y alrededor del día 14 llega a 40 GB.
+	
+	% ================= INECUACIONES =================
+	\section{Resolución de inecuaciones}
+	
+	\subsection{Inecuación 1: Zona segura del 80\%}
+	
+	El 80\% del plan es:
+	
+	\[
+	0.80(70)=56\text{ GB}
+	\]
+	
+	La restricción es:
+	
+	\[
+	2.857d\leq56
+	\]
+	
+	\[
+	d\leq\frac{56}{2.857}
+	\]
+	
+	\[
+	d\leq19.60
+	\]
+	
+	\[
+	\boxed{d\leq19}
+	\]
+	
+	\textbf{Interpretación:} hasta el día 19 el estudiante se mantiene dentro de una zona segura. Desde el día 20 empieza una zona de riesgo el cual esta cerca del limite del plan de datos.
+	
+	\subsection{Inecuación 2: Consumo máximo diario para llegar a 30 días}
+	
+	Para que el plan dure 30 días:
+	
+	\[
+	C_d\leq\frac{70}{30}
+	\]
+	
+	\[
+	C_d\leq2.333\text{ GB/día}
+	\]
+	
+	Como el consumo actual promedio es:
+	
+	\[
+	2.857\text{ GB/día}
+	\]
+	
+	se necesita reducir:
+	
+	\[
+	2.857-2.333=0.524\text{ GB/día}
+	\]
+	
+	\[
+	\boxed{\text{Ahorro mínimo diario}=0.524\text{ GB}}
+	\]
+	
+	% ================= COMPONENTE TRIGONOMÉTRICO =================
+	\section{Componente trigonométrico}
+	
+	\subsection{Justificación}
+	
+	El consumo de datos no es completamente constante. Tiene un patrón semanal: de lunes a viernes el consumo es alto y los fines de semana disminuye a la mitad. Como este comportamiento se repite cada 7 días, se puede representar mediante una función trigonométrica.
+	
+	\subsection{Modelo con coseno}
+	
+	Se propone el modelo:
+	
+	\[
+	y(t)=d+a\cos\left(bt-c\right)
+	\]
+	reemplazando a nuestro problema
+	\[
+	G(d)=M+A\cos\left(\frac{2\pi}{7}(d-1)\right)
+	\]
+	G(d) representa el consumo diario mas no es igual a C(d) que es el consumo acumulado
+	donde:
+	
+	\[
+	M=\frac{3.333+1.667}{2}=2.500
+	\]
+	
+	\[
+	A=\frac{3.333-1.667}{2}=0.833
+	\]
+	
+	Entonces:
+	
+	\[
+	\boxed{G(d)=2.500+0.833\cos\left(\frac{2\pi}{7}(d-1)\right)}
+	\]
+	
+	\subsection{Interpretación}
+	
+	\begin{itemize}
+		\item $M=2.500$ representa el valor medio entre consumo alto y bajo.
+		\item $A=0.833$ representa cuánto se aleja el consumo del promedio.
+		\item El período es $7$, porque el ciclo se repite semanalmente.
+		\item El coseno permite representar subidas y bajadas del consumo.
+	\end{itemize}
+	%================figura=================
+	
+	\begin{figure}[H]
+		\centering
+		
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=14cm,
+				height=8cm,
+				xlabel={Día},
+				ylabel={Consumo estimado (GB)},
+				xmin=1,
+				xmax=14,
+				ymin=1,
+				ymax=3.6,
+				samples=200,
+				grid=both,
+				major grid style={gray!45, line width=0.4pt},
+				minor grid style={gray!20, line width=0.2pt},
+				axis background/.style={fill=blue!3},
+				axis line style={draw=gray!70},
+				tick style={draw=gray!70},
+				tick label style={font=\small},
+				xlabel style={font=\bfseries},
+				ylabel style={font=\bfseries}
+				]
+				
+				% Area sombreada bajo la curva
+				\addplot[
+				domain=1:14,
+				samples=200,
+				draw=none,
+				fill=cyan!25
+				]
+				{2.5 + 0.833*cos(deg((2*pi/7)*(x-1)))} \closedcycle;
+				
+				% Curva trigonometrica principal
+				\addplot[
+				domain=1:14,
+				samples=200,
+				ultra thick,
+				color=blue!85!black
+				]
+				{2.5 + 0.833*cos(deg((2*pi/7)*(x-1)))};
+				
+				% Puntos destacados
+				\addplot[
+				only marks,
+				mark=*,
+				mark size=3pt,
+				color=orange!90!black,
+				mark options={
+					fill=orange!80,
+					draw=white,
+					line width=0.8pt
+				}
+				]
+				coordinates{
+					(1,3.333)
+					(7,3.019)
+					(14,3.019)
+				};
+				
+				% Linea media del modelo
+				\addplot[
+				dashed,
+				very thick,
+				color=red!80!black
+				]
+				coordinates{
+					(1,2.5)
+					(14,2.5)
+				};
+				
+				% Etiqueta de linea media
+				\node[
+				draw=red!80!black,
+				fill=white,
+				rounded corners=3pt,
+				font=\small\bfseries,
+				text=red!80!black
+				]
+				at (axis cs:11,2.65)
+				{Media: 2.5 GB};
+				
+			\end{axis}
+		\end{tikzpicture}
+		
+		\caption{Modelo trigonométrico semanal del consumo de datos.}
+		\label{fig:modelo_trigonometrico}
+		
+	\end{figure}
+	
+	%====================figura===============
+	
+	\subsection{Conversión de ángulo}
+	
+	Para un ciclo semanal:
+	
+	\[
+	\theta(d)=\frac{2\pi}{7}(d-1)
+	\]
+	
+	Para el día 5:
+	
+	\[
+	\theta(5)=\frac{2\pi}{7}(5-1)
+	\]
+	
+	\[
+	\theta(5)=\frac{8\pi}{7}
+	\]
+	
+	En grados:
+	
+	\[
+	\frac{8\pi}{7}\cdot\frac{180^\circ}{\pi}
+	\]
+	
+	\[
+	\theta(5)=205.71^\circ
+	\]
+	
+	\subsection{Simplificación trigonométrica}
+	
+	Sea:
+	
+	\[
+	E=\cos^2\theta-\sin^2\theta+2\sin\theta\cos\theta
+	\]
+	
+	Usando identidades:
+	
+	\[
+	\cos^2\theta-\sin^2\theta=\cos(2\theta)
+	\]
+	
+	\[
+	2\sin\theta\cos\theta=\sin(2\theta)
+	\]
+	
+	Entonces:
+	
+	\[
+	E=\cos(2\theta)+\sin(2\theta)
+	\]
+	
+	Se puede expresar como:
+	
+	\[
+	E=\sqrt{2}\sin\left(2\theta+\frac{\pi}{4}\right)
+	\]
+	
+	% ================= TABLA 30 DÍAS =================
+	\section{Tabla de datos}
+	
+	\begin{longtable}{|c|c|c|c|}
+		\hline
+		\rowcolor{azulclaro}
+		\textbf{Día} & \textbf{Tipo de día} & \textbf{Consumo diario (GB)} & \textbf{Consumo acumulado aprox. (GB)} \\ \hline
+		1 & Normal & 3.333 & 3.333 \\ \hline
+		2 & Normal & 3.333 & 6.666 \\ \hline
+		3 & Normal & 3.333 & 9.999 \\ \hline
+		4 & Normal & 3.333 & 13.332 \\ \hline
+		5 & Normal & 3.333 & 16.665 \\ \hline
+		6 & Fin de semana & 1.667 & 18.332 \\ \hline
+		7 & Fin de semana & 1.667 & 19.999 \\ \hline
+		8 & Normal & 3.333 & 23.332 \\ \hline
+		9 & Normal & 3.333 & 26.665 \\ \hline
+		10 & Normal & 3.333 & 29.998 \\ \hline
+		11 & Normal & 3.333 & 33.331 \\ \hline
+		12 & Normal & 3.333 & 36.664 \\ \hline
+		13 & Fin de semana & 1.667 & 38.331 \\ \hline
+		14 & Fin de semana & 1.667 & 39.998 \\ \hline
+		15 & Normal & 3.333 & 43.331 \\ \hline
+		16 & Normal & 3.333 & 46.664 \\ \hline
+		17 & Normal & 3.333 & 49.997 \\ \hline
+		18 & Normal & 3.333 & 53.330 \\ \hline
+		19 & Normal & 3.333 & 56.663 \\ \hline
+		20 & Fin de semana & 1.667 & 58.330 \\ \hline
+		21 & Fin de semana & 1.667 & 59.997 \\ \hline
+		22 & Normal & 3.333 & 63.330 \\ \hline
+		23 & Normal & 3.333 & 66.663 \\ \hline
+		24 & Normal & 3.333 & 69.996 \\ \hline
+		25 & Normal & 3.333 & 73.329 \\ \hline
+		26 & Normal & 3.333 & 76.662 \\ \hline
+		27 & Fin de semana & 1.667 & 78.329 \\ \hline
+		28 & Fin de semana & 1.667 & 79.996 \\ \hline
+		29 & Normal & 3.333 & 83.329 \\ \hline
+		30 & Normal & 3.333 & 86.662 \\ \hline
+		\caption{Consumo acumulado corregido para un mes de 30 días.}
+	\end{longtable}
+	
+	% ================= MATRIZ =================
+	\section{Matriz de trazabilidad}
+	
+	\begin{longtable}{|p{3cm}|p{2cm}|p{2cm}|p{4cm}|p{4cm}|}
+		\hline
+		\rowcolor{azulclaro}
+		\textbf{Variable} & \textbf{Valor} & \textbf{Unidad} & \textbf{Fuente} & \textbf{Justificación} \\ \hline
+		$c$ & 1024 & MB/h & Registro del equipo & Consumo de clases en línea \\ \hline
+		$v$ & 700 & MB/h & Registro del equipo & Consumo de videos educativos \\ \hline
+		$s$ & 150 & MB/h & Estimación del equipo & Uso de redes sociales \\ \hline
+		$n$ & 80 & MB/h & Estimación del equipo & Navegación web \\ \hline
+		$j$ & 100 & MB/h & Estimación del equipo & Juegos en línea \\ \hline
+		$t_c$ & 2 & h/día & Horario académico & Tiempo de clases \\ \hline
+		$t_v$ & 1.5 & h/día & Autorreporte & Tiempo de videos \\ \hline
+		$t_s$ & 1.5 & h/día & Autorreporte & Tiempo de redes sociales \\ \hline
+		$t_n$ & 0.5 & h/día & Autorreporte & Tiempo de navegación \\ \hline
+		$t_j$ & 0.5 & h/día & Autorreporte & Tiempo de juegos \\ \hline
+		$P$ & 70 & GB & Plan contratado & Límite mensual \\ \hline
+		$C_f$ & 1.667 & GB/día & Modelo corregido & Mitad del consumo normal en fines de semana \\ \hline
+		\caption{Matriz de trazabilidad de datos corregida.}
+	\end{longtable}
+	
+	% ================= ANÁLISIS =================
+	\section{Análisis y discusión}
+	
+	El modelo ya con la corrección nos muestra que el consumo diario normal es de 3.333 GB, mientras que el consumo de fin de semana es de 1.667 GB. Esta corrección es importante porque mantiene coherencia con el supuesto inicial: los fines de semana se utiliza la mitad del tiempo y la mitad de los datos dado que no se tiene clases sincrónicas.
+	
+	Con esta corrección, el consumo total mensual es de 86.66 GB. Esto significa que un plan de 70 GB no alcanza para cubrir todo el mes bajo esta exigencia de trabajo actuales. El modelo acumulado indica que el límite se alcanza aproximadamente en el día 24.5.
+	
+	El análisis por actividad permite observar que las clases en línea y los videos educativos son las actividades que mas influyen en el resultado final. Por esa razón, reducir videos o ajustar la calidad de reproducción puede tener un efecto significativo en la duración del plan.
+	
+	% ================= CONCLUSIONES =================
+	\section{Conclusiones}
+	
+	\begin{itemize}
+		\item El consumo normal diario proyectado es de 3413 MB, equivalente a 3.333 GB.
+		\item El consumo de fin de semana con la correccion de no igualdad de todo los dias se corrige en 1706.5 MB, equivalente a 1.667 GB.
+		\item El consumo estimado mensual para 30 días es de aproximadamente 86.66 GB.
+		\item El plan de 70 GB se llega aproximadamente durante el día 24 o al inicio del día 25.
+		\item Las clases en línea y los videos educativos representan algo más del 90\% del consumo total.
+		\item Reducir aproximadamente 46 minutos diarios de video educativo ayudaría a extender la duración del plan.
+		\item El modelo trigonométrico representa de forma visual el comportamiento cíclico de lo que ocurre semanalmente ya que el consumo no es igual todos los dias.
+	\end{itemize}
+	
+	\newpage
+	\FondoFinal
+	% ================= REFERENCIAS =================
+	\section{Referencias bibliográficas}
+	
+	\begin{itemize}
+		\item Larson, R., \& Falvo, D. C. (2012). \textit{Precálculo} (8.ª ed.). Cengage Learning.
+		\item Swokowski, E. W., \& Cole, J. A. (2018). \textit{Precálculo: Álgebra y trigonometría con geometría analítica}. Cengage.
+		\item Aguilar Márquez, A. et al. (2015). \textit{Matemáticas simplificada} (4.ª ed.). Pearson Educación.
+		\item Desmos. (2026). \textit{Graphing Calculator}. \url{https://www.desmos.com}
+		\item GeoGebra. (2026). \textit{Graphing Calculator}. \url{https://www.geogebra.org}
+	\end{itemize}
+	
+	% ================= DECLARACIÓN IA =================
+	\section*{Declaración de uso de inteligencia artificial}
+	
+	Se utilizó asistencia de inteligencia artificial como apoyo para revisar estructura mas no contenido, mejorar redacción, organizar variables. Los datos base corresponden al registro del equipo y las decisiones finales han sido revisadas y validadas por todos los integrantes.
+	
+\end{document}

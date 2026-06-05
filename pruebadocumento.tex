@@ -1,0 +1,74 @@
+\documentclass[man,12pt,a4paper]{apa7}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{times}
+
+\geometry{a4paper,margin=1in}
+\pagestyle{empty}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\thispagestyle{empty}
+		
+		% Fondo completo
+		\begin{tikzpicture}[remember picture,overlay]
+			
+			\node[anchor=center] at (current page.center)
+			{
+				\includegraphics[
+				width=\paperwidth,
+				height=\paperheight
+				]{plantillasTrabajosUNEMI/formatoDocumento/portadaLibroUNEMI.png}
+			};
+			
+			% Caja transparente centrada
+			\node[
+			anchor=center,
+			fill=blue,
+			fill opacity=0.30,
+			text opacity=1,
+			rounded corners=18pt,
+			minimum width=0.72\paperwidth,
+			minimum height=0.38\paperheight,
+			inner sep=22pt
+			] at ([yshift=1.2cm]current page.center)
+			{
+				\begin{minipage}{0.62\paperwidth}
+					\centering
+					
+					{\fontsize{22}{26}\selectfont\bfseries
+						COMPONENTE PRÁCTICO 1
+						\par}
+					
+					\vspace{0.7cm}
+					
+					{\fontsize{18}{22}\selectfont\bfseries
+						PROYECTO INTEGRADOR -- PARTE 1
+						\par}
+					
+					\vspace{0.7cm}
+					
+					{\color{orange!85!black}\rule{0.35\linewidth}{1.2pt}}
+					
+					\vspace{0.8cm}
+					
+					{\fontsize{15}{19}\selectfont\bfseries
+						Modelado Matemático del Consumo de Datos Móviles de Estudiantes
+						\par}
+					
+				\end{minipage}
+			};
+			
+		\end{tikzpicture}
+		
+		\vfill
+		
+	\end{titlepage}
+	
+\end{document}

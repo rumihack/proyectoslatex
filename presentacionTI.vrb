@@ -1,0 +1,14 @@
+\frametitle{Comparación con Lenguaje Máquina}
+
+^^I^^I\begin{lstlisting}
+^^I^^I^^I10111000 00000001
+^^I^^I^^I01001000 10001001
+^^I^^I^^I00001111 00000101
+^^I^^I\end{lstlisting}
+^^I^^I
+^^I^^I\vspace{0.5cm}
+^^I^^I
+^^I^^I\begin{block}{Explicación}
+^^I^^I^^ILas instrucciones se representan mediante código binario entendido directamente por el procesador.
+^^I^^I\end{block}
+^^I^^I

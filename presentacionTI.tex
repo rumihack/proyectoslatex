@@ -1,0 +1,511 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% =========================================================
+% PAQUETES
+% =========================================================
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{booktabs}
+
+% =========================================================
+% CONFIGURACIÓN GENERAL
+% =========================================================
+\usetheme{default}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+
+% =========================================================
+% COLORES
+% =========================================================
+\definecolor{unemiAzul}{RGB}{15,35,90}
+\definecolor{unemiNaranja}{RGB}{255,110,0}
+
+% =========================================================
+% TIPOGRAFÍA
+% =========================================================
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamercolor{frametitle}{fg=white}
+
+% =========================================================
+% CONFIGURACIÓN DE CÓDIGO
+% =========================================================
+\lstset{
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{unemiNaranja},
+	frame=single,
+	breaklines=true,
+	showstringspaces=false
+}
+
+% =========================================================
+% FONDO GENERAL
+% =========================================================
+\setbeamertemplate{background}{
+	\includegraphics[width=\paperwidth,height=\paperheight]{portadaUNEMI2}
+}
+
+% =========================================================
+% DOCUMENTO
+% =========================================================
+\begin{document}
+	
+	% =========================================================
+	% PORTADA
+	% =========================================================
+	{
+		\setbeamertemplate{background}{
+			\includegraphics[width=\paperwidth,height=\paperheight]{portadaUNEMI}
+		}
+		
+		\begin{frame}[plain]
+			
+			\vspace{2.5cm}
+			
+			\begin{center}
+				
+				\begin{tikzpicture}
+					\node[
+					fill=unemiAzul,
+					rounded corners=12pt,
+					inner sep=18pt,
+					fill opacity=0.88,
+					text opacity=1
+					]
+					{
+						\begin{minipage}{0.75\textwidth}
+							\centering
+							
+							{\Huge \textbf{\textcolor{white}{Lenguajes de Alto y Bajo Nivel}}}
+							
+							\vspace{0.6cm}
+							
+							{\large \textcolor{white}{Investigación Académica}}
+							
+							\vspace{0.8cm}
+							
+							{\small \textcolor{white}{Estudiante}}
+							
+							\vspace{0.2cm}
+							
+							{\large \textcolor{unemiNaranja}{Angel Fernando Calero Maldonado}}
+							
+							\vspace{0.5cm}
+							
+							{\small \textcolor{white}{Universidad Estatal de Milagro}}
+							
+						\end{minipage}
+					};
+				\end{tikzpicture}
+				
+			\end{center}
+			
+		\end{frame}
+	}
+	
+	% =========================================================
+	% INTRODUCCIÓN
+	% =========================================================
+	\begin{frame}{Introducción}
+		
+		Los lenguajes de programación permiten establecer comunicación entre el ser humano y la computadora.
+		
+		\vspace{0.4cm}
+		
+		\begin{block}{Idea principal}
+			Los lenguajes pueden clasificarse según su nivel de abstracción:
+			\begin{itemize}
+				\item Lenguajes de alto nivel
+				\item Lenguajes de bajo nivel
+			\end{itemize}
+		\end{block}
+		
+		\vspace{0.3cm}
+		
+		Mientras más alto es el nivel del lenguaje, más fácil resulta para el programador escribir instrucciones.  
+		Mientras más bajo es el nivel, más cerca se encuentra del hardware y del funcionamiento interno del computador.
+		
+	\end{frame}
+	
+	% =========================================================
+	% ALTO NIVEL
+	% =========================================================
+	\begin{frame}{¿Qué es un Lenguaje de Alto Nivel?}
+		
+		Un lenguaje de alto nivel utiliza una sintaxis cercana al lenguaje humano.
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Explicación}
+			Permite que el programador escriba instrucciones de manera sencilla sin preocuparse directamente por registros, memoria o arquitectura del procesador.
+		\end{block}
+		
+		\vspace{0.4cm}
+		
+		\textbf{Ejemplos:}
+		
+		\begin{itemize}
+			\item Python
+			\item Java
+			\item JavaScript
+			\item C\#
+			\item PHP
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% VENTAJAS ALTO NIVEL
+	% =========================================================
+	\begin{frame}{Ventajas del Alto Nivel}
+		
+		\begin{itemize}
+			\item Sintaxis fácil de entender.
+			\item Mayor rapidez de desarrollo.
+			\item Menor cantidad de errores técnicos.
+			\item Portabilidad entre sistemas operativos.
+			\item Facilita el mantenimiento del software.
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Importancia}
+			Los lenguajes de alto nivel son ampliamente utilizados en:
+			\begin{itemize}
+				\item Desarrollo web
+				\item Inteligencia artificial
+				\item Aplicaciones móviles
+				\item Sistemas empresariales
+			\end{itemize}
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% DESVENTAJAS ALTO NIVEL
+	% =========================================================
+	\begin{frame}{Desventajas del Alto Nivel}
+		
+		\begin{itemize}
+			\item Menor control directo sobre el hardware.
+			\item Mayor consumo de memoria.
+			\item Puede ser más lento que el lenguaje ensamblador.
+			\item Requiere intérpretes o compiladores.
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Análisis}
+			Aunque son más fáciles de usar, sacrifican parte del rendimiento para ofrecer comodidad al programador.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% BAJO NIVEL
+	% =========================================================
+	\begin{frame}{¿Qué es un Lenguaje de Bajo Nivel?}
+		
+		Los lenguajes de bajo nivel trabajan muy cerca del hardware.
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Explicación}
+			Permiten manipular directamente memoria, registros y operaciones internas del procesador.
+		\end{block}
+		
+		\vspace{0.4cm}
+		
+		\textbf{Ejemplos:}
+		
+		\begin{itemize}
+			\item Lenguaje ensamblador
+			\item Lenguaje máquina
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% VENTAJAS BAJO NIVEL
+	% =========================================================
+	\begin{frame}{Ventajas del Bajo Nivel}
+		
+		\begin{itemize}
+			\item Mayor velocidad de ejecución.
+			\item Mejor optimización de recursos.
+			\item Control total del hardware.
+			\item Ideal para sistemas operativos y firmware.
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Aplicaciones}
+			Son utilizados en:
+			\begin{itemize}
+				\item Drivers
+				\item Sistemas embebidos
+				\item Sistemas operativos
+				\item Controladores electrónicos
+			\end{itemize}
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% DESVENTAJAS BAJO NIVEL
+	% =========================================================
+	\begin{frame}{Desventajas del Bajo Nivel}
+		
+		\begin{itemize}
+			\item Programación más compleja.
+			\item Difícil mantenimiento.
+			\item Mayor probabilidad de errores.
+			\item Menor portabilidad.
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Análisis}
+			El programador necesita conocimientos avanzados de arquitectura computacional.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% TABLA COMPARATIVA
+	% =========================================================
+	\begin{frame}{Comparación General}
+		
+		\small
+		
+		\begin{center}
+			
+			\begin{tabular}{p{3cm} p{4cm} p{4cm}}
+				
+				\toprule
+				
+				\textbf{Aspecto} &
+				\textbf{Alto Nivel} &
+				\textbf{Bajo Nivel}
+				
+				\\
+				
+				\midrule
+				
+				Facilidad &
+				Muy fácil &
+				Complejo
+				
+				\\
+				
+				Velocidad &
+				Media &
+				Alta
+				
+				\\
+				
+				Control &
+				Limitado &
+				Total
+				
+				\\
+				
+				Portabilidad &
+				Alta &
+				Baja
+				
+				\\
+				
+				Uso &
+				Aplicaciones &
+				Hardware
+				
+				\\
+				
+				\bottomrule
+				
+			\end{tabular}
+			
+		\end{center}
+		
+	\end{frame}
+	
+	% =========================================================
+	% PYTHON
+	% =========================================================
+	\begin{frame}[fragile]{Ejemplo en Python}
+		
+		\begin{block}{Código de Alto Nivel}
+		\end{block}
+		
+		\begin{lstlisting}[language=Python]
+			print("Hola, bienvenidos a la programacion")
+		\end{lstlisting}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Interpretación}
+			Python permite imprimir mensajes usando una sola instrucción sencilla y comprensible.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% PSEUDOCÓDIGO
+	% =========================================================
+	\begin{frame}[fragile]{Ejemplo en Pseudocódigo}
+		
+		\begin{lstlisting}
+			Inicio
+			
+			Escribir "Hola, bienvenidos a la programacion"
+			
+			Fin
+		\end{lstlisting}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Explicación}
+			El pseudocódigo representa la lógica del programa sin depender de un lenguaje específico.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% ENSAMBLADOR
+	% =========================================================
+	\begin{frame}[fragile]{Comparación con Ensamblador}
+		
+		\begin{lstlisting}
+			section .data
+			msg db "Hola",10
+			
+			section .text
+			mov rax,1
+			mov rdi,1
+			mov rsi,msg
+			mov rdx,5
+			syscall
+		\end{lstlisting}
+		
+		\vspace{0.4cm}
+		
+		\begin{block}{Análisis}
+			En ensamblador se necesita especificar registros y llamadas al sistema operativo.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% LENGUAJE MÁQUINA
+	% =========================================================
+	\begin{frame}[fragile]{Comparación con Lenguaje Máquina}
+		
+		\begin{lstlisting}
+			10111000 00000001
+			01001000 10001001
+			00001111 00000101
+		\end{lstlisting}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Explicación}
+			Las instrucciones se representan mediante código binario entendido directamente por el procesador.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% ANÁLISIS FINAL
+	% =========================================================
+	\begin{frame}{Análisis Comparativo}
+		
+		\begin{itemize}
+			\item Python utiliza instrucciones simples y fáciles de comprender.
+			\item Ensamblador requiere instrucciones específicas para cada operación.
+			\item Lenguaje máquina representa operaciones en binario.
+			\item Alto nivel prioriza productividad.
+			\item Bajo nivel prioriza rendimiento y control.
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		
+		\begin{block}{Idea Central}
+			Cada tipo de lenguaje cumple funciones importantes dentro de la informática moderna.
+		\end{block}
+		
+	\end{frame}
+	
+	% =========================================================
+	% CONCLUSIONES
+	% =========================================================
+	\begin{frame}{Conclusiones}
+		
+		\begin{itemize}
+			\item Los lenguajes de alto nivel son más fáciles de aprender y utilizar.
+			\item Los lenguajes de bajo nivel permiten controlar directamente el hardware.
+			\item Python es un ejemplo claro de lenguaje de alto nivel.
+			\item Ensamblador y lenguaje máquina muestran cómo trabaja internamente la computadora.
+			\item Ambos tipos de lenguajes son fundamentales en informática.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% REFERENCIAS
+	% =========================================================
+	\begin{frame}{Referencias}
+		
+		\small
+		
+		\begin{itemize}
+			\item Brookshear, J. (2020). \textit{Computer Science: An Overview}. Pearson.
+			\item Stallings, W. (2019). \textit{Computer Organization and Architecture}. Pearson.
+			\item Patterson, D. (2021). \textit{Computer Organization and Design}. Morgan Kaufmann.
+			\item Python Software Foundation. (2026). \textit{Python Documentation}.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% =========================================================
+	% FINAL
+	% =========================================================
+	{
+		\setbeamertemplate{background}{
+			\includegraphics[width=\paperwidth,height=\paperheight]{portadaUNEMI}
+		}
+		
+		\begin{frame}[plain]
+			
+			\begin{center}
+				
+				\vspace{3cm}
+				
+				\begin{tikzpicture}
+					\node[
+					fill=unemiAzul,
+					rounded corners=12pt,
+					inner sep=20pt,
+					fill opacity=0.88,
+					text opacity=1
+					]
+					{
+						\Huge \textcolor{white}{Gracias}
+					};
+				\end{tikzpicture}
+				
+			\end{center}
+			
+		\end{frame}
+	}
+	
+\end{document}

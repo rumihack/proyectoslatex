@@ -1,0 +1,134 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% --- PAQUETES ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% --- CONFIGURACIÓN DE DISEÑO PROFESIONAL (LIENZO TRANSPARENTE) ---
+\usetheme{default}
+\setbeamercolor{background canvas}{bg=} % Elimina el fondo blanco para ver la imagen
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+
+% Colores institucionales
+\definecolor{unemiAzul}{RGB}{20,40,90}
+\definecolor{unemiNaranja}{RGB}{255,102,0}
+
+% Tipografía
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamercolor{frametitle}{fg=unemiAzul}
+
+% --- FONDO DE LA PRESENTACIÓN ---
+\setbeamertemplate{background}{
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[inner sep=0pt] at (current page.center) {
+			\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI2}
+		};
+	\end{tikzpicture}
+}
+
+\begin{document}
+	
+	% --- PORTADA ---
+	{
+		\setbeamertemplate{background}{\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI}}
+		\begin{frame}[plain]
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[fill=unemiAzul, fill opacity=0.8, text opacity=1, rounded corners, inner sep=20pt] at (current page.center) {
+					\begin{minipage}{0.7\textwidth}
+						\centering
+						{\Huge \textbf{\textcolor{white}{Operaciones con Matrices}}} \\
+						\vspace{0.4cm}
+						{\Large \textcolor{white}{Resolución del Ejercicio $2B - 4A$}} \\
+						\vspace{1cm}
+						{\small \textcolor{white}{Estudiante:}} \\
+						\textbf{\textcolor{unemiNaranja}{Angel Fernando Calero Maldonado}} \\
+						\vspace{0.3cm}
+						{\small \textcolor{white}{Universidad Estatal de Milagro}}
+					\end{minipage}
+				};
+			\end{tikzpicture}
+		\end{frame}
+	}
+	
+	% --- DIAPOSITIVA 1: PLANTEAMIENTO ---
+	\begin{frame}{Planteamiento del Ejercicio}
+		Sean las matrices $A$ y $B$:
+		\[ A = \begin{bmatrix} 2 & 2 & -1 \\ 4 & -3 & 0 \\ 1 & 3 & -2 \end{bmatrix} \quad B = \begin{bmatrix} 1 & 2 & -1 \\ 4 & 0 & 9 \\ 5 & -3 & 6 \end{bmatrix} \]
+		\vspace{0.5cm}
+		\begin{block}{Objetivo}
+			Calcular la operación resultante: \textbf{$2B - 4A$}
+		\end{block}
+	\end{frame}
+	
+	% --- DIAPOSITIVA 2: PASO 1 (2B) ---
+	\begin{frame}{Paso 1: Multiplicación por escalar ($2B$)}
+		Multiplicamos cada elemento de la matriz $B$ por 2:
+		\[ 2 \cdot \begin{bmatrix} 1 & 2 & -1 \\ 4 & 0 & 9 \\ 5 & -3 & 6 \end{bmatrix} = 
+		\begin{bmatrix} 2(1) & 2(2) & 2(-1) \\ 2(4) & 2(0) & 2(9) \\ 2(5) & 2(-3) & 2(6) \end{bmatrix} \]
+		\pause
+		\[ \text{Resultado } 2B = \begin{bmatrix} 2 & 4 & -2 \\ 8 & 0 & 18 \\ 10 & -6 & 12 \end{bmatrix} \]
+	\end{frame}
+	
+	% --- DIAPOSITIVA 3: PASO 2 (4A) ---
+	\begin{frame}{Paso 2: Multiplicación por escalar ($4A$)}
+		Multiplicamos cada elemento de la matriz $A$ por 4:
+		\[ 4 \cdot \begin{bmatrix} 2 & 2 & -1 \\ 4 & -3 & 0 \\ 1 & 3 & -2 \end{bmatrix} = 
+		\begin{bmatrix} 4(2) & 4(2) & 4(-1) \\ 4(4) & 4(-3) & 4(0) \\ 4(1) & 4(3) & 4(-2) \end{bmatrix} \]
+		\pause
+		\[ \text{Resultado } 4A = \begin{bmatrix} 8 & 8 & -4 \\ 16 & -12 & 0 \\ 4 & 12 & -8 \end{bmatrix} \]
+	\end{frame}
+	
+	% --- DIAPOSITIVA 4: REGLA DE SIGNOS ---
+	\begin{frame}{Paso 3: Transformación a Suma}
+		\centering
+		Para facilitar la operación y evitar errores con los signos negativos, planteamos:
+		\vspace{0.5cm}
+		{\huge $2B - 4A = 2B + (-4A)$}
+		\vspace{0.5cm}
+		\begin{itemize}
+			\item Multiplicamos la matriz $4A$ por $-1$ para obtener $-4A$:
+		\end{itemize}
+		\[ -4A = \begin{bmatrix} -8 & -8 & 4 \\ -16 & 12 & 0 \\ -4 & -12 & 8 \end{bmatrix} \]
+	\end{frame}
+	
+	% --- DIAPOSITIVA 5: SUMA FINAL ---
+	\begin{frame}{Paso 4: Suma de Matrices}
+		Sumamos los componentes correspondientes de $2B$ y $-4A$:
+		\[ \begin{bmatrix} 2 & 4 & -2 \\ 8 & 0 & 18 \\ 10 & -6 & 12 \end{bmatrix} + \begin{bmatrix} -8 & -8 & 4 \\ -16 & 12 & 0 \\ -4 & -12 & 8 \end{bmatrix} \]
+		\pause
+		\[ = \begin{bmatrix} 2-8 & 4-8 & -2+4 \\ 8-16 & 0+12 & 18+0 \\ 10-4 & -6-12 & 12+8 \end{bmatrix} \]
+	\end{frame}
+	
+	% --- DIAPOSITIVA 6: RESULTADO FINAL ---
+	\begin{frame}{Resultado Final}
+		\centering
+		\begin{block}{Matriz Resultante}
+			\[ 2B - 4A = \begin{bmatrix} -6 & -4 & 2 \\ -8 & 12 & 18 \\ 6 & -18 & 20 \end{bmatrix} \]
+		\end{block}
+		\vspace{0.8cm}
+		\textbf{Conclusión:} \\
+		La operación se realizó siguiendo la propiedad distributiva del escalar sobre la matriz y la suma algebraica de elementos en la misma posición.
+	\end{frame}
+	
+		% --- PORTADA ---
+	{
+		\setbeamertemplate{background}{\includegraphics[width=\paperwidth, height=\paperheight]{portadaUNEMI}}
+		\begin{frame}[plain]
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[fill=unemiAzul, fill opacity=0.8, text opacity=1, rounded corners, inner sep=20pt] at (current page.center) {
+					\begin{minipage}{0.9\textwidth}
+						\centering
+						{\Huge \textbf{\textcolor{white}{Gracias}}} \\
+					\end{minipage}
+				};
+			\end{tikzpicture}
+		\end{frame}
+	}
+		
+\end{document}

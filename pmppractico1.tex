@@ -1,0 +1,153 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{graphicx}
+
+\geometry{margin=2.5cm}
+
+\begin{document}
+	
+	\documentclass[12pt,a4paper]{article}
+	
+	\usepackage[spanish]{babel}
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+	\usepackage{geometry}
+	\usepackage{float}
+	\usepackage{xcolor}
+	\usepackage{tikz}
+	\usepackage{pgfplots}
+	
+	\pgfplotsset{compat=1.18}
+	\geometry{margin=2.5cm}
+	
+	\definecolor{azulLinea}{RGB}{25,118,210}
+	\definecolor{rojoPlan}{RGB}{220,53,69}
+	\definecolor{verdePunto}{RGB}{0,150,136}
+	\definecolor{fondoGrafico}{RGB}{245,248,255}
+	
+	\begin{document}
+		
+		\begin{figure}[H]
+			\centering
+			
+			\begin{tikzpicture}
+				\begin{axis}[
+					width=14cm,
+					height=8cm,
+					xlabel={Día del mes},
+					ylabel={Consumo acumulado (GB)},
+					xmin=0, xmax=30,
+					ymin=0, ymax=90,
+					grid=major,
+					grid style={line width=.2pt, draw=gray!35},
+					major grid style={line width=.4pt, draw=gray!45},
+					axis background/.style={fill=fondoGrafico},
+					axis line style={draw=gray!70},
+					tick style={draw=gray!70},
+					tick label style={font=\small},
+					label style={font=\bfseries},
+					legend style={
+						at={(0.03,0.97)},
+						anchor=north west,
+						draw=gray!40,
+						fill=white,
+						rounded corners=3pt,
+						font=\small
+					}
+					]
+					
+					% Área suave bajo la curva
+					\addplot[
+					fill=azulLinea!20,
+					draw=none
+					] coordinates {
+						(0,0)
+						(5,14.285)
+						(10,28.57)
+						(15,42.855)
+						(20,57.14)
+						(24.5,70)
+						(30,85.71)
+						(30,0)
+						(0,0)
+					};
+					
+					% Línea principal de consumo
+					\addplot[
+					azulLinea,
+					very thick,
+					mark=*,
+					mark size=2.8pt,
+					mark options={
+						fill=verdePunto,
+						draw=white,
+						line width=0.8pt
+					}
+					] coordinates {
+						(0,0)
+						(5,14.285)
+						(10,28.57)
+						(15,42.855)
+						(20,57.14)
+						(24.5,70)
+						(30,85.71)
+					};
+					\addlegendentry{$C(d)=2.857d$}
+					
+					% Línea límite del plan
+					\addplot[
+					rojoPlan,
+					very thick,
+					dashed
+					] coordinates {
+						(0,70)
+						(30,70)
+					};
+					\addlegendentry{Plan de 70 GB}
+					
+					% Punto donde se alcanza el plan
+					\addplot[
+					only marks,
+					mark=*,
+					mark size=4pt,
+					rojoPlan,
+					mark options={fill=rojoPlan}
+					] coordinates {
+						(24.5,70)
+					};
+					
+					% Etiqueta del punto crítico
+					\node[
+					draw=rojoPlan,
+					fill=white,
+					text=rojoPlan,
+					rounded corners=3pt,
+					font=\bfseries\small,
+					align=center
+					] at (axis cs:22,78) {Se alcanza el plan\\día 24.5};
+					
+					\draw[
+					rojoPlan,
+					thick,
+					->,
+					>=stealth
+					] (axis cs:22,76) -- (axis cs:24.5,70);
+					
+				\end{axis}
+			\end{tikzpicture}
+			
+			\caption{Consumo acumulado frente al límite del plan de datos.}
+			\label{fig:consumo_acumulado}
+			
+		\end{figure}
+		
+	\end{document}
+	
+\end{document}

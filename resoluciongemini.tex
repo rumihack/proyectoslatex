@@ -1,0 +1,314 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+	
+	% =============================================
+	% PÁGINA 1: Enunciado del problema
+	% =============================================
+	
+	\begin{center}
+		{\LARGE \textbf{Prompt en GEMINI para solucionar un sistema de}}\\[6pt]
+		{\LARGE \textbf{ecuaciones por el método matricial}}
+	\end{center}
+	
+	\bigskip
+	
+	Actúa como el poderosísimo Ingeniero Sánchez Mendoza Alejandro Sebastián, profesor de la UNEMI y
+	experto en Álgebra Lineal. Resuelve paso a paso el sistema mediante $X = A^{-1}B$. Construye $A$, $X$ y $B$.
+	Calcula el determinante usando el método de matriz ampliada. Verifica que $\det(A) \neq 0$. Luego calcula $A^{-1}$
+	obligatoriamente por Gauss-Jordan, ampliando $A$ con la matriz identidad $[A|I]$, hasta obtener $[I|A^{-1}]$.
+	Finalmente multiplica $A^{-1}B$ y presenta la solución ordenada.
+	
+	\medskip
+	\noindent Sistema:
+	
+	\[
+	\begin{cases}
+		x + y + z = 6 \\
+		2x - y + z = 3 \\
+		3x + 2y - 2z = 2
+	\end{cases}
+	\]
+	
+	\newpage
+	
+	% =============================================
+	% PÁGINA 2: Construcción de Matrices A, X y B
+	% =============================================
+	
+	\section*{1. Construcción de Matrices $A$, $X$ y $B$}
+	
+	Primero, expresamos el sistema en forma matricial $AX = B$:
+	
+	\bigskip
+	
+	\[
+	\underbrace{
+		\begin{pmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 3 & 2 & -2 \end{pmatrix}
+	}_{\text{Matriz de coeficientes } (A)}
+	\qquad
+	\underbrace{
+		\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	}_{\text{Vector de incógnitas } (X)}
+	\qquad
+	\underbrace{
+		\begin{pmatrix} 6 \\ 3 \\ 2 \end{pmatrix}
+	}_{\text{Vector de términos independientes } (B)}
+	\]
+	
+	\bigskip
+	
+	\noindent Es decir:
+	
+	\[
+	A = \begin{pmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 3 & 2 & -2 \end{pmatrix},
+	\qquad
+	X = \begin{pmatrix} x \\ y \\ z \end{pmatrix},
+	\qquad
+	B = \begin{pmatrix} 6 \\ 3 \\ 2 \end{pmatrix}
+	\]
+	
+	\newpage
+	
+	% =============================================
+	% PÁGINA 3: Cálculo del Determinante
+	% =============================================
+	
+	\section*{2. Cálculo del Determinante $\det(A)$}
+	
+	Usaremos el método de la \textbf{matriz ampliada} (Regla de Sarrus) para verificar que la matriz es
+	invertible ($\det(A) \neq 0$).
+	
+	\bigskip
+	
+	\[
+	\left|
+	\begin{array}{ccc|cc}
+		1 &  1 &  1 & 1 &  1 \\
+		2 & -1 &  1 & 2 & -1 \\
+		3 &  2 & -2 & 3 &  2
+	\end{array}
+	\right|
+	\]
+	
+	\bigskip
+	
+	\begin{itemize}
+		\item \textbf{Diagonales principales:}
+		$(1)(-1)(-2) + (1)(1)(3) + (1)(2)(2) = 2 + 3 + 4 = 9$
+		
+		\item \textbf{Diagonales secundarias:}
+		$(3)(-1)(1) + (2)(1)(1) + (-2)(2)(1) = -3 + 2 - 4 = -5$
+	\end{itemize}
+	
+	\bigskip
+	
+	\[
+	\det(A) = 9 - (-5) = \mathbf{14}
+	\]
+	
+	\bigskip
+	
+	\noindent Como $14 \neq 0$, el sistema tiene solución única y la inversa $A^{-1}$ existe.
+	
+	\newpage
+	
+	% =============================================
+	% PÁGINA 4: Cálculo de la Inversa por Gauss-Jordan
+	% =============================================
+	
+	\section*{3. Cálculo de la Inversa $A^{-1}$ por Gauss-Jordan}
+	
+	Ampliamos $A$ con la matriz identidad $I$:
+	
+	\bigskip
+	
+	\[
+	\left(
+	\begin{array}{ccc|ccc}
+		1 &  1 &  1 & 1 & 0 & 0 \\
+		2 & -1 &  1 & 0 & 1 & 0 \\
+		3 &  2 & -2 & 0 & 0 & 1
+	\end{array}
+	\right)
+	\]
+	
+	\bigskip
+	
+	\noindent \textbf{Paso 1: Hacer ceros debajo del primer pivote
+		$(R_2 \rightarrow R_2 - 2R_1)$ y $(R_3 \rightarrow R_3 - 3R_1)$}
+	
+	\bigskip
+	
+	\[
+	\left(
+	\begin{array}{ccc|ccc}
+		1 &  1 &  1 &  1 & 0 & 0 \\
+		0 & -3 & -1 & -2 & 1 & 0 \\
+		0 & -1 & -5 & -3 & 0 & 1
+	\end{array}
+	\right)
+	\]
+	
+	\newpage
+	
+	% =============================================
+	% PÁGINA 5: Gauss-Jordan Pasos 2 y 3
+	% =============================================
+	
+	\noindent \textbf{Paso 2: Simplificar la fila 2
+		$\left(R_2 \rightarrow -\dfrac{1}{3}R_2\right)$ o intercambiar filas.
+		Intercambiemos $R_2$ y $R_3$ (multiplicando por $-1$) para facilitar:}
+	
+	\bigskip
+	
+	\[
+	\left(
+	\begin{array}{ccc|ccc}
+		1 &  1 &  1 &  1 & 0 &  0 \\
+		0 &  1 &  5 &  3 & 0 & -1 \\
+		0 & -3 & -1 & -2 & 1 &  0
+	\end{array}
+	\right)
+	\]
+	
+	\bigskip
+	
+	\noindent \textbf{Paso 3: Hacer ceros en la columna 2
+		$(R_1 \rightarrow R_1 - R_2)$ y $(R_3 \rightarrow R_3 + 3R_2)$}
+	
+	\bigskip
+	
+	\[
+	\left(
+	\begin{array}{ccc|ccc}
+		1 & 0 &  -4 & -2 & 0 &  1 \\
+		0 & 1 &   5 &  3 & 0 & -1 \\
+		0 & 0 &  14 &  7 & 1 & -3
+	\end{array}
+	\right)
+	\]
+	
+	\newpage
+	
+	% =============================================
+	% PÁGINA 6: Gauss-Jordan Pasos 4 y 5
+	% =============================================
+	
+	\noindent \textbf{Paso 4: Normalizar la última fila
+		$\left(R_3 \rightarrow \dfrac{1}{14}R_3\right)$}
+	
+	\bigskip
+	
+	\[
+	\left(
+	\begin{array}{ccc|ccc}
+		1 & 0 & -4 & -2    & 0      &  1      \\
+		0 & 1 &  5 &  3    & 0      & -1      \\
+		0 & 0 &  1 &  1/2  & 1/14   & -3/14
+	\end{array}
+	\right)
+	\]
+	
+	\bigskip
+	
+	\noindent \textbf{Paso 5: Hacer ceros en la columna 3
+		$(R_1 \rightarrow R_1 + 4R_3)$ y $(R_2 \rightarrow R_2 - 5R_3)$}
+	
+	\begin{itemize}
+		\item $R_1 : -2 + 4(1/2) = 0;\quad 0 + 4(1/14) = 4/14 = 2/7;\quad
+		1 + 4(-3/14) = 1 - 6/7 = 1/7$
+		
+		\item $R_2 : 3 - 5(1/2) = 1/2;\quad 0 - 5(1/14) = -5/14;\quad
+		-1 - 5(-3/14) = -1 + 15/14 = 1/14$
+	\end{itemize}
+	
+	\newpage
+	
+	% =============================================
+	% PÁGINA 7: Matriz Inversa A^{-1}
+	% =============================================
+	
+	\noindent \textbf{Matriz Inversa $A^{-1}$:}
+	
+	\bigskip
+	
+	\[
+	A^{-1} =
+	\begin{pmatrix}
+		0   &  2/7   &  1/7   \\
+		1/2 & -5/14  &  1/14  \\
+		1/2 &  1/14  & -3/14
+	\end{pmatrix}
+	= \dfrac{1}{14}
+	\begin{pmatrix}
+		0 &  4 &  2 \\
+		7 & -5 &  1 \\
+		7 &  1 & -3
+	\end{pmatrix}
+	\]
+	
+	\newpage
+	
+	% =============================================
+	% PÁGINA 8: Multiplicación X = A^{-1}B y Solución Final
+	% =============================================
+	
+	\section*{4. Multiplicación $X = A^{-1}B$ y Solución Final}
+	
+	\[
+	X = \dfrac{1}{14}
+	\begin{pmatrix}
+		0 &  4 &  2 \\
+		7 & -5 &  1 \\
+		7 &  1 & -3
+	\end{pmatrix}
+	\begin{pmatrix} 6 \\ 3 \\ 2 \end{pmatrix}
+	\]
+	
+	\bigskip
+	
+	\begin{itemize}
+		\item $x = \dfrac{1}{14}\left[(0)(6) + (4)(3) + (2)(2)\right]
+		= \dfrac{1}{14}\left[0 + 12 + 4\right]
+		= \dfrac{16}{14} = \mathbf{8/7}$
+		
+		\item $y = \dfrac{1}{14}\left[(7)(6) + (-5)(3) + (1)(2)\right]
+		= \dfrac{1}{14}\left[42 - 15 + 2\right]
+		= \dfrac{29}{14} = \mathbf{29/14}$
+		
+		\item $z = \dfrac{1}{14}\left[(7)(6) + (1)(3) + (-3)(2)\right]
+		= \dfrac{1}{14}\left[42 + 3 - 6\right]
+		= \dfrac{39}{14} = \mathbf{39/14}$
+	\end{itemize}
+		\newpage
+	
+	% =============================================
+	% PÁGINA 8: Multiplicación X = A^{-1}B y Solución Final
+	% =============================================
+	
+	\section*{4. Multiplicación $X = A^{-1}B$ ; Solución Final}
+	
+	\noindent \textbf{Solución Ordenada:}
+
+\bigskip
+
+\[
+x = \dfrac{8}{7} \approx 1.14
+\]
+
+\[
+y = \dfrac{29}{14} \approx 2.07
+\]
+
+\[
+z = \dfrac{39}{14} \approx 2.78
+\]
+	
+	
+\end{document}

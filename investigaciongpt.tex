@@ -1,0 +1,407 @@
+% =========================================================
+% DOCUMENTO APA 7 - UNIVERSIDAD ESTATAL DE MILAGRO
+% Compilar con XeLaTeX
+% Fondos PDF en: plantillasTrabajosUNEMI
+% =========================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% =========================
+% PREÁMBULO
+% =========================
+\usepackage[a4paper,margin=2.54cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage[spanish]{babel}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{hanging}
+\usepackage{hyperref}
+\usepackage{url}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=black,
+	citecolor=black
+}
+
+% =========================
+% FORMATO APA 7
+% =========================
+\doublespacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% =========================
+% NUMERACIÓN CENTRO INFERIOR
+% =========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\fontsize{11}{11}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}
+{\normalfont\bfseries\centering}{\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+
+\renewcommand{\contentsname}{Índice de contenidos}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% =========================
+% FONDOS PDF
+% =========================
+\newcommand{\FondoPortada}{
+	\AddToShipoutPictureBG*{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/portadaLibroUNEMI.pdf}
+}}}
+
+\newcommand{\FondoCuerpo}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaDocumento.pdf}
+}}}
+
+\newcommand{\FondoFinal}{
+	\AddToShipoutPictureBG{
+		\AtPageLowerLeft{
+			\includegraphics[width=\paperwidth,height=\paperheight]
+			{plantillasTrabajosUNEMI/plantillaA4PaginaFinal.pdf}
+}}}
+
+\begin{document}
+	
+	% =========================
+	% PORTADA SIN NUMERACIÓN
+	% =========================
+	\FondoPortada
+	
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\centering
+		\singlespacing
+		
+		\vspace*{10cm}
+		
+		{\color{white}
+			\fontsize{30}{34}\selectfont
+			\bfseries Fundamentos del software\par}
+		
+	\end{titlepage}
+	
+	% =========================
+	% NUMERACIÓN DESDE LA SEGUNDA HOJA
+	% =========================
+	\clearpage
+	\setcounter{page}{1}
+	
+	% =========================
+	% SEGUNDA HOJA: DATOS GENERALES
+	% =========================
+	\FondoCuerpo
+	\thispagestyle{fancy}
+	
+	\begin{center}
+		\singlespacing
+		
+		\vspace*{2cm}
+		
+		{\fontsize{14}{16}\selectfont\bfseries UNIVERSIDAD ESTATAL DE MILAGRO\par}
+		\vspace{0.5cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries FACULTAD DE CIENCIAS E INGENIERÍA\par}
+		\vspace{0.5cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries CARRERA DE TECNOLOGÍAS DE LA INFORMACIÓN EN MODALIDAD EN LÍNEA\par}
+		
+		\vspace{1.5cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries TEMA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Fundamentos del software\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries AUTOR:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Ángel Fernando Calero Maldonado\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries ASIGNATURA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Fundamentos de Tecnologías de Información\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries DOCENTE:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont Díaz Sandoya Eduardo Luis\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries FECHA DE ENTREGA:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont 21 de mayo de 2026\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{13}{15}\selectfont\bfseries PERIODO:\par}
+		\vspace{0.2cm}
+		{\fontsize{13}{15}\selectfont abril 2026 a julio 2026\par}
+		
+		\vfill
+		
+		{\fontsize{13}{15}\selectfont\bfseries MILAGRO -- ECUADOR\par}
+		
+		\vspace*{1cm}
+		
+	\end{center}
+	
+	% =========================
+	% ÍNDICE AUTOMÁTICO
+	% =========================
+	\clearpage
+	\thispagestyle{fancy}
+	\tableofcontents
+	\clearpage
+	
+	% =========================
+	% CUERPO DEL DOCUMENTO
+	% =========================
+	
+	\section{Introducción}
+	
+	El software constituye uno de los elementos más importantes dentro de los sistemas de cómputo, debido a que permite que el hardware pueda ejecutar instrucciones, procesar información y responder a las necesidades de los usuarios. En la actualidad, casi todas las actividades académicas, laborales, administrativas y personales dependen de algún tipo de software, desde los sistemas operativos que controlan una computadora hasta las aplicaciones móviles que facilitan la comunicación diaria.
+	
+	El presente informe tiene como finalidad analizar los fundamentos del software desde tres aspectos principales: su clasificación, su calidad y los lenguajes utilizados para su desarrollo. Para ello, se estudian las categorías de software de sistema, software de aplicación y software de programación, así como los tipos de licencia más utilizados en el entorno tecnológico. Además, se realiza una evaluación de calidad de diferentes herramientas conocidas mediante criterios relacionados con la norma ISO/IEC 25010. Finalmente, se explican las diferencias entre lenguajes de alto y bajo nivel, incorporando ejemplos prácticos que permiten comprender mejor su funcionamiento.
+	
+	Comprender estos temas es fundamental para la formación del ingeniero en Tecnologías de la Información, ya que permite reconocer cómo se construyen, evalúan y utilizan las soluciones informáticas dentro de un contexto real.
+	
+	\section{Clasificación del software}
+	
+	\subsection{Definición de software}
+	
+	El software puede definirse como el conjunto de programas, instrucciones, datos y procedimientos que permiten que un sistema informático funcione correctamente. A diferencia del hardware, que corresponde a los componentes físicos de una computadora, el software es intangible y se encarga de indicar al equipo qué tareas debe realizar. Según Sommerville (2016), el software no solo está formado por programas, sino también por documentación, configuraciones y datos asociados que permiten su correcta operación.
+	
+	\subsection{Software de sistema}
+	
+	El software de sistema administra los recursos físicos del computador y permite la comunicación entre el usuario, las aplicaciones y el hardware. Su función principal es controlar procesos internos como la memoria, los archivos, los dispositivos de entrada y salida, la seguridad y la ejecución de programas.
+	
+	Entre los ejemplos más representativos se encuentran Microsoft Windows, GNU/Linux y macOS. Estos sistemas operativos permiten que el usuario interactúe con la computadora de forma organizada y eficiente.
+	
+	\subsection{Software de aplicación}
+	
+	El software de aplicación está diseñado para realizar tareas específicas orientadas al usuario final. Permite desarrollar actividades como redactar documentos, navegar por Internet, editar imágenes, comunicarse o gestionar información.
+	
+	Ejemplos comunes de software de aplicación son Microsoft Word, Google Chrome, WhatsApp, Zoom y Google Drive. Estas herramientas se utilizan ampliamente en contextos educativos, laborales y personales.
+	
+	\subsection{Software de programación}
+	
+	El software de programación está dirigido a los desarrolladores y permite crear, probar, depurar y mantener otros programas. Incluye lenguajes de programación, compiladores, intérpretes, editores de código y entornos de desarrollo integrado.
+	
+	Algunos ejemplos son Visual Studio Code, PyCharm, NetBeans, GCC y Python IDLE.
+	
+	\subsection{Clasificación según licencia}
+	
+	El software también puede organizarse según su modelo de licencia. El software libre permite usar, estudiar, modificar y distribuir el programa respetando las libertades establecidas por su licencia. El software propietario restringe el acceso al código fuente y normalmente exige una licencia de uso. El software de código abierto permite consultar y modificar el código fuente según las condiciones de su licencia. Finalmente, el software en la nube funciona mediante servicios alojados en Internet.
+	
+	\subsection{Tabla comparativa de clasificación del software}
+	
+	\begin{center}
+		\begin{tabular}{|p{3cm}|p{5cm}|p{6cm}|}
+			\hline
+			\textbf{Categoría} & \textbf{Función principal} & \textbf{Ejemplos} \\ \hline
+			Software de sistema & Administra los recursos del computador y permite la interacción entre hardware, usuario y aplicaciones. & Windows, GNU/Linux, macOS. \\ \hline
+			Software de aplicación & Permite realizar tareas específicas para el usuario final. & Microsoft Word, Google Chrome, WhatsApp. \\ \hline
+			Software de programación & Permite crear, probar y mantener otros programas informáticos. & Visual Studio Code, PyCharm, GCC. \\ \hline
+			Software libre & Puede usarse, estudiarse, modificarse y distribuirse bajo ciertas libertades. & LibreOffice, GIMP, GNU/Linux. \\ \hline
+			Software propietario & Su uso está restringido por una licencia y normalmente no permite acceder al código fuente. & Microsoft Office, Adobe Photoshop, Windows. \\ \hline
+			Software de código abierto & Permite revisar y modificar el código fuente según las condiciones de su licencia. & Mozilla Firefox, VLC Media Player, Apache OpenOffice. \\ \hline
+			Software en la nube & Funciona mediante servicios alojados en Internet. & Google Drive, Microsoft 365, Canva. \\ \hline
+		\end{tabular}
+		
+		\textit{Tabla 1. Clasificación general del software con ejemplos representativos.}
+	\end{center}
+	
+	\section{Calidad del software}
+	
+	\subsection{Concepto de calidad del software}
+	
+	La calidad del software se refiere al grado en que un sistema, aplicación o programa cumple con los requisitos establecidos y satisface las necesidades del usuario. Un software de calidad no solo debe funcionar correctamente, sino que también debe ser seguro, fácil de usar, eficiente, confiable y adaptable a diferentes contextos.
+	
+	\subsection{Norma ISO/IEC 25010}
+	
+	La norma ISO/IEC 25010 forma parte del modelo SQuaRE y establece características para evaluar la calidad de productos de software. Este modelo considera atributos como adecuación funcional, eficiencia de desempeño, compatibilidad, usabilidad, fiabilidad, seguridad, mantenibilidad y portabilidad.
+	
+	Para este informe se consideran especialmente los siguientes atributos: funcionalidad, fiabilidad, usabilidad, eficiencia, mantenibilidad y portabilidad.
+	
+	\subsection{Evaluación de calidad de software conocido}
+	
+	\begin{center}
+		\begin{tabular}{|p{3cm}|p{3.5cm}|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Software} & \textbf{Atributo evaluado} & \textbf{Fortalezas} & \textbf{Debilidades} \\ \hline
+			Microsoft Word & Funcionalidad y usabilidad & Permite crear documentos académicos, aplicar estilos, insertar tablas, revisar ortografía y exportar archivos. & Algunas funciones avanzadas pueden resultar complejas para usuarios nuevos. \\ \hline
+			WhatsApp & Fiabilidad y usabilidad & Facilita mensajes, llamadas, videollamadas y envío de archivos. & Depende de conexión a Internet y requiere protección adecuada de la cuenta. \\ \hline
+			Zoom & Eficiencia y compatibilidad & Permite reuniones virtuales, clases en línea, grabaciones y pantalla compartida. & Puede consumir muchos recursos de red cuando la conexión es baja. \\ \hline
+			Google Drive & Portabilidad y disponibilidad & Permite almacenar archivos en la nube y acceder desde distintos dispositivos. & Requiere Internet para aprovechar todas sus funciones. \\ \hline
+			Visual Studio Code & Mantenibilidad y funcionalidad & Ofrece extensiones, depuración, integración con Git y soporte para múltiples lenguajes. & El exceso de extensiones puede afectar el rendimiento. \\ \hline
+			Google Chrome & Eficiencia y compatibilidad & Permite navegar en la web, ejecutar aplicaciones en línea y sincronizar datos. & Puede consumir mucha memoria RAM con varias pestañas abiertas. \\ \hline
+		\end{tabular}
+		
+		\textit{Tabla 2. Evaluación de calidad de software conocido según criterios relacionados con ISO/IEC 25010.}
+	\end{center}
+	
+	\subsection{Análisis de la evaluación}
+	
+	La evaluación muestra que cada software posee fortalezas relacionadas con el propósito para el cual fue diseñado. Microsoft Word destaca en la creación de documentos; WhatsApp en la comunicación inmediata; Zoom en las reuniones virtuales; Google Drive en el almacenamiento en la nube; Visual Studio Code en el desarrollo de software; y Google Chrome en la navegación web.
+	
+	Sin embargo, también se identifican debilidades importantes. Algunas herramientas requieren conexión permanente a Internet, otras consumen muchos recursos del computador y algunas pueden presentar dificultades de seguridad si el usuario no aplica buenas prácticas.
+	
+	\section{Lenguajes de alto y bajo nivel}
+	
+	\subsection{Lenguajes de alto nivel}
+	
+	Los lenguajes de alto nivel son aquellos que utilizan una sintaxis cercana al lenguaje humano y facilitan la escritura de programas. Su principal ventaja es que permiten al programador concentrarse en la lógica del problema sin preocuparse demasiado por los detalles internos del hardware.
+	
+	Entre los lenguajes de alto nivel más conocidos se encuentran Python, Java, JavaScript, C\# y PHP.
+	
+	\subsection{Ventajas y desventajas de los lenguajes de alto nivel}
+	
+	Los lenguajes de alto nivel tienen como ventaja principal su facilidad de aprendizaje, lectura y mantenimiento. Además, permiten desarrollar aplicaciones de forma más rápida. Sin embargo, pueden ser menos eficientes que los lenguajes de bajo nivel porque requieren compiladores o intérpretes.
+	
+	\subsection{Lenguajes de bajo nivel}
+	
+	Los lenguajes de bajo nivel son aquellos que se encuentran más cerca del lenguaje máquina y del funcionamiento interno del procesador. Entre ellos se encuentran el lenguaje ensamblador y el lenguaje máquina.
+	
+	\subsection{Ventajas y desventajas de los lenguajes de bajo nivel}
+	
+	Los lenguajes de bajo nivel ofrecen mayor control sobre el hardware y pueden generar programas muy eficientes. No obstante, su escritura es más compleja, menos intuitiva y más propensa a errores.
+	
+	\subsection{Comparación entre lenguajes de alto y bajo nivel}
+	
+	\begin{center}
+		\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+			\hline
+			\textbf{Aspecto} & \textbf{Lenguaje de alto nivel} & \textbf{Lenguaje de bajo nivel} \\ \hline
+			Cercanía al usuario & Más cercano al lenguaje humano. & Más cercano al lenguaje de la máquina. \\ \hline
+			Facilidad de aprendizaje & Generalmente más fácil de aprender. & Requiere mayor conocimiento técnico del hardware. \\ \hline
+			Eficiencia & Puede ser menos eficiente por la traducción del código. & Puede ser más eficiente porque controla directamente recursos. \\ \hline
+			Portabilidad & Mayor posibilidad de ejecutarse en distintas plataformas. & Depende más de la arquitectura del procesador. \\ \hline
+			Ejemplos & Python, Java, JavaScript. & Ensamblador y lenguaje máquina. \\ \hline
+		\end{tabular}
+		
+		\textit{Tabla 3. Comparación entre lenguajes de alto y bajo nivel.}
+	\end{center}
+	
+	\section{Ejemplos prácticos}
+	
+	\subsection{Ejemplo en Python}
+	
+	Un ejemplo sencillo de lenguaje de alto nivel en Python consiste en imprimir un mensaje en pantalla.
+	
+	\begin{center}
+		\begin{tabular}{|p{13cm}|}
+			\hline
+			\textbf{Código en Python} \\ \hline
+			\texttt{print("Hola, bienvenido a Fundamentos del Software")} \\ \hline
+		\end{tabular}
+	\end{center}
+	
+	En este caso, la instrucción \texttt{print()} permite mostrar un mensaje directamente en pantalla.
+	
+	\subsection{Ejemplo en pseudocódigo}
+	
+	El mismo ejemplo puede representarse en pseudocódigo de la siguiente manera:
+	
+	\begin{center}
+		\begin{tabular}{|p{13cm}|}
+			\hline
+			\textbf{Pseudocódigo} \\ \hline
+			Algoritmo Mensaje\newline
+			\hspace*{0.5cm} Escribir "Hola, bienvenido a Fundamentos del Software"\newline
+			FinAlgoritmo \\ \hline
+		\end{tabular}
+	\end{center}
+	
+	\subsection{Comparación con ensamblador}
+	
+	En lenguaje ensamblador, una instrucción equivalente puede variar según la arquitectura del procesador y el sistema operativo. Una representación simplificada podría expresarse así:
+	
+	\begin{center}
+		\begin{tabular}{|p{13cm}|}
+			\hline
+			\textbf{Ejemplo simplificado en ensamblador} \\ \hline
+			\texttt{section .data}\newline
+			\texttt{mensaje db "Hola", 0}\newline
+			\texttt{section .text}\newline
+			\texttt{global \_start} \\ \hline
+		\end{tabular}
+	\end{center}
+	
+	La comparación evidencia que los lenguajes de alto nivel son más comprensibles y prácticos para la mayoría de usuarios y programadores. En cambio, el ensamblador requiere conocer la estructura interna del procesador y las instrucciones específicas que utiliza la máquina.
+	
+	\section{Importancia del software en la actualidad}
+	
+	El software es fundamental en la sociedad actual porque se encuentra presente en la educación, la salud, la banca, el comercio, la comunicación y la industria. Plataformas educativas, aplicaciones de mensajería, sistemas de gestión empresarial, servicios en la nube y herramientas de programación demuestran que el software ya no es un recurso aislado, sino una base esencial para el funcionamiento de la vida moderna.
+	
+	En el ámbito universitario, el software permite acceder a aulas virtuales, entregar tareas, realizar investigaciones, comunicarse con docentes y desarrollar habilidades técnicas.
+	
+	\section{Conclusiones}
+	
+	El software es un componente esencial de todo sistema informático, ya que permite que el hardware pueda ejecutar tareas útiles para los usuarios. Su clasificación en software de sistema, aplicación y programación permite comprender mejor su función dentro del entorno tecnológico.
+	
+	La calidad del software debe evaluarse considerando diferentes atributos, como funcionalidad, fiabilidad, usabilidad, eficiencia, mantenibilidad y portabilidad. Estos criterios ayudan a identificar si una herramienta cumple adecuadamente con las necesidades del usuario.
+	
+	Los lenguajes de alto nivel facilitan el desarrollo de programas gracias a su sintaxis comprensible y cercana al lenguaje humano. Por otro lado, los lenguajes de bajo nivel permiten un mayor control del hardware, aunque requieren conocimientos técnicos más profundos.
+	
+	Finalmente, el estudio de los fundamentos del software es importante para la formación profesional en Tecnologías de la Información, porque proporciona una base sólida para analizar, utilizar y desarrollar soluciones informáticas de manera responsable, eficiente y segura.
+	
+	% =========================
+	% REFERENCIAS EN ÚLTIMA HOJA
+	% =========================
+	\clearpage
+	\ClearShipoutPictureBG
+	\FondoFinal
+	\thispagestyle{fancy}
+	
+	\section{Referencias}
+	
+	\begin{hangparas}{1.27cm}{1}
+		
+		Free Software Foundation. (2024). \textit{What is free software?} \url{https://www.gnu.org/philosophy/free-sw.html}
+		
+		ISO/IEC. (2011). \textit{ISO/IEC 25010:2011 Systems and software engineering --- Systems and software Quality Requirements and Evaluation (SQuaRE) --- System and software quality models}. International Organization for Standardization.
+		
+		Laudon, K. C., \& Laudon, J. P. (2020). \textit{Sistemas de información gerencial} (16.a ed.). Pearson Educación.
+		
+		Open Source Initiative. (2024). \textit{The open source definition}. \url{https://opensource.org/osd}
+		
+		Pressman, R. S., \& Maxim, B. R. (2020). \textit{Software engineering: A practitioner's approach} (9th ed.). McGraw-Hill Education.
+		
+		Sommerville, I. (2016). \textit{Software engineering} (10th ed.). Pearson.
+		
+		Tanenbaum, A. S., \& Bos, H. (2015). \textit{Modern operating systems} (4th ed.). Pearson.
+		
+		W3Schools. (2024). \textit{Python print() function}. \url{https://www.w3schools.com/python/ref_func_print.asp}
+		
+	\end{hangparas}
+	
+\end{document}

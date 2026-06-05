@@ -1,0 +1,25 @@
+\frametitle{El Nivel mas Bajo --- Lenguaje Maquina}
+Por debajo del ensamblador se encuentra el \textbf{lenguaje maquina}. Este se
+^^I^^Irepresenta mediante codigos binarios o hexadecimales que el procesador puede
+^^I^^Iejecutar directamente:
+^^I^^I
+^^I^^I\vspace{0.2cm}
+^^I^^I\begin{lstlisting}
+^^I^^I^^IInstruccion: int 0x80
+^^I^^I^^IHexadecimal : CD 80
+^^I^^I^^IBinario     : 11001101 10000000
+^^I^^I^^I
+^^I^^I^^IInstruccion: mov eax, 4
+^^I^^I^^IHexadecimal : B8 04 00 00 00
+^^I^^I^^IBinario     : 10111000 00000100 00000000 00000000 00000000
+^^I^^I^^I
+^^I^^I^^IInstruccion: mov ebx, 1
+^^I^^I^^IHexadecimal : BB 01 00 00 00
+^^I^^I^^IBinario     : 10111011 00000001 00000000 00000000 00000000
+^^I^^I\end{lstlisting}
+^^I^^I
+^^I^^I\vspace{0.1cm}
+^^I^^I\begin{block}{Reflexion}
+^^I^^I^^ILa CPU no interpreta directamente Python ni pseudocodigo. Todo programa debe
+^^I^^I^^Iterminar traducido a instrucciones de maquina para poder ejecutarse.
+^^I^^I\end{block}

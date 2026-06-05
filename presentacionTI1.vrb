@@ -1,0 +1,23 @@
+\frametitle{El Nivel mas Bajo --- Lenguaje Maquina}
+Por debajo del ensamblador existe el \textbf{lenguaje maquina}: secuencia de bits
+^^I^^Ique el procesador ejecuta directamente. Cada instruccion se traduce a valores
+^^I^^Ihexadecimales y binarios:
+^^I^^I\vspace{0.2cm}
+^^I^^I\begin{lstlisting}[language={}]
+^^I^^I^^IInstruccion: int 0x80
+^^I^^I^^IHex    : CD 80
+^^I^^I^^IBinario: 11001101  10000000
+^^I^^I^^I
+^^I^^I^^IInstruccion: mov eax, 4
+^^I^^I^^IHex    : B8 04 00 00 00
+^^I^^I^^IBinario: 10111000  00000100  00000000  00000000  00000000
+^^I^^I^^I
+^^I^^I^^IInstruccion: mov ebx, 1
+^^I^^I^^IHex    : BB 01 00 00 00
+^^I^^I^^IBinario: 10111011  00000001  00000000  00000000  00000000
+^^I^^I\end{lstlisting}
+^^I^^I\vspace{0.1cm}
+^^I^^I\begin{block}{Reflexion}
+^^I^^I^^IEs el unico lenguaje que la CPU comprende de forma nativa. El ensamblador
+^^I^^I^^Isurgio para liberar al programador de escribir directamente en binario.
+^^I^^I\end{block}
