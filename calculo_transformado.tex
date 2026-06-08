@@ -1,0 +1,1663 @@
+\documentclass[12pt,a4paper]{article}
+
+% ============================================================
+% IDIOMA, CODIFICACIÓN Y FUENTE
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+% ============================================================
+% FORMATO GENERAL
+% ============================================================
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{ragged2e}
+\usepackage{hanging}
+
+\geometry{
+	left=2.54cm,
+	right=2.54cm,
+	top=2.54cm,
+	bottom=2.54cm
+}
+
+\onehalfspacing
+
+% ============================================================
+% MATEMÁTICA Y GRÁFICAS
+% ============================================================
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.18}
+
+% ============================================================
+% IMÁGENES, TABLAS Y COLORES
+% ============================================================
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+% ============================================================
+% ÍNDICES, ENCABEZADOS Y TÍTULOS
+% ============================================================
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+% ============================================================
+% FONDOS Y POSICIONAMIENTO
+% ============================================================
+\usepackage{eso-pic}
+\usepackage[absolute,overlay]{textpos}
+
+% ============================================================
+% COLORES INSTITUCIONALES
+% ============================================================
+\definecolor{azulunemi}{RGB}{11,36,71}
+\definecolor{azulclaro}{RGB}{220,235,250}
+\definecolor{gris}{RGB}{245,247,250}
+
+% ============================================================
+% HIPERVÍNCULOS
+% ============================================================
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=azulunemi,
+	urlcolor=azulunemi,
+	citecolor=azulunemi
+}
+
+% ============================================================
+% FORMATO DE TÍTULOS
+% ============================================================
+\titleformat{\section}
+{\color{azulunemi}\normalfont\Large\bfseries}
+{\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+{\color{azulunemi}\normalfont\large\bfseries}
+{\thesubsection.}{0.5em}{}
+
+\titleformat{\subsubsection}
+{\color{azulunemi}\normalfont\normalsize\bfseries}
+{\thesubsubsection.}{0.5em}{}
+
+% ============================================================
+% FONDOS PDF UNEMI
+% ============================================================
+\newcommand{\FondoPortada}{%
+	\AddToShipoutPictureBG*{%
+		\AtPageLowerLeft{%
+			\includegraphics[width=\paperwidth,height=\paperheight]{plantillasTrabajosUNEMI/portadaLibroUNEMI.pdf}%
+		}%
+	}%
+}
+
+\newcommand{\FondoCuerpo}{%
+	\AddToShipoutPictureBG{%
+		\AtPageLowerLeft{%
+			\includegraphics[width=\paperwidth,height=\paperheight]{plantillasTrabajosUNEMI/plantillaA4PaginaDocumento.pdf}%
+		}%
+	}%
+}
+
+\newcommand{\FondoFinal}{%
+	\AddToShipoutPictureBG{%
+		\AtPageLowerLeft{%
+			\includegraphics[width=\paperwidth,height=\paperheight]{plantillasTrabajosUNEMI/plantillaA4PaginaFinal.pdf}%
+		}%
+	}%
+}
+
+% ============================================================
+% FIGURAS FIJAS SIN FLOTANTES
+% ============================================================
+\newcounter{customfigure}
+
+\newcommand{\miFigura}[1]{%
+	\refstepcounter{customfigure}%
+	\addcontentsline{lof}{figure}{Figura \thecustomfigure. #1}%
+	\vspace{0.2cm}%
+	\begin{center}
+		\small\textbf{Figura \thecustomfigure.} #1
+	\end{center}%
+}
+\begin{document}
+	\FondoPortada
+	%======================
+	\begin{titlepage}
+		\thispagestyle{empty}
+		
+		\vspace*{10cm}
+		
+		\begin{textblock*}{18cm}(0.1cm,13cm)
+			
+			{\color{white}
+				
+				{\fontsize{24}{28}\selectfont
+					\bfseries S7 - CD EX-CP-1\par}
+				
+				\vspace{0.4cm}
+				
+				
+				\vspace{1cm}
+				
+				{\fontsize{20}{24}\selectfont
+					          
+					\bfseries Desarrollo de ejercicios prácticos\par}
+				
+				{\fontsize{20}{24}\selectfont
+					\bfseries de cálculo\par}
+				
+			}
+			
+		\end{textblock*}
+		
+	\end{titlepage}
+	
+	% ================= DOCUMENTO =================
+	\FondoCuerpo
+	\begin{titlepage}
+		\centering
+		
+		% Colores
+		\definecolor{azulUNEMI}{RGB}{0,31,63}
+		\definecolor{naranjaUNEMI}{RGB}{255,140,0}
+		\definecolor{grisClaro}{RGB}{220,220,220}
+		
+		\vspace*{0.5cm}
+		
+		{\fontsize{24}{28}\selectfont
+			\color{azulUNEMI}
+			\textbf{UNIVERSIDAD ESTATAL DE MILAGRO}\par}
+		
+		\vspace{0.2cm}
+		
+		{\large
+			\color{azulUNEMI}
+			Facultad de Ciencias e Ingeniería\par}
+		
+		{\large
+			\color{azulUNEMI}
+			Carrera: Tecnologías de la Información -- Modalidad en Línea\par}
+		
+		\vspace{1cm}
+		
+		{\fontsize{28}{34}\selectfont
+			\color{naranjaUNEMI}
+			\textbf{S7-COMPONENTE PRACTICO 1}\par}
+		
+		\vspace{0.3cm}
+		
+	%	{\fontsize{18}{22}\selectfont
+	%		\color{naranjaUNEMI}
+	%		\textbf{PROYECTO INTEGRADOR -- PARTE 1}\par}
+		
+		\vspace{1cm}
+		
+		\begin{minipage}{0.88\textwidth}
+			\centering
+			
+			{\fontsize{22}{28}\selectfont
+				\color{azulUNEMI}
+				\textbf{Desarrollo de ejercicios prácticos\\[0.2cm]
+					 de cálculo}\par}
+		\end{minipage}
+		
+		\vspace{1.8cm}
+		
+		\begin{minipage}{0.95\textwidth}
+			\raggedright
+			
+			{\large\color{naranjaUNEMI}\textbf{Estudiante:}}
+			
+			\vspace{0.2cm}
+			
+			{\Large\color{azulUNEMI}
+				\hspace*{1cm}Ángel Fernando Calero Maldonado\\
+		}	
+			\vspace{1.2cm}
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Asignatura:}}
+			{\Large\color{azulUNEMI} CALCULO DIFERENCIAL}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Docente:}}
+			{\Large\color{azulUNEMI} PhD. Cabrera Toro Jose Fabricio}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Período académico:}}
+			{\Large\color{azulUNEMI} Abril -- Julio 2026}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Nivel:}}
+			{\Large\color{azulUNEMI} 1.er Semestre}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Código:}}
+			{\Large\color{azulUNEMI} S7 -CD EX-CP-1}\\
+			
+			{\Large\color{naranjaUNEMI}
+				\textbf{Fecha de entrega:}}
+			{\Large\color{azulUNEMI} 10 de Junio de 2026}
+			
+		\end{minipage}
+		
+		\vfill
+		
+		{\large
+			\color{azulUNEMI}
+			\textbf{Milagro -- Ecuador}\par}
+		
+	\end{titlepage}
+	
+%***********************************
+
+	\section{INTRODUCCION}
+	
+	El presente documento desarrolla ejercicios prácticos de cálculo diferencial relacionados con dominio y rango de funciones, composición de funciones y cálculo de límites. Cada procedimiento se presenta de forma ordenada, utilizando notación matemática formal y representaciones gráficas elaboradas con.
+	
+	\section{Objetivo general}
+	
+	Desarrollar competencias en el análisis y aplicación de funciones reales y límites mediante la resolución de ejercicios teóricos y prácticos, empleando métodos algebraicos, razonamiento matemático y herramientas tecnológicas de visualización gráfica, con el fin de interpretar, justificar y validar rigurosamente los resultados obtenidos.
+	
+	\section{OBJETIVOS ESPECIFICOS}
+	
+	\begin{enumerate}
+		
+		\item Integrar y aplicar los conceptos de funciones reales, tales como dominio, rango, clasificación, composición e inversa, así como los conceptos de límites laterales, bilaterales y al infinito, para la resolución de problemas analíticos y gráficos.
+		
+		\item Justificar rigurosamente cada resultado obtenido mediante el uso de propiedades algebraicas, factorizaciones, racionalización de expresiones y análisis gráfico-numérico.
+		
+		\item Emplear herramientas tecnológicas como GeoGebra o Desmos para contrastar, verificar y validar los resultados obtenidos durante el desarrollo de los ejercicios propuestos.
+		
+	\end{enumerate}
+	% ============================================================
+	% SECCIÓN 2: DOMINIO Y RANGO DE FUNCIONES
+	% ============================================================
+	
+	\section{Dominio y rango de funciones}
+	
+	\subsection{Ejercicio A}
+	
+	Sea la función:
+	\[
+	f(x)=\sqrt{\frac{2x-3}{x+1}}.
+	\]
+	
+	Para que la raíz cuadrada sea real, el radicando debe ser mayor o igual que cero:
+	\[
+	\frac{2x-3}{x+1}\geq 0,
+	\qquad x+1\neq 0.
+	\]
+	
+	Los puntos críticos se obtienen igualando a cero el numerador y el denominador:
+	\[
+	2x-3=0 \Rightarrow x=\frac{3}{2},
+	\qquad
+	x+1=0 \Rightarrow x=-1.
+	\]
+	
+	Por análisis de signos:
+	\[
+	\operatorname{Dom}(f)=(-\infty,-1)\cup\left[\frac{3}{2},\infty\right).
+	\]
+	
+	Como se trata de una raíz cuadrada:
+	\[
+	y\geq 0.
+	\]
+	
+	Además:
+	\[
+	\lim_{x\to\infty}\sqrt{\frac{2x-3}{x+1}}=\sqrt{2}.
+	\]
+	
+	Por tanto:
+	\[
+	\operatorname{Rango}(f)=[0,\sqrt{2})\cup(\sqrt{2},\infty).
+	\]
+	
+	\subsubsection*{Gráfica de la función }
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=13cm,
+				height=8cm,
+				grid=both,
+				axis lines=middle,
+				xlabel={$x$},
+				ylabel={$y$},
+				title={$f(x)=\sqrt{\frac{2x-3}{x+1}}$},
+				samples=200,
+				xmin=-8, xmax=8,
+				ymin=0, ymax=8,
+				unbounded coords=jump,
+				]
+				\addplot[blue, thick, domain=-8:-1.05] {sqrt(max(0,(2*x-3)/(x+1)))};
+				\addplot[blue, thick, domain=1.5:8] {sqrt(max(0,(2*x-3)/(x+1)))};
+				\addplot[dashed, red, thick] coordinates {(-1,0) (-1,8)};
+				\addplot[dashed, orange, thick] coordinates {(-8,{sqrt(2)}) (8,{sqrt(2)})};
+				\addplot[only marks, mark=*, red, mark size=2.5pt] coordinates {(1.5,0)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 1A}
+	\end{center}
+	
+	\subsection{Ejercicio B}
+	
+	Sea la función:
+	\[
+	f(x)=\sqrt{\frac{x+5}{x-1}}.
+	\]
+	
+	Para que la función esté definida en los números reales:
+	\[
+	\frac{x+5}{x-1}\geq 0,
+	\qquad x-1\neq 0.
+	\]
+	
+	Los puntos críticos son:
+	\[
+	x+5=0 \Rightarrow x=-5,
+	\qquad
+	x-1=0 \Rightarrow x=1.
+	\]
+	
+	Por análisis de signos:
+	\[
+	\operatorname{Dom}(f)=(-\infty,-5]\cup(1,\infty).
+	\]
+	
+	El valor mínimo ocurre cuando:
+	\[
+	x=-5,
+	\qquad
+	f(-5)=0.
+	\]
+	
+	Además:
+	\[
+	\lim_{x\to\infty}\sqrt{\frac{x+5}{x-1}}=1.
+	\]
+	
+	Por tanto:
+	\[
+	\operatorname{Rango}(f)=[0,1)\cup(1,\infty).
+	\]
+	
+	\subsubsection*{Gráfica de la función }
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=13cm,
+				height=8cm,
+				grid=both,
+				axis lines=middle,
+				xlabel={$x$},
+				ylabel={$y$},
+				title={$f(x)=\sqrt{\frac{x+5}{x-1}}$},
+				samples=200,
+				xmin=-10, xmax=10,
+				ymin=0, ymax=8,
+				unbounded coords=jump,
+				]
+				\addplot[teal, thick, domain=-10:-5] {sqrt(max(0,(x+5)/(x-1)))};
+				\addplot[teal, thick, domain=1.05:10] {sqrt(max(0,(x+5)/(x-1)))};
+				\addplot[dashed, red, thick] coordinates {(1,0) (1,8)};
+				\addplot[dashed, orange, thick] coordinates {(-10,1) (10,1)};
+				\addplot[only marks, mark=*, red, mark size=2.5pt] coordinates {(-5,0)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 1B}
+		
+	\end{center}
+	
+	% ============================================================
+	% SECCIÓN 3: FUNCIÓN COMPOSICIÓN
+	% ============================================================
+	
+	\section{Función composición}
+	
+	En esta sección se determina la composición de funciones para cada par de funciones dadas. Posteriormente se representan gráficamente las funciones originales y las funciones compuestas obtenidas.
+	
+	\subsection{Ejercicio A}
+	
+	Sean:
+	\[
+	f(x)=x-3,
+	\qquad
+	g(x)=-x^2.
+	\]
+	
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$f(x)=x-3$},xmin=-5,xmax=5,ymin=-8,ymax=4,samples=200]
+				\addplot[blue,thick] {x-3};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2A f(x)}
+		%\small Figura 3. Función \(f(x)=x-3\).
+	\end{center}
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$g(x)=-x^2$},xmin=-5,xmax=5,ymin=-25,ymax=2,samples=300]
+				\addplot[red,thick] {-x^2};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2A g(x)}
+		%\small Figura 4. Función \(g(x)=-x^2\).
+	\end{center}
+	
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(f\circ g)(x)$}{fog(x)}}
+	
+	\[
+	(f\circ g)(x)=f(g(x))=f(-x^2)=-x^2-3.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(f\circ g)(x)=-x^2-3$},xmin=-5,xmax=5,ymin=-30,ymax=2,samples=300]
+				\addplot[teal,thick] {-x^2-3};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2A (f o g)(x)}
+		%\small Figura 5. Función compuesta \((f\circ g)(x)\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(g\circ f)(x)$}{gof(x)}}
+	
+	\[
+	(g\circ f)(x)=g(f(x))=g(x-3)=-(x-3)^2.
+	\]
+	
+	Desarrollando:
+	\[
+	(g\circ f)(x)=-(x^2-6x+9)=-x^2+6x-9.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(g\circ f)(x)=-x^2+6x-9$},xmin=-3,xmax=8,ymin=-40,ymax=2,samples=300]
+				\addplot[purple,thick] {-x^2+6*x-9};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2A (g o f)(x)}
+		%	\small Figura 6. Función compuesta \((g\circ f)(x)\).
+	\end{center}
+	
+	\subsection{Ejercicio B}
+	
+	Sean:
+	\[
+	f(x)=-x,
+	\qquad
+	g(x)=x^2-x.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$f(x)=-x$},xmin=-5,xmax=5,ymin=-6,ymax=6,samples=200]
+				\addplot[blue,thick] {-x};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2B f(x)}
+		%\small Figura 7. Función \(f(x)=-x\).
+	\end{center}
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$g(x)=x^2-x$},xmin=-4,xmax=5,ymin=-2,ymax=25,samples=300]
+				\addplot[red,thick] {x^2-x};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2B g(x)}
+		%\small Figura 8. Función \(g(x)=x^2-x\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(f\circ g)(x)$}{fog(x)}}	
+	\[
+	(f\circ g)(x)=f(g(x))=-(x^2-x)=-x^2+x.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(f\circ g)(x)=-x^2+x$},xmin=-4,xmax=5,ymin=-25,ymax=2,samples=300]
+				\addplot[teal,thick] {-x^2+x};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2B (f o g)(x)}
+		%	\small Figura 9. Función compuesta \((f\circ g)(x)\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(g\circ f)(x)$}{gof(x)}}
+	\[
+	(g\circ f)(x)=g(-x)=(-x)^2-(-x)=x^2+x.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(g\circ f)(x)=x^2+x$},xmin=-5,xmax=4,ymin=-2,ymax=25,samples=300]
+				\addplot[purple,thick] {x^2+x};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2B (g o f)(x)}
+		%	\small Figura 10. Función compuesta \((g\circ f)(x)\).
+	\end{center}
+	
+	\subsection{Ejercicio C}
+	
+	Sean:
+	\[
+	f(x)=x^3-x^2+x,
+	\qquad
+	g(x)=x-1.
+	\]
+	
+	
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$f(x)=x^3-x^2+x$},xmin=-3,xmax=4,ymin=-35,ymax=45,samples=400]
+				\addplot[blue,thick] {x^3-x^2+x};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2C f(x)}
+		\small Figura 11. Función \(f(x)=x^3-x^2+x\).
+	\end{center}
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$g(x)=x-1$},xmin=-5,xmax=5,ymin=-6,ymax=6,samples=200]
+				\addplot[red,thick] {x-1};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2C g(x)}
+		%\small Figura 12. Función \(g(x)=x-1\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(f\circ g)(x)$}{fog(x)}}
+	\[
+	(f\circ g)(x)=f(x-1)=(x-1)^3-(x-1)^2+(x-1).
+	\]
+	
+	Desarrollando:
+	
+	\[
+	(f\circ g)(x)=x^3-4x^2+6x-3.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(f\circ g)(x)=x^3-4x^2+6x-3$},xmin=-2,xmax=5,ymin=-35,ymax=45,samples=400]
+				\addplot[teal,thick] {x^3-4*x^2+6*x-3};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2C (f o g)(x)}
+		%\small Figura 13. Función compuesta \((f\circ g)(x)\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(g\circ f)(x)$}{gof(x)}}
+	\[
+	(g\circ f)(x)=g(f(x))=(x^3-x^2+x)-1=x^3-x^2+x-1.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(g\circ f)(x)=x^3-x^2+x-1$},xmin=-3,xmax=4,ymin=-35,ymax=45,samples=400]
+				\addplot[purple,thick] {x^3-x^2+x-1};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2A (g o f)(x)}
+		%\small Figura 14. Función compuesta \((g\circ f)(x)\).
+	\end{center}
+	
+	\subsection{Ejercicio D}
+	
+	Sean:
+	\[
+	f(x)=\frac{x+1}{x-1},
+	\qquad
+	g(x)=x^2-x.
+	\]
+	
+	
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$f(x)=\frac{x+1}{x-1}$},xmin=-6,xmax=6,ymin=-8,ymax=8,unbounded coords=jump,samples=400]
+				\addplot[blue,thick,domain=-6:0.95] {(x+1)/(x-1)};
+				\addplot[blue,thick,domain=1.05:6] {(x+1)/(x-1)};
+				\addplot[dashed,red,thick] coordinates {(1,-8) (1,8)};
+				\addplot[dashed,orange,thick] coordinates {(-6,1) (6,1)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2D f(x)}
+		%\small Figura 15. Función racional \(f(x)\).
+	\end{center}
+	
+	\subsubsection*{Gráfica de la función }
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$g(x)=x^2-x$},xmin=-4,xmax=5,ymin=-2,ymax=25,samples=300]
+				\addplot[red,thick] {x^2-x};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2D g(x)}
+		%\small Figura 16. Función \(g(x)\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(f\circ g)(x)$}{fog(x)}}
+	\[
+	(f\circ g)(x)=\frac{g(x)+1}{g(x)-1}=\frac{x^2-x+1}{x^2-x-1}.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(f\circ g)(x)=\frac{x^2-x+1}{x^2-x-1}$},xmin=-4,xmax=5,ymin=-8,ymax=8,unbounded coords=jump,samples=400]
+				\addplot[teal,thick,domain=-4:-0.65] {(x^2-x+1)/(x^2-x-1)};
+				\addplot[teal,thick,domain=-0.55:1.55] {(x^2-x+1)/(x^2-x-1)};
+				\addplot[teal,thick,domain=1.65:5] {(x^2-x+1)/(x^2-x-1)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2D (f o g)(x)}
+		%\small Figura 17. Función compuesta \((f\circ g)(x)\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(g\circ f)(x)$}{gof(x)}}
+	\[
+	(g\circ f)(x)=\left(\frac{x+1}{x-1}\right)^2-\left(\frac{x+1}{x-1}\right).
+	\]
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(g\circ f)(x)$},xmin=-6,xmax=6,ymin=-8,ymax=20,unbounded coords=jump,samples=400]
+				\addplot[purple,thick,domain=-6:0.95] {((x+1)/(x-1))^2-((x+1)/(x-1))};
+				\addplot[purple,thick,domain=1.05:6] {((x+1)/(x-1))^2-((x+1)/(x-1))};
+				\addplot[dashed,red,thick] coordinates {(1,-8) (1,20)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2D (g o f)(x)}
+		%\small Figura 18. Función compuesta \((g\circ f)(x)\).
+	\end{center}
+	
+	\subsection{Ejercicio E}
+	
+	Sean:
+	\[
+	f(x)=-\frac{1}{x^2},
+	\qquad
+	g(x)=\frac{-x+2}{\sqrt{x}}.
+	\]
+	
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$f(x)=-\frac{1}{x^2}$},xmin=-5,xmax=5,ymin=-10,ymax=1,unbounded coords=jump,samples=400]
+				\addplot[blue,thick,domain=-5:-0.1] {-1/(x^2)};
+				\addplot[blue,thick,domain=0.1:5] {-1/(x^2)};
+				\addplot[dashed,red,thick] coordinates {(0,-10) (0,1)};
+				\addplot[dashed,orange,thick] coordinates {(-5,0) (5,0)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2E f(x)}
+		%	\small Figura 19. Función \(f(x)\).
+	\end{center}
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$g(x)=\frac{-x+2}{\sqrt{x}}$},xmin=0,xmax=8,ymin=-4,ymax=8,samples=400,unbounded coords=jump]
+				\addplot[red,thick,domain=0.1:8] {(-x+2)/sqrt(x)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2E g(x)}
+		%	\small Figura 20. Función \(g(x)\).
+	\end{center}
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(f\circ g)(x)$}{fog(x)}}
+	\[
+	(f\circ g)(x)=-\frac{1}{\left(\frac{-x+2}{\sqrt{x}}\right)^2}=-\frac{x}{(-x+2)^2}.
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$(f\circ g)(x)=-\frac{x}{(-x+2)^2}$},xmin=0,xmax=8,ymin=-10,ymax=1,samples=400,unbounded coords=jump]
+				\addplot[teal,thick,domain=0.1:1.95] {-x/((-x+2)^2)};
+				\addplot[teal,thick,domain=2.05:8] {-x/((-x+2)^2)};
+				\addplot[dashed,red,thick] coordinates {(2,-10) (2,1)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 2E (f o g)(x)}
+		%	\small Figura 21. Función compuesta \((f\circ g)(x)\).
+	\end{center}
+	%=====================================================
+	%===================================================
+	
+	\subsubsection*{Cálculo de \texorpdfstring{$(g\circ f)(x)$}{gof(x)}}
+	
+	\[
+	(g\circ f)(x)=g(f(x)).
+	\]
+	
+	Como:
+	
+	\[
+	f(x)=-\frac{1}{x^2},
+	\qquad
+	g(x)=\frac{-x+2}{\sqrt{x}},
+	\]
+	
+	sustituimos \(f(x)\) dentro de \(g(x)\):
+	
+	\[
+	(g\circ f)(x)
+	=
+	\frac{-f(x)+2}{\sqrt{f(x)}}.
+	\]
+	
+	Entonces:
+	
+	\[
+	(g\circ f)(x)
+	=
+	\frac{-\left(-\frac{1}{x^2}\right)+2}
+	{\sqrt{-\frac{1}{x^2}}}.
+	\]
+	
+	Simplificando el numerador:
+	
+	\[
+	-\left(-\frac{1}{x^2}\right)+2
+	=
+	\frac{1}{x^2}+2.
+	\]
+	
+	Por tanto:
+	
+	\[
+	(g\circ f)(x)
+	=
+	\frac{\frac{1}{x^2}+2}
+	{\sqrt{-\frac{1}{x^2}}}.
+	\]
+	
+	Ahora bien, en los números reales:
+	
+	\[
+	-\frac{1}{x^2}<0
+	\qquad \text{para todo } x\neq 0.
+	\]
+	
+	Por ello:
+	
+	\[
+	\sqrt{-\frac{1}{x^2}}
+	\]
+	
+	no está definida en \(\mathbb{R}\). En consecuencia:
+	
+	\[
+	\boxed{
+		(g\circ f)(x)
+		\text{ no está definida en los números reales.}
+	}
+	\]
+	
+	\[
+	\boxed{
+		\operatorname{Dom}(g\circ f)=\varnothing
+	}
+	\]
+	
+	\subsubsection*{Gráfica de la función  NO EXISTE EN LOS REALES}
+	
+	%=====================================================
+	% ============================================================
+	% SECCIÓN 4: LÍMITES POR SUSTITUCIÓN
+	% ============================================================
+	\
+	\section{Límites por sustitución}
+	
+	En los siguientes ejercicios se aplica el método de sustitución directa. Este procedimiento consiste en reemplazar el valor al que tiende la variable dentro de la función, siempre que la expresión resultante no produzca una indeterminación.
+	
+	\subsection{Ejercicio 24}
+	
+	Calcular:
+	\[
+	\lim_{x\to 1}\frac{1}{3x-1}.
+	\]
+	
+	Aplicando sustitución directa:
+	\[
+	\lim_{x\to 1}\frac{1}{3x-1}=\frac{1}{3(1)-1}=\frac{1}{2}.
+	\]
+	
+	Por tanto:
+	\[
+	\boxed{\lim_{x\to 1}\frac{1}{3x-1}=\frac{1}{2}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{1}{3x-1}$},xmin=-3,xmax=5,ymin=-8,ymax=8,samples=400,unbounded coords=jump]
+				\addplot[blue,thick,domain=-3:0.32] {1/(3*x-1)};
+				\addplot[blue,thick,domain=0.35:5] {1/(3*x-1)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(1,0.5)};
+				\addplot[dashed,red,thick] coordinates {(0.333,-8) (0.333,8)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 3-24}
+		%\small Figura 22. Gráfica de \(y=\frac{1}{3x-1}\).
+	\end{center}
+	
+	\subsection{Ejercicio 25}
+	
+	Calcular:
+	\[
+	\lim_{x\to -1}3x(2x-1).
+	\]
+	
+	Aplicando sustitución directa:
+	\[
+	3(-1)\left(2(-1)-1\right)=(-3)(-3)=9.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to -1}3x(2x-1)=9}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=3x(2x-1)$},xmin=-4,xmax=3,ymin=-10,ymax=60,samples=400]
+				\addplot[teal,thick] {3*x*(2*x-1)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(-1,9)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 3-25}
+		\small Figura 23. Gráfica de \(y=3x(2x-1)\).
+	\end{center}
+	
+	\subsection{Ejercicio 28}
+	
+	Calcular:
+	\[
+	\lim_{x\to \pi}\frac{\cos x}{1-\pi}.
+	\]
+	
+	Aplicando sustitución directa:
+	\[
+	\frac{\cos(\pi)}{1-\pi}=\frac{-1}{1-\pi}=\frac{1}{\pi-1}.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to \pi}\frac{\cos x}{1-\pi}=\frac{1}{\pi-1}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{\cos(x)}{1-\pi}$},xmin=-1,xmax=7,ymin=-1,ymax=1,samples=500]
+				\addplot[purple,thick] {cos(deg(x))/(1-pi)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(3.1416,{1/(pi-1)})};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 3-28}
+		%	\small Figura 24. Gráfica de \(y=\frac{\cos(x)}{1-\pi}\).
+	\end{center}
+	
+	% ============================================================
+	% SECCIÓN 5: LÍMITES ALGEBRAICOS
+	% ============================================================
+	
+	\section{Límites algebraicos}
+	
+	\subsection{Ejercicio 19}
+	
+	Calcular:
+	\[
+	\lim_{x\to 5}\frac{x-5}{x^2-25}.
+	\]
+	
+	Factorizamos el denominador:
+	\[
+	x^2-25=(x-5)(x+5).
+	\]
+	
+	Entonces:
+	\[
+	\lim_{x\to 5}\frac{x-5}{x^2-25}=\lim_{x\to 5}\frac{x-5}{(x-5)(x+5)}=\lim_{x\to 5}\frac{1}{x+5}.
+	\]
+	
+	Evaluando:
+	\[
+	\frac{1}{5+5}=\frac{1}{10}.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to 5}\frac{x-5}{x^2-25}=\frac{1}{10}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{x-5}{x^2-25}$},xmin=-10,xmax=10,ymin=-2,ymax=2,samples=400,unbounded coords=jump]
+				\addplot[blue,thick,domain=-10:-5.05] {(x-5)/(x^2-25)};
+				\addplot[blue,thick,domain=-4.95:4.95] {(x-5)/(x^2-25)};
+				\addplot[blue,thick,domain=5.05:10] {(x-5)/(x^2-25)};
+				\addplot[dashed,red,thick] coordinates {(-5,-2) (-5,2)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(5,0.1)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 4-19}
+		%\small Figura 25. Gráfica de \(y=\frac{x-5}{x^2-25}\).
+	\end{center}
+	
+	\subsection{Ejercicio 22}
+	
+	Calcular:
+	\[
+	\lim_{x\to 2}\frac{x^2-7x+10}{x-2}.
+	\]
+	
+	Factorizamos el numerador:
+	\[
+	x^2-7x+10=(x-5)(x-2).
+	\]
+	
+	Entonces:
+	\[
+	\lim_{x\to 2}\frac{x^2-7x+10}{x-2}=\lim_{x\to 2}\frac{(x-5)(x-2)}{x-2}=\lim_{x\to 2}(x-5).
+	\]
+	
+	Evaluando:
+	\[
+	2-5=-3.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to 2}\frac{x^2-7x+10}{x-2}=-3}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{x^2-7x+10}{x-2}$},xmin=-2,xmax=8,ymin=-8,ymax=4,samples=400,unbounded coords=jump]
+				\addplot[teal,thick,domain=-2:1.95] {(x^2-7*x+10)/(x-2)};
+				\addplot[teal,thick,domain=2.05:8] {(x^2-7*x+10)/(x-2)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(2,-3)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 4-22}
+		%\small Figura 26. Gráfica de \(y=\frac{x^2-7x+10}{x-2}\).
+	\end{center}
+	
+	\subsection{Ejercicio 23}
+	
+	Calcular:
+	\[
+	\lim_{t\to 1}\frac{t^2+t-2}{t^2-1}.
+	\]
+	
+	Factorizamos:
+	\[
+	t^2+t-2=(t+2)(t-1),
+	\qquad
+	t^2-1=(t-1)(t+1).
+	\]
+	
+	Entonces:
+	\[
+	\lim_{t\to 1}\frac{t^2+t-2}{t^2-1}=\lim_{t\to 1}\frac{(t+2)(t-1)}{(t-1)(t+1)}=\lim_{t\to 1}\frac{t+2}{t+1}.
+	\]
+	
+	Evaluando:
+	\[
+	\frac{1+2}{1+1}=\frac{3}{2}.
+	\]
+	
+	\[
+	\boxed{\lim_{t\to 1}\frac{t^2+t-2}{t^2-1}=\frac{3}{2}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$t$},ylabel={$y$},title={$y=\frac{t^2+t-2}{t^2-1}$},xmin=-5,xmax=5,ymin=-6,ymax=6,samples=400,unbounded coords=jump]
+				\addplot[purple,thick,domain=-5:-1.05] {(x^2+x-2)/(x^2-1)};
+				\addplot[purple,thick,domain=-0.95:0.95] {(x^2+x-2)/(x^2-1)};
+				\addplot[purple,thick,domain=1.05:5] {(x^2+x-2)/(x^2-1)};
+				\addplot[dashed,red,thick] coordinates {(-1,-6) (-1,6)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(1,1.5)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 4-23}
+		%\small Figura 27. Gráfica de \(y=\frac{t^2+t-2}{t^2-1}\).
+	\end{center}
+	
+	\subsection{Ejercicio 26}
+	
+	Calcular:
+	\[
+	\lim_{y\to 0}\frac{5y^3+8y^2}{3y^4-16y^2}.
+	\]
+	
+	Factorizamos numerador y denominador:
+	\[
+	5y^3+8y^2=y^2(5y+8),
+	\qquad
+	3y^4-16y^2=y^2(3y^2-16).
+	\]
+	
+	Simplificando:
+	\[
+	\lim_{y\to 0}\frac{5y^3+8y^2}{3y^4-16y^2}=\lim_{y\to 0}\frac{5y+8}{3y^2-16}.
+	\]
+	
+	Evaluando:
+	\[
+	\frac{5(0)+8}{3(0)^2-16}=\frac{8}{-16}=-\frac{1}{2}.
+	\]
+	
+	\[
+	\boxed{\lim_{y\to 0}\frac{5y^3+8y^2}{3y^4-16y^2}=-\frac{1}{2}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$y$},ylabel={$z$},title={$z=\frac{5y^3+8y^2}{3y^4-16y^2}$},xmin=-5,xmax=5,ymin=-8,ymax=8,samples=400,unbounded coords=jump]
+				\addplot[blue,thick,domain=-5:-2.35] {(5*x^3+8*x^2)/(3*x^4-16*x^2)};
+				\addplot[blue,thick,domain=-2.25:-0.1] {(5*x^3+8*x^2)/(3*x^4-16*x^2)};
+				\addplot[blue,thick,domain=0.1:2.25] {(5*x^3+8*x^2)/(3*x^4-16*x^2)};
+				\addplot[blue,thick,domain=2.35:5] {(5*x^3+8*x^2)/(3*x^4-16*x^2)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(0,-0.5)};
+				\addplot[dashed,red,thick] coordinates {(-2.309,-8) (-2.309,8)};
+				\addplot[dashed,red,thick] coordinates {(2.309,-8) (2.309,8)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 4-26}
+		%\small Figura 28. Gráfica de \(z=\frac{5y^3+8y^2}{3y^4-16y^2}\).
+	\end{center}
+	
+	\subsection{Ejercicio 27}
+	
+	Calcular:
+	\[
+	\lim_{u\to 1}\frac{u^4-1}{u^3-1}.
+	\]
+	
+	Factorizamos:
+	\[
+	u^4-1=(u-1)(u+1)(u^2+1),
+	\qquad
+	u^3-1=(u-1)(u^2+u+1).
+	\]
+	
+	Entonces:
+	\[
+	\lim_{u\to 1}\frac{u^4-1}{u^3-1}=\lim_{u\to 1}\frac{(u+1)(u^2+1)}{u^2+u+1}.
+	\]
+	
+	Evaluando:
+	\[
+	\frac{(1+1)(1^2+1)}{1^2+1+1}=\frac{2\cdot 2}{3}=\frac{4}{3}.
+	\]
+	
+	\[
+	\boxed{\lim_{u\to 1}\frac{u^4-1}{u^3-1}=\frac{4}{3}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$u$},ylabel={$y$},title={$y=\frac{u^4-1}{u^3-1}$},xmin=-4,xmax=4,ymin=-8,ymax=8,samples=400,unbounded coords=jump]
+				\addplot[teal,thick,domain=-4:0.95] {(x^4-1)/(x^3-1)};
+				\addplot[teal,thick,domain=1.05:4] {(x^4-1)/(x^3-1)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(1,1.333)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 4-27}
+		%\small Figura 29. Gráfica de \(y=\frac{u^4-1}{u^3-1}\).
+	\end{center}
+	
+	\subsection{Ejercicio 30}
+	
+	Calcular:
+	\[
+	\lim_{x\to 4}\frac{4x-x^2}{2-\sqrt{x}}.
+	\]
+	
+	Factorizamos el numerador:
+	\[
+	4x-x^2=x(4-x).
+	\]
+	
+	Racionalizamos:
+	\[
+	\frac{x(4-x)}{2-\sqrt{x}}\cdot\frac{2+\sqrt{x}}{2+\sqrt{x}}.
+	\]
+	
+	Como:
+	\[
+	(2-\sqrt{x})(2+\sqrt{x})=4-x,
+	\]
+	
+	entonces:
+	\[
+	\lim_{x\to 4}x(2+\sqrt{x}).
+	\]
+	
+	Evaluando:
+	\[
+	4(2+\sqrt{4})=4(2+2)=16.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to 4}\frac{4x-x^2}{2-\sqrt{x}}=16}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{4x-x^2}{2-\sqrt{x}}$},xmin=0,xmax=9,ymin=0,ymax=30,samples=400,unbounded coords=jump]
+				\addplot[purple,thick,domain=0:3.95] {(4*x-x^2)/(2-sqrt(x))};
+				\addplot[purple,thick,domain=4.05:9] {(4*x-x^2)/(2-sqrt(x))};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(4,16)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 4-30}
+		%\small Figura 30. Gráfica de \(y=\frac{4x-x^2}{2-\sqrt{x}}\).
+	\end{center}
+	
+	% ============================================================
+	% SECCIÓN 6: LÍMITES LATERALES
+	% ============================================================
+	
+	\section{Límites laterales}
+	
+	\subsection{Ejercicio 11}
+	
+	Calcular:
+	\[
+	\lim_{x\to -0.5}\sqrt{\frac{x+2}{x+1}}.
+	\]
+	
+	Aplicando sustitución directa:
+	\[
+	\sqrt{\frac{-0.5+2}{-0.5+1}}=\sqrt{\frac{1.5}{0.5}}=\sqrt{3}.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to -0.5}\sqrt{\frac{x+2}{x+1}}=\sqrt{3}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\sqrt{\frac{x+2}{x+1}}$},xmin=-8,xmax=6,ymin=0,ymax=6,samples=400,unbounded coords=jump]
+				\addplot[blue,thick,domain=-8:-2] {sqrt(max(0,(x+2)/(x+1)))};
+				\addplot[blue,thick,domain=-0.95:6] {sqrt(max(0,(x+2)/(x+1)))};
+				\addplot[dashed,red,thick] coordinates {(-1,0) (-1,6)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(-0.5,{sqrt(3)})};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 5-11}
+		%\small Figura 31. Gráfica de \(y=\sqrt{\frac{x+2}{x+1}}\).
+	\end{center}
+	
+	\subsection{Ejercicio 14}
+	
+	Calcular:
+	\[
+	\lim_{x\to 1}\left(\frac{1}{x+1}\right)\left(\frac{x+6}{x}\right)\left(\frac{3-x}{7}\right).
+	\]
+	
+	Aplicando sustitución directa:
+	\[
+	\left(\frac{1}{1+1}\right)\left(\frac{1+6}{1}\right)\left(\frac{3-1}{7}\right)=\frac{1}{2}\cdot 7\cdot\frac{2}{7}=1.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to 1}\left(\frac{1}{x+1}\right)\left(\frac{x+6}{x}\right)\left(\frac{3-x}{7}\right)=1}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\left(\frac{1}{x+1}\right)\left(\frac{x+6}{x}\right)\left(\frac{3-x}{7}\right)$},xmin=-6,xmax=6,ymin=-8,ymax=8,samples=400,unbounded coords=jump]
+				\addplot[teal,thick,domain=-6:-1.05] {(1/(x+1))*((x+6)/x)*((3-x)/7)};
+				\addplot[teal,thick,domain=-0.95:-0.05] {(1/(x+1))*((x+6)/x)*((3-x)/7)};
+				\addplot[teal,thick,domain=0.05:6] {(1/(x+1))*((x+6)/x)*((3-x)/7)};
+				\addplot[dashed,red,thick] coordinates {(-1,-8) (-1,8)};
+				\addplot[dashed,red,thick] coordinates {(0,-8) (0,8)};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(1,1)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 5-14}
+		%\small Figura 32. Gráfica de la función del ejercicio 14.
+	\end{center}
+	
+	\subsection{Ejercicio 16}
+	
+	Calcular:
+	\[
+	\lim_{h\to 0}\frac{\sqrt{6}-\sqrt{5h^2+11h+6}}{h}.
+	\]
+	
+	Multiplicamos por el conjugado:
+	\[
+	\frac{\sqrt{6}-\sqrt{5h^2+11h+6}}{h}\cdot
+	\frac{\sqrt{6}+\sqrt{5h^2+11h+6}}{\sqrt{6}+\sqrt{5h^2+11h+6}}.
+	\]
+	
+	El numerador queda:
+	\[
+	6-(5h^2+11h+6)=-5h^2-11h=-h(5h+11).
+	\]
+	
+	Entonces:
+	\[
+	\lim_{h\to 0}\frac{-h(5h+11)}{h\left(\sqrt{6}+\sqrt{5h^2+11h+6}\right)}.
+	\]
+	
+	Simplificando:
+	\[
+	\lim_{h\to 0}\frac{-(5h+11)}{\sqrt{6}+\sqrt{5h^2+11h+6}}.
+	\]
+	
+	Evaluando:
+	\[
+	\frac{-11}{\sqrt{6}+\sqrt{6}}=-\frac{11}{2\sqrt{6}}=-\frac{11\sqrt{6}}{12}.
+	\]
+	
+	\[
+	\boxed{\lim_{h\to 0}\frac{\sqrt{6}-\sqrt{5h^2+11h+6}}{h}=-\frac{11\sqrt{6}}{12}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$h$},ylabel={$y$},title={$y=\frac{\sqrt{6}-\sqrt{5h^2+11h+6}}{h}$},xmin=-3,xmax=3,ymin=-8,ymax=4,samples=500,unbounded coords=jump]
+				\addplot[purple,thick,domain=-3:-1.2] {(sqrt(6)-sqrt(5*x^2+11*x+6))/x};
+				\addplot[purple,thick,domain=-1.15:-0.05] {(sqrt(6)-sqrt(5*x^2+11*x+6))/x};
+				\addplot[purple,thick,domain=0.05:3] {(sqrt(6)-sqrt(5*x^2+11*x+6))/x};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(0,{-11*sqrt(6)/12})};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 5-16}
+		%\small Figura 33. Gráfica de la función del ejercicio 16.
+	\end{center}
+	
+	% ============================================================
+	% SECCIÓN 7: LÍMITES TRIGONOMÉTRICOS
+	% ============================================================
+	
+	\section{Límites trigonométricos}
+	
+	\subsection{Ejercicio 21}
+	
+	Calcular:
+	\[
+	\lim_{\theta\to 0}\frac{\sin\sqrt{2\theta}}{\sqrt{2\theta}}.
+	\]
+	
+	Se usa el límite trigonométrico fundamental:
+	\[
+	\lim_{u\to 0}\frac{\sin u}{u}=1.
+	\]
+	
+	Sea:
+	\[
+	u=\sqrt{2\theta}.
+	\]
+	
+	Cuando \(\theta\to 0\), entonces \(u\to 0\). Por tanto:
+	\[
+	\lim_{\theta\to 0}\frac{\sin\sqrt{2\theta}}{\sqrt{2\theta}}=\lim_{u\to 0}\frac{\sin u}{u}=1.
+	\]
+	
+	\[
+	\boxed{\lim_{\theta\to 0}\frac{\sin\sqrt{2\theta}}{\sqrt{2\theta}}=1}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$\theta$},ylabel={$y$},title={$y=\frac{\sin(\sqrt{2\theta})}{\sqrt{2\theta}}$},xmin=0,xmax=8,ymin=-0.5,ymax=1.2,samples=500,unbounded coords=jump]
+				\addplot[blue,thick,domain=0.01:8] {sin(deg(sqrt(2*x)))/(sqrt(2*x))};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(0,1)};
+				\addplot[dashed,orange,thick] coordinates {(0,1) (8,1)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 6-21}
+		%\small Figura 34. Gráfica de \(y=\frac{\sin(\sqrt{2\theta})}{\sqrt{2\theta}}\).
+	\end{center}
+	
+	\subsection{Ejercicio 25}
+	
+	Calcular:
+	\[
+	\lim_{x\to 0}\frac{\tan 2x}{x}.
+	\]
+	
+	Se expresa la tangente en términos de seno y coseno:
+	\[
+	\tan 2x=\frac{\sin 2x}{\cos 2x}.
+	\]
+	
+	Entonces:
+	\[
+	\lim_{x\to 0}\frac{\tan 2x}{x}=\lim_{x\to 0}\frac{\sin 2x}{x\cos 2x}=\lim_{x\to 0}2\left(\frac{\sin 2x}{2x}\right)\frac{1}{\cos 2x}.
+	\]
+	
+	Aplicando los límites fundamentales:
+	\[
+	2(1)\frac{1}{1}=2.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to 0}\frac{\tan 2x}{x}=2}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{\tan(2x)}{x}$},xmin=-1.4,xmax=1.4,ymin=-8,ymax=8,samples=500,restrict y to domain=-8:8,unbounded coords=jump]
+				\addplot[teal,thick,domain=-1.4:-0.05] {tan(deg(2*x))/x};
+				\addplot[teal,thick,domain=0.05:1.4] {tan(deg(2*x))/x};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(0,2)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 6-25}
+		%\small Figura 35. Gráfica de \(y=\frac{\tan(2x)}{x}\).
+	\end{center}
+	
+	\subsection{Ejercicio 28}
+	
+	Calcular:
+	\[
+	\lim_{x\to 0}6x^2(\cot x)(\csc 2x).
+	\]
+	
+	Primero se escriben las funciones trigonométricas en términos de seno y coseno:
+	\[
+	\cot x=\frac{\cos x}{\sin x},
+	\qquad
+	\csc 2x=\frac{1}{\sin 2x}.
+	\]
+	
+	Entonces:
+	\[
+	6x^2(\cot x)(\csc 2x)=6x^2\left(\frac{\cos x}{\sin x}\right)\left(\frac{1}{\sin 2x}\right).
+	\]
+	
+	Reorganizando:
+	\[
+	6\left(\frac{x}{\sin x}\right)\left(\frac{x}{\sin 2x}\right)\cos x.
+	\]
+	
+	Como:
+	\[
+	\frac{x}{\sin 2x}=\frac{1}{2}\cdot\frac{2x}{\sin 2x},
+	\]
+	
+	se obtiene:
+	\[
+	6(1)\left(\frac{1}{2}\right)(1)(1)=3.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to 0}6x^2(\cot x)(\csc 2x)=3}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=6x^2(\cot x)(\csc 2x)$},xmin=-1.4,xmax=1.4,ymin=-2,ymax=8,samples=400,restrict y to domain=-2:8,unbounded coords=jump]
+				\addplot[purple,thick,domain=-1.4:-0.1] {6*x^2*(cos(deg(x))/sin(deg(x)))*(1/sin(deg(2*x)))};
+				\addplot[purple,thick,domain=0.1:1.4] {6*x^2*(cos(deg(x))/sin(deg(x)))*(1/sin(deg(2*x)))};
+				\addplot[only marks,mark=*,red,mark size=2.5pt] coordinates {(0,3)};
+				\addplot[dashed,orange,thick] coordinates {(-1.4,3) (1.4,3)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 6-28}
+		%\small Figura 36. Gráfica de \(y=6x^2(\cot x)(\csc 2x)\).
+	\end{center}
+	
+	% ============================================================
+	% SECCIÓN 8: LÍMITES AL INFINITO
+	% ============================================================
+	
+	\section{Límites al infinito}
+	
+	\subsection{Ejercicio a}
+	
+	Calcular:
+	\[
+	\lim_{x\to\infty}\frac{6x^2-4x+6}{-10x^2+5}.
+	\]
+	
+	Como el numerador y el denominador tienen el mismo grado, el límite se obtiene mediante la razón entre los coeficientes principales:
+	\[
+	\lim_{x\to\infty}\frac{6x^2-4x+6}{-10x^2+5}=\frac{6}{-10}=-\frac{3}{5}.
+	\]
+	
+	\[
+	\boxed{\lim_{x\to\infty}\frac{6x^2-4x+6}{-10x^2+5}=-\frac{3}{5}}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{6x^2-4x+6}{-10x^2+5}$},xmin=-10,xmax=10,ymin=-8,ymax=8,samples=500,unbounded coords=jump]
+				\addplot[blue,thick,domain=-10:-0.75] {(6*x^2-4*x+6)/(-10*x^2+5)};
+				\addplot[blue,thick,domain=-0.65:0.65] {(6*x^2-4*x+6)/(-10*x^2+5)};
+				\addplot[blue,thick,domain=0.75:10] {(6*x^2-4*x+6)/(-10*x^2+5)};
+				\addplot[dashed,orange,thick] coordinates {(-10,-0.6) (10,-0.6)};
+				\addplot[dashed,red,thick] coordinates {(-0.707,-8) (-0.707,8)};
+				\addplot[dashed,red,thick] coordinates {(0.707,-8) (0.707,8)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 7A}
+		%\small Figura 37. Gráfica de \(y=\frac{6x^2-4x+6}{-10x^2+5}\).
+	\end{center}
+	
+	\subsection{Ejercicio b}
+	
+	Calcular:
+	\[
+	\lim_{x\to\infty}\frac{4x+6}{7x^2+5}.
+	\]
+	
+	El grado del numerador es menor que el grado del denominador. Por ello:
+	\[
+	\boxed{\lim_{x\to\infty}\frac{4x+6}{7x^2+5}=0}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{4x+6}{7x^2+5}$},xmin=-10,xmax=10,ymin=-1,ymax=1,samples=500,unbounded coords=jump]
+				\addplot[teal,thick,domain=-10:10] {(4*x+6)/(7*x^2+5)};
+				\addplot[dashed,orange,thick] coordinates {(-10,0) (10,0)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 7B}
+		%\small Figura 38. Gráfica de \(y=\frac{4x+6}{7x^2+5}\).
+	\end{center}
+	
+	\subsection{Ejercicio c}
+	
+	Calcular:
+	\[
+	\lim_{x\to\infty}\frac{x^3-3x+6}{4x^2-2}.
+	\]
+	
+	El grado del numerador es mayor que el grado del denominador:
+	\[
+	\deg(x^3-3x+6)=3,
+	\qquad
+	\deg(4x^2-2)=2.
+	\]
+	
+	Comparando los términos principales:
+	\[
+	\frac{x^3}{4x^2}=\frac{x}{4}.
+	\]
+	
+	Como \(\frac{x}{4}\to\infty\) cuando \(x\to\infty\), se concluye que:
+	\[
+	\boxed{\lim_{x\to\infty}\frac{x^3-3x+6}{4x^2-2}=\infty}
+	\]
+	
+	\subsubsection*{Gráfica de la función}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[width=12cm,height=7cm,grid=both,axis lines=middle,xlabel={$x$},ylabel={$y$},title={$y=\frac{x^3-3x+6}{4x^2-2}$},xmin=-10,xmax=10,ymin=-10,ymax=10,samples=500,unbounded coords=jump]
+				\addplot[purple,thick,domain=-10:-0.75] {(x^3-3*x+6)/(4*x^2-2)};
+				\addplot[purple,thick,domain=-0.65:0.65] {(x^3-3*x+6)/(4*x^2-2)};
+				\addplot[purple,thick,domain=0.75:10] {(x^3-3*x+6)/(4*x^2-2)};
+				\addplot[dashed,red,thick] coordinates {(-0.707,-10) (-0.707,10)};
+				\addplot[dashed,red,thick] coordinates {(0.707,-10) (0.707,10)};
+			\end{axis}
+		\end{tikzpicture}
+		
+		\miFigura{Gráfica de la función 7C}
+		%\small Figura 39. Gráfica de \(y=\frac{x^3-3x+6}{4x^2-2}\).
+	\end{center}
+	\section{Conclusiones}
+	
+	\begin{enumerate}
+		
+		\item Es bastante evidente que el análisis del dominio, el rango, la composición y la interpretación gráfica ayuda a tener una comprensión más profunda del comportamiento de las funciones reales. Quedó claro que estas ideas representan retos reales en términos de funciones.
+		
+		\item La sustitución directa, el factoreo, la racionalización y las propiedades algebraicas en la resolución de límites mejoraron las habilidades para realizar el análisis matemático y, por lo tanto, la detección y resolución de expresiones indeterminadas de manera coherente y adecuada. De manera similar cada técnica debe aplicarse de acuerdo con las características específicas de un ejercicio de manera adecuada como lo confirma este trabajo.
+		
+		\item La representación gráfica de funciones y límites ayuda a la comprensión visual de problemas como discontinuidades asíntotas comportamiento en el infinito y tendencias de una función en ciertos intervalos. En ese espíritu, GeoGebra y Desmos facilitaron las comparaciones de los resultados obtenidos analíticamente. Como resultado, también se obtuvo más confianza y precisión en la solución desarrollada.
+		
+		
+		
+	\end{enumerate}
+	
+	
+	\clearpage
+	
+	\section*{Índice General}
+	\addcontentsline{toc}{section}{Índice General}
+	
+	\tableofcontents
+	\newpage
+	\FondoFinal
+	
+	\section*{Índice de Figuras}
+	\listoffigures
+	
+	
+\end{document}

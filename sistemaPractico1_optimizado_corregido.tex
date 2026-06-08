@@ -1,0 +1,1805 @@
+\documentclass[12pt,a4paper]{article}
+
+% ===== PAQUETES =====
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[most]{tcolorbox}
+\usepackage{fontawesome5}
+\usepackage{needspace}
+
+% ===== MÁRGENES =====
+\geometry{left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm}
+
+\definecolor{azulUNEMI}{RGB}{0,31,63}
+
+% ===== COLORES PSEINT =====
+\definecolor{pseKeyword}{RGB}{0,0,153}
+\definecolor{pseString}{RGB}{0,102,0}
+\definecolor{pseNumber}{RGB}{204,0,0}
+\definecolor{pseComment}{RGB}{128,128,128}
+
+% ===== COMANDOS DE COLOR =====
+\newcommand{\kw}[1]{\textcolor{pseKeyword}{\textbf{#1}}}
+\newcommand{\txt}[1]{\textcolor{pseString}{"#1"}}
+\newcommand{\num}[1]{\textcolor{pseNumber}{#1}}
+\newcommand{\cmt}[1]{\textcolor{pseComment}{\textit{// #1}}}
+
+% ===== OPERADORES =====
+\newcommand{\opAsig}{\textcolor{pseKeyword}{$=$}}
+\newcommand{\opMas}{\textcolor{pseKeyword}{$+$}}
+\newcommand{\opMenos}{\textcolor{pseKeyword}{$-$}}
+\newcommand{\opPor}{\textcolor{pseKeyword}{$*$}}
+\newcommand{\opDiv}{\textcolor{pseKeyword}{$/$}}
+\newcommand{\opIgual}{\textcolor{pseKeyword}{$=$}}
+\newcommand{\opMayor}{\textcolor{pseKeyword}{$>$}}
+\newcommand{\opMenor}{\textcolor{pseKeyword}{$<$}}
+\newcommand{\opMayorIgual}{\textcolor{pseKeyword}{$\geq$}}
+\newcommand{\opMenorIgual}{\textcolor{pseKeyword}{$\leq$}}
+
+% ===== COMANDOS PSEINT =====
+\newcommand{\Asignacion}[2]{#1\; \opAsig\; #2}
+\newcommand{\Escribir}[1]{\kw{Escribir} #1}
+\newcommand{\EscribirSS}[1]{\kw{Escribir} #1 \kw{Sin Saltar}}
+\newcommand{\Leer}[1]{\kw{Leer} #1}
+\newcommand{\Definir}[2]{\kw{Definir} #1 \kw{Como} \kw{#2}}
+\newcommand{\Si}[1]{\kw{Si} #1 \kw{Entonces}}
+\newcommand{\Sino}{\kw{Sino}}
+\newcommand{\FinSi}{\kw{FinSi}}
+\newcommand{\Para}[4]{\kw{Para} #1 \opAsig{} \num{#2} \kw{Hasta} \num{#3} \kw{Con Paso} \num{#4} \kw{Hacer}}
+\newcommand{\FinPara}{\kw{FinPara}}
+\newcommand{\Repetir}{\kw{Repetir}}
+\newcommand{\HastaQue}[1]{\kw{Hasta Que} #1}
+\newcommand{\Segun}[1]{\kw{Segun} #1 \kw{Hacer}}
+\newcommand{\FinSegun}{\kw{FinSegun}}
+\newcommand{\DeOtroModo}{\kw{De Otro Modo:}}
+\newcommand{\Subproceso}[1]{\kw{Subproceso} \textbf{#1}}
+\newcommand{\FinSubproceso}{\kw{FinSubproceso}}
+\newcommand{\Dimension}[1]{\kw{Dimension} #1}
+
+% ===== CONFIGURACIÓN ALGORITHMIC =====
+\algrenewcommand\algorithmicindent{1.5em}
+\renewcommand{\thealgorithm}{}
+\floatname{algorithm}{Algoritmo}
+
+% ===== INDENTACIONES MANUALES =====
+\newcommand{\I}{\hspace{1.5em}}
+\newcommand{\II}{\hspace{3.0em}}
+\newcommand{\III}{\hspace{4.5em}}
+\newcommand{\IV}{\hspace{5.5em}}
+
+% ===== ÍNDICE DE FIGURAS APA 7 =====
+\newcounter{ejecucion}
+
+\makeatletter
+\newcommand{\listadefiguraspseint}{%
+	\section*{Índice de figuras}
+	\addcontentsline{toc}{section}{Índice de figuras}
+	\@starttoc{toe}
+}
+\makeatother
+
+\newcommand{\InicioEjecucion}[2]{%
+	\Needspace{8\baselineskip}
+	\refstepcounter{ejecucion}
+	\addcontentsline{toe}{section}{Figura \theejecucion. #1}
+	\label{#2}
+	
+	\noindent\textbf{Figura \theejecucion}
+	
+	\vspace{0.1cm}
+	
+	\noindent\textit{#1}
+	
+	\vspace{0.3cm}
+}
+\newcommand{\consola}[1]{\noindent\textcolor{pseString}{#1}}
+\newcommand{\entrada}[1]{\textcolor{black}{#1}}
+
+% ===== MACROS PARA VENTANAS DE EJECUCIÓN PSEINT =====
+\newenvironment{PSeIntWindow}{%
+	\begin{tcolorbox}[
+		breakable,
+		enhanced,
+		colback=white,
+		colframe=black!60,
+		boxrule=0.5pt,
+		arc=1mm,
+		left=0mm,
+		right=0mm,
+		top=0mm,
+		bottom=2mm,
+		width=\textwidth
+		]
+	}{%
+	\end{tcolorbox}
+}
+
+\newcommand{\BarraPSeInt}{%
+	\colorbox{gray!20}{%
+		\parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
+			\small
+			\textcolor{pseString}{\faPlayCircle}
+			\hspace{0.3em}
+			PSeInt - Ejecutando proceso SISTEMA\_GRUPO3
+			\hfill
+			\texttt{\_ \hspace{0.5em} \(\square\) \hspace{0.5em} X}
+		}
+	}
+}
+
+\newcommand{\lineaPSeInt}[1]{%
+	\begin{flushright}
+		\colorbox{gray!20}{\ttfamily\small\textcolor{black}{#1}}
+	\end{flushright}
+}
+%*************************************************
+
+\usepackage{tocloft}
+
+\renewcommand{\cftsecfont}{\color{azulUNEMI}}
+\renewcommand{\cftsecpagefont}{\color{azulUNEMI}}
+
+\renewcommand{\cftsubsecfont}{\color{azulUNEMI}}
+\renewcommand{\cftsubsecpagefont}{\color{azulUNEMI}}
+
+\usepackage{tocloft}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+
+
+%**************************************************
+%*************************************************
+%***********************************************
+\begin{document}
+	
+	%*******************************************************
+	% =====================================================
+	% PORTADA EN HOJA BLANCA
+	% =====================================================
+	
+	\begin{titlepage}
+		\centering
+		
+		\vspace*{1cm}
+		
+		{\Large\bfseries UNIVERSIDAD ESTATAL DE MILAGRO\par}
+		\vspace{0.5cm}
+		
+		{\large\bfseries FACULTAD DE CIENCIAS E INGENIERÍA\par}
+		{\large\bfseries CARRERA TECNOLOGÍAS DE LA INFORMACIÓN\par}
+		
+		\vspace{1.5cm}
+		
+		{\bfseries TEMA:\par}
+		\vspace{0.2cm}
+		COMPONENTE PRÁCTICO No. 1
+		
+		\vspace{1cm}
+		
+		{\bfseries AUTORES:\par}
+		\vspace{0.3cm}
+		Albán Coello Diego Andrés\par
+		Ayala Pérez Ana Gabriela\par
+		Bueno Pincay Solange Marisol\par
+		Calero Maldonado Ángel Fernando\par
+		Dutan Bonilla Ronald Miguel\par
+		González Estrada Ángel Omar (NO TRABAJÓ)\par
+		Proaño Alcivar Roberto Celestino\par
+		Villega Segura Israel Alfonso (NO TRABAJÓ)\par
+		
+		\vspace{1cm}
+		
+		{\bfseries ASIGNATURA:\par}
+		Fundamentos de la Programación
+		
+		\vspace{0.5cm}
+		
+		{\bfseries DOCENTE:\par}
+		Freire Aviles Roger Marcelo
+		
+		\vspace{0.5cm}
+		
+		{\bfseries FECHA DE ENTREGA:\par}
+		11 de junio 2026
+		
+		\vspace{0.5cm}
+		
+		{\bfseries PERÍODO:\par}
+		Abril 2026 a Julio 2026
+		
+		\vfill
+		
+		{\bfseries MILAGRO -- ECUADOR\par}
+		
+	\end{titlepage}
+	
+	
+	% =====================================================
+	% TABLA DE PARTICIPACIÓN
+	% =====================================================
+	
+	\newpage
+	
+	\begin{center}
+		{\Large\bfseries LINK DE COMPONENTE PRÁCTICO 1}
+	\end{center}
+	
+	\vspace{3cm}
+	
+	\begin{center}
+		{\bfseries Tabla de participación:}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	\begin{center}
+		\begin{tabular}{|p{4cm}|p{4cm}|p{3cm}|p{4cm}|}
+			\hline
+			\textbf{Integrante} & \textbf{Tema} & \textbf{Tiempo} & \textbf{Observación} \\ \hline
+			& Introducción & & \\ \hline
+			Bueno Solange & & & \\ \hline
+			Bueno Solange & & & \\ \hline
+			Proaño Roberto & & & \\ \hline
+			Ayala Ana & & & \\ \hline
+			Albán Diego & & & \\ \hline
+			Calero Ángel & & & \\ \hline
+			Dután Ronald & & & \\ \hline
+			& Conclusión & & \\ \hline
+		\end{tabular}
+	\end{center}
+	
+	
+	% =====================================================
+	% INTRODUCCIÓN Y OBJETIVOS
+	% =====================================================
+	
+	\newpage
+	\section{\textcolor{azulUNEMI}{Introducción}}
+	
+	
+	Este proyecto tiene como finalidad integrar los conocimientos adquiridos durante el desarrollo de los Trabajos Prácticos 1 y 2 respectivamente, mediante la construcción de un sistema multitarea en PSeInt que permite ejecutar diferentes ejercicios desde un único menú interactivo.
+	
+	Para el desarrollo del sistema se aplicaron conceptos fundamentales de programación como el uso de variables, estructuras condicionales, estructuras repetitivas, arreglos unidimensionales y modularización mediante subprocesos. La implementación de estas herramientas permitió organizar el programa de manera eficiente, facilitando la reutilización del código y mejorando su mantenimiento.
+	
+	El sistema desarrollado incluye cuatro módulos funcionales: conversión de longitudes entre distintas unidades de medida, cálculo de sueldo neto semanal considerando horas extras y descuentos obligatorios, operaciones matemáticas entre vectores y visualización de arreglos en orden inverso. Además, se incorporaron mecanismos de validación de datos para garantizar un funcionamiento adecuado ante posibles errores de ingreso por parte del usuario.
+	
+	La realización de este proyecto permitió fortalecer las habilidades de análisis, diseño algorítmico y resolución de problemas, competencias esenciales para nuestra formación como futuros profesionales en el área de las Tecnologías de la Información.
+	
+	\section{\textcolor{azulUNEMI}{Objetivo General}}
+	
+	
+	Desarrollar un sistema multitarea en PSeInt que integre diferentes ejercicios de programación mediante un menú interactivo y subprocesos independientes, aplicando estructuras de control, arreglos y técnicas de modularización para fortalecer los conocimientos fundamentales de programación.
+	
+		\subsection{\textcolor{azulUNEMI}{Objetivos Específicos}}
+	
+	
+	\begin{itemize}
+		\item Diseñar un menú principal que permita acceder a cada una de las funcionalidades del sistema de manera organizada e intuitiva.
+		\item Implementar un módulo para la conversión automática de longitudes desde metros hacia pies, pulgadas, yardas y millas.
+		\item Desarrollar un módulo de cálculo de nómina semanal considerando horas normales, horas extraordinarias y descuentos obligatorios.
+		\item Aplicar el uso de arreglos unidimensionales para realizar operaciones de suma y resta entre vectores.
+		\item Utilizar estructuras repetitivas para almacenar, recorrer y mostrar datos en arreglos de tamaño fijo y dinámico.
+		\item Emplear subprocesos para modularizar el programa, facilitando la reutilización y el mantenimiento del código.
+		\item Incorporar validaciones que permitan controlar errores de entrada y mejorar la confiabilidad del sistema.
+	\end{itemize}
+	
+	
+	% =====================================================
+	% DESARROLLO DEL SISTEMA
+	% =====================================================
+	
+	\newpage
+	
+	\section{\textcolor{azulUNEMI}{Desarrollo del sistema}}
+	
+	\vspace{0.3cm}
+	
+	% AQUÍ COLOCAS EL CÓDIGO DEL SISTEMA PSEINT FORMATEADO
+	
+	% AQUÍ VAN TODAS LAS FIGURAS DE EJECUCIÓN
+	
+	%*********************************************************
+	%**********************************************************
+	%**********************************************************
+	\begin{center}
+		{\LARGE\bfseries\textcolor{pseString}{SISTEMA MULTITAREA GRUPO 3}}
+	\end{center}
+	\vspace{0.5cm}
+	\noindent
+	\begin{algorithmic}[1]
+		
+		\State \kw{Algoritmo} Sistema\_Grupo3
+		
+		\State \I \kw \cmt{Encabezado}
+		\State \I \kw \Escribir{\txt{===================================}}
+		\State \I \kw \Escribir{\txt{           UNIVERSIDAD ESTATAL DE MILAGRO}}
+		\State \I \kw \Escribir{\txt{        FACULTAD DE CIENCIAS DE LA INGENIERIA}}
+		\State \I \kw \Escribir{\txt{    INGENIERIA EN TECNOLOGIAS DE LA INFORMACION}}
+		\State \I \kw \Escribir{\txt{====================================}}
+		\State \I \kw \Escribir{\txt{PROYECTO: COMPONENTE PRACTICO 1}}
+		\State \I \kw \Escribir{\txt{GRUPO NRO: 3}}
+		\State \I \kw \Escribir{\txt{INTEGRANTES:}}
+		\State \I \kw \Escribir{\txt{  DIEGO ANDRES ALBAN COELLO        0959061219}}
+		\State \I \kw \Escribir{\txt{  ANA GABRIELA AYALA PEREZ         1719195321}}
+		\State \I \kw \Escribir{\txt{  SOLANGE MARISOL BUENO PINCAY     0927255901}}
+		\State \I \kw \Escribir{\txt{  ANGEL FERNANDO CALERO MALDONADO  1715227110}}
+		\State \I \kw \Escribir{\txt{  RONALD MIGUEL DUTAN BONILLA      0940568066}}
+		\State \I \kw \Escribir{\txt{  ROBERTO CELESTINO PROANO ALCIVAR 1206695635}}
+		\State \I \kw \Escribir{\txt{  ISRAEL ALFONSO VILLEGA SEGURA    0952182244}}
+		\State \I \kw \Escribir{\txt{=======================================}}
+		\State \I \kw \Escribir{\txt{SISTEMA INICIALIZADO. Presione una tecla para continuar...}}
+		\State \I \kw{Esperar Tecla}
+		\State
+		
+		\State \I \cmt{Declaracion de variables generales}
+		\State \I \Definir{opcionSeleccionada}{Entero}
+		\State \I \kw \Definir{Salir}{Logico}
+		\State \I \Asignacion{Salir}{\kw{Falso}}
+		
+		
+		\State \I \kw \cmt{Ciclo repetitivo hasta que elija Salir}
+		\State \I \kw \Repetir
+		\State \II \kw{Limpiar Pantalla}
+		\State \II \Escribir{\txt{=====================================}}
+		\State \II \Escribir{\txt{              MENU PRINCIPAL}}
+		\State \II \Escribir{\txt{======================================}}
+		\State \II \Escribir{\txt{1. Conversion de Longitudes}}
+		\State \II \Escribir{\txt{2. Calcular el sueldo neto semanal de un trabajador}}
+		\State \II \Escribir{\txt{3. Suma y resta de dos arreglos unidimensionales}}
+		\State \II \Escribir{\txt{4. Inversa de un arreglo de N elementos}}
+		\State \II \Escribir{\txt{5. Salir}}
+		\State \II \Escribir{\txt{======================================}}
+		\State \II \EscribirSS{\txt{Por favor, seleccione una opcion (1-5): }}
+		\State \II \Leer{opcionSeleccionada}
+		\State
+		\State \II \cmt{Llamada a los subprogramas}
+		\State \II \Segun{opcionSeleccionada}
+		\State \III \num{1}\textbf{:}
+		\State \IV SubProgramaConversion
+		\State \III \num{2}\textbf{:}
+		\State \IV SubProgramaCalculoSueldo
+		\State \III \num{3}\textbf{:}
+		\State \IV SubProgramaOperacionVectores
+		\State \III \num{4}\textbf{:}
+		\State \IV SubProgramaVectorInverso
+		\State \III \num{5}\textbf{:}
+		\State \IV \kw{Limpiar Pantalla}
+		\State \IV \Escribir{\txt{Cerrando la sesion con exito de forma segura.}}
+		\State \IV \Escribir{\txt{Proyecto desarrollado Por el Grupo 3.}}
+		\State \IV \Escribir{\txt{Derechos reservados Grupo 3 febrero-agosto 2026.}}
+		\State \IV \Asignacion{Salir}{\kw{Verdadero}}
+		\State \III \DeOtroModo
+		\State \III \Escribir{\txt{ERROR CRITICO: La opcion [}, opcionSeleccionada, \txt{] no es}}
+		\State \III \Escribir{\txt{correcta.}}
+		\State \IV \Escribir{\txt{Intente nuevamente introduciendo un numero del 1 a 5.}}
+		\State \IV \Escribir{\txt{Presione una tecla para continuar...}}
+		\State \IV \kw{Esperar Tecla}
+		\State \II \FinSegun
+		\State \I \HastaQue{Salir \opIgual{} \kw{Verdadero}}
+		\State
+		\State \kw{FinAlgoritmo}
+		
+		
+		\State \Subproceso{SubProgramaConversion}
+		\State \I \kw{Limpiar Pantalla}
+		\State \I \Definir{metrosIngresados}{Real}
+		\State \I \Definir{pies, pulgadas, yardas, millas}{Real}
+		\State
+		\State \I \Escribir{\txt{=====================================}}
+		\State \I \Escribir{\txt{                  MODULO 1}}
+		\State \I \Escribir{\txt{=====================================}}
+		\State \I \EscribirSS{\txt{Ingrese la magnitud en Metros a convertir: }}
+		\State \I \Leer{metrosIngresados}
+		\State
+		\State \I \cmt{Validacion: metros deben ser positivos o 0}
+		\State \I \Si{metrosIngresados \opMenor{} \num{0}}
+		\State \II \Escribir{\txt{ERROR el numero ingresado debe ser positivo.}}
+		\State \I \Sino
+		\State \II \cmt{conversion}
+		\State \II \Asignacion{pies}{metrosIngresados \opPor{} \num{3.28084}}
+		\State \II \Asignacion{pulgadas}{metrosIngresados \opPor{} \num{39.3701}}
+		\State \II \Asignacion{yardas}{metrosIngresados \opPor{} \num{1.09361}}
+		\State \II \Asignacion{millas}{metrosIngresados \opPor{} \num{0.000621371}}
+		\State
+		\State \II \Escribir{\txt{-------------------------------------------------}}
+		\State \II \Escribir{\txt{RESULTADOS DE LA CONVERSION:}}
+		\State \II \Escribir{\txt{  -> Metros origen: }, metrosIngresados, \txt{ METROS}}
+		\State \II \Escribir{\txt{  -> Pies         : }, pies, \txt{ PIES}}
+		\State \II \Escribir{\txt{  -> Pulgadas     : }, pulgadas, \txt{ PULGADAS}}
+		\State \II \Escribir{\txt{  -> Yardas       : }, yardas, \txt{ YARDAS}}
+		\State \II \Escribir{\txt{  -> Millas       : }, millas, \txt{ MILLAS}}
+		\State \II \Escribir{\txt{======================================}}
+		\State \I \FinSi
+		\State \I \Escribir{\txt{Presione una tecla para retornar al Menu Principal...}}
+		\State \I \kw{Esperar Tecla}
+		\State \FinSubproceso
+		
+		\State \Subproceso{SubProgramaCalculoSueldo}
+		\State \I \kw{Limpiar Pantalla}
+		\State \I \Definir{totalHorasTrabajadas, costoHoraNormal}{Real}
+		\State \I \Definir{sueldoBrutoTotal, deduccionSeguroSocial, sueldoNetoPercibir}{Real}
+		\State \I \Definir{horasNormales, horasExtras}{Real}
+		\State
+		\State \I \Escribir{\txt{==========================================}}
+		\State \I \Escribir{\txt{    MODULO 2: LIQUIDACION DE NOMINA SEMANAL}}
+		\State \I \Escribir{\txt{===========================================}}
+		\State \I \EscribirSS{\txt{Ingrese el total de horas trabajadas en la semana: }}
+		\State \I \Leer{totalHorasTrabajadas}
+		\State \I \EscribirSS{\txt{Ingrese el costo de la hora laboral estandar (USD): }}
+		\State \I \Leer{costoHoraNormal}
+		\State
+		\State \I \Si{totalHorasTrabajadas \opMenor{} \num{0} \kw{ O } costoHoraNormal \opMenor{} \num{0}}
+		\State \II \Escribir{\txt{ERROR: Las horas trabajadas y costos deben ser positivos.}}
+		\State \I \Sino
+		\State \II \cmt{horas extraordinarias}
+		\State \II \Si{totalHorasTrabajadas \opMenorIgual{} \num{40}}
+		\State \III \Asignacion{horasNormales}{totalHorasTrabajadas}
+		\State \III \Asignacion{horasExtras}{\num{0}}
+		\State \III \Asignacion{sueldoBrutoTotal}{horasNormales \opPor{} costoHoraNormal}
+		\State \II \Sino
+		\State \III \Asignacion{horasNormales}{\num{40}}
+		\State \III \Asignacion{horasExtras}{totalHorasTrabajadas \opMenos{} \num{40}}
+		\State \III \cmt{recargo horas extras al 150\%}
+		\State \III \Asignacion{sueldoBrutoTotal}{(horasNormales \opPor{} costoHoraNormal) \opMas{} (horasExtras \opPor{} costoHoraNormal \opPor{} \num{1.5})}
+		\State \II \FinSi
+		\State
+		\State \II \cmt{Deduccion IESS 9.2\%}
+		\State \II \Asignacion{deduccionSeguroSocial}{sueldoBrutoTotal \opPor{} \num{0.092}}
+		\State \II \Asignacion{sueldoNetoPercibir}{sueldoBrutoTotal \opMenos{} deduccionSeguroSocial}
+		\State
+		\State \II \Escribir{\txt{--------------------------------------------------------}}
+		\State \II \Escribir{\txt{ROL DE PAGO:}}
+		\State \II \Escribir{\txt{  [+] Horas Ordinarias   : }, horasNormales, \txt{ hrs}}
+		\State \II \Escribir{\txt{  [+] Horas Extraordinarias: }, horasExtras, \txt{ hrs}}
+		\State \II \Escribir{\txt{  [=] Sueldo Bruto        : \$}, sueldoBrutoTotal}
+		\State \II \Escribir{\txt{  [-] Descuento IESS 9.2\%: \$}, deduccionSeguroSocial}
+		\State \II \Escribir{\txt{   Sueldo Neto Semanal: \$}, sueldoNetoPercibir}
+		\State \II \Escribir{\txt{=======================================}}
+		\State \I \FinSi
+		\State \I \Escribir{\txt{Presione una tecla para retornar al Menu Principal...}}
+		\State \I \kw{Esperar Tecla}
+		\State \FinSubproceso
+		
+		\State \Subproceso{SubProgramaOperacionVectores}
+		\State \I \kw{Limpiar Pantalla}
+		\State \I \cmt{Dimensionamiento de 4 arreglos fijos de 10 celdas}
+		\State \I \Dimension{vectorA[\num{10}], vectorB[\num{10}], vectorSuma[\num{10}], vectorResta[\num{10}]}
+		\State \I \Definir{vectorA, vectorB, vectorSuma, vectorResta, indiceBucle}{Entero}
+		\State
+		\State \I \Escribir{\txt{==========================================}}
+		\State \I \Escribir{\txt{ MODULO 3: OPERACIONES CON VECTORES (SUMA-RESTA)}}
+		\State \I \Escribir{\txt{==========================================}}
+		\State
+		\State
+		\State \I \Escribir{\txt{\textgreater\textgreater\ INGRESAR 10 ELEMENTOS PARA EL VECTOR A:}}
+		\State \I \Para{indiceBucle}{1}{10}{1}
+		\State \II \EscribirSS{\txt{Ingrese numero VectorA[}, indiceBucle, \txt{]: }}
+		\State \II \Leer{vectorA[indiceBucle]}
+		\State \I \FinPara
+		
+		\State
+		\State \I \Escribir{\txt{\textgreater\textgreater\ INGRESAR 10 ELEMENTOS PARA EL VECTOR B:}}
+		\State \I \Para{indiceBucle}{1}{10}{1}
+		\State \II \EscribirSS{\txt{Ingrese numero VectorB[}, indiceBucle, \txt{]: }}
+		\State \II \Leer{vectorB[indiceBucle]}
+		\State \I \FinPara
+		\State \I \cmt{Impresion de resultados}
+		\State \I \kw{Limpiar Pantalla}
+		\State \I \Escribir{\txt{===========================================}}
+		\State \I \Escribir{\txt{        IMPRESION DE VALORES ORDENADOS }}
+		\State \I \Escribir{\txt{===========================================}}
+		\State \I \Escribir{\txt{Indice | VectorA | VectorB | Suma(A+B) | Resta(A-B)}}
+		\State \I \Escribir{\txt{-------------------------------------------------------------------}}
+		\State \I \Para{indiceBucle}{1}{10}{1}
+		\State \II \Escribir{\txt{[},indiceBucle,\txt{]},vectorA[indiceBucle],\txt{|},vectorB[indiceBucle],\txt{|},
+			vectorSuma[indiceBucle],\txt{|},vectorResta[indiceBucle]}
+		\State \I \FinPara
+		\State \I \Escribir{\txt{===========================================}}
+		\State \I \Escribir{\txt{Presione una tecla para retornar al Menu Principal...}}
+		\State \I \kw{Esperar Tecla}
+		\State \FinSubproceso
+		
+		\State \Subproceso{SubProgramaVectorInverso}
+		\State \I \kw{Limpiar Pantalla}
+		\State \I \Definir{dimensionVector}{Entero}
+		\State \I \Definir{indice}{Entero}
+		\State
+		\State \I \Escribir{\txt{==========================================}}
+		\State \I \Escribir{\txt{ MODULO4: INVERSO DEL VECTOR INGRESADO}}
+		\State \I \Escribir{\txt{==========================================}}
+		\State
+		\State \I \Repetir
+		\State \II \EscribirSS{\txt{Defina el tamano del vector (debe ser positivo): }}
+		\State \II \Leer{dimensionVector}
+		\State \II \Si{dimensionVector \opMenorIgual{} \num{0}}
+		\State \III \Escribir{\txt{ALERTA: dimension N debe ser entero estrictamente positivo.}}
+		\State \II \FinSi
+		\State \I \HastaQue{dimensionVector \opMayor{} \num{0}}
+		\State
+		\State \I \Dimension{vector[dimensionVector]}
+		\State \I \Definir{vector}{Real}
+		\State
+		\State \I \Asignacion{indice}{\num{1}}
+		\State \I \Repetir
+		\State \II \EscribirSS{\txt{Ingrese valor celda dinamica [}, indice, \txt{]: }}
+		\State \II \Leer{vector[indice]}
+		\State \II \Asignacion{indice}{indice \opMas{} \num{1}}
+		\State \I \HastaQue{indice \opMayor{} dimensionVector}
+		\State
+		\State \I \kw{Limpiar Pantalla}
+		\State \I \Escribir{\txt{=========================================}}
+		\State \I \Escribir{\txt{VECTOR ORDENADO}}
+		\State \I \Escribir{\txt{=========================================}}
+		\State \I \Asignacion{indice}{\num{1}}
+		\State \I \Repetir
+		\State \II \Escribir{\txt{  [*] Elemento Celda [}, indice, \txt{] = }, vector[indice]}
+		\State \II \Asignacion{indice}{indice \opMas{} \num{1}}
+		\State \I \HastaQue{indice \opMayor{} dimensionVector}
+		\State
+		\State \I \Escribir{\txt{=========================================}}
+		\State \I \Escribir{\txt{ORDEN INVERSO DEL VECTOR}}
+		\State \I \Escribir{\txt{=========================================}}
+		\State \I \Asignacion{indice}{dimensionVector}
+		\State \I \Repetir
+		\State \II \Escribir{\txt{  [\#] Indice Invertido [}, indice, \txt{] = }, vector[indice]}
+		\State \II \Asignacion{indice}{indice \opMenos{} \num{1}}
+		\State \I \HastaQue{indice \opMenor{} \num{1}}
+		\State \I \Escribir{\txt{==========================================}}
+		\State \I \Escribir{\txt{Presione una tecla para retornar al Menu Principal...}}
+		\State \I \kw{Esperar Tecla}
+		\State \FinSubproceso
+	\end{algorithmic}
+	
+	
+	
+	
+	%======================================INICIO EJECUCION================		
+	
+	
+	
+	
+	
+	
+	\InicioEjecucion
+	{EJECUCIÓN INICIAL DEL SISTEMA}
+	{ejec:01-ejecucion-inicial-del-sistema}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.3cm}
+		
+		{\ttfamily
+			
+			{\color{pseKeyword}*** Ejecución Iniciada. ***}
+			
+			\vspace{0.3cm}
+			
+			{\color{pseString}
+				=============================================================
+				
+				\begin{center}
+					UNIVERSIDAD ESTATAL DE MILAGRO
+					
+					FACULTAD DE CIENCIAS DE LA INGENIERÍA
+					
+					INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN
+				\end{center}
+				
+				=============================================================
+				
+				PROYECTO: COMPONENTE PRÁCTICO 1
+				
+				\hspace*{3cm}GRUPO NRO: 3
+				
+				INTEGRANTES:
+				
+				\hspace*{2cm}DIEGO ANDRES ALBAN COELLO \hfill 0959061219
+				
+				\hspace*{2cm}ANA GABRIELA AYALA PEREZ \hfill 1719195321
+				
+				\hspace*{2cm}SOLANGE MARISOL BUENO PINCAY \hfill 0927255901
+				
+				\hspace*{2cm}ÁNGEL FERNANDO CALERO MALDONADO \hfill 1715227110
+				
+				\hspace*{2cm}RONALD MIGUEL DUTAN BONILLA \hfill 0940568066
+				
+				\hspace*{2cm}ROBERTO CELESTINO PROAÑO ALCÍVAR \hfill 1206695635
+				
+				\hspace*{2cm}ISRAEL ALFONSO VILLEGA SEGURA \hfill 0952182244
+				
+				\vspace{0.3cm}
+				
+				=============================================================
+				
+				SISTEMA INICIALIZADO CORRECTAMENTE. Presione una tecla para continuar...
+			}
+		}
+		
+	\end{PSeIntWindow}
+	%===========================FIN INICIO EJECUCION ==================
+	%===========================MENU DE OPCIONES======================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{MENÚ DE OPCIONES}
+	{ejec:02-menu-de-opciones}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MENÚ PRINCIPAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\consola{1. Conversión de Longitudes}\par
+		
+		\consola{2. Calcular el sueldo neto semanal de un trabajador}\par
+		
+		\consola{3. Suma y resta de dos arreglos unidimensionales}\par
+		
+		\consola{4. Inversa de un arreglo de N elementos}\par
+		
+		\consola{5. Salir}\par
+		
+		\consola{========================================================}\par
+		
+		\consola{Por favor, seleccione una opción (1-5): \textgreater}\par
+		
+		\vspace{2.8cm}
+		
+		\lineaPSeInt{línea 41 instrucción 1}
+		
+	\end{PSeIntWindow}	
+	%============================MENU DE OPCIONES Opcion 1========================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{MENÚ DE OPCIONES OPCION 1}
+	{ejec:03-menu-de-opciones-opcion-1}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MENÚ PRINCIPAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{1. Conversión de Longitudes}\par
+		
+		\consola{2. Calcular el sueldo neto semanal de un trabajador}\par
+		
+		\consola{3. Suma y resta de dos arreglos unidimensionales}\par
+		
+		\consola{4. Inversa de un arreglo de N elementos}\par
+		
+		\consola{5. Salir}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{Por favor, seleccione una opción (1-5): \textgreater\ }\entrada{1}\par
+		
+		\vspace{2.8cm}
+		
+		\lineaPSeInt{línea 41 instrucción 1}
+		
+	\end{PSeIntWindow}
+	%======================TRANSFORMACIO UNIDADES===============================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{TRANSFORMACION DE UNIDADES}
+	{ejec:04-transformacion-de-unidades}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{==============================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 1 \hspace{1cm} TRANSFORMACION DE UNIDADES}
+		\end{center}
+		
+		\consola{==============================================================}\par
+		
+		\vspace{0.6cm}
+		
+		\consola{Ingrese la magnitud en Metros a convertir: \textgreater}\par
+		
+		\vspace{1.8cm}
+		
+		\lineaPSeInt{línea 58 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%=====================EJECUCION 1 DE TRANSFORMACION DE UNIDADES===
+	
+	\InicioEjecucion
+	{EJECUCION 1 TRANSFORMACION DE UNIDADES}
+	{ejec:05-ejecucion-1-transformacion-de-unidades}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 1 \hspace{1cm} TRANSFORMACION DE UNIDADES}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Ingrese la magnitud en Metros a convertir: \textgreater\ }\entrada{10}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{--------------------------------------------------------}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{RESULTADOS DE LA CONVERSIÓN :}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\hspace*{0.5cm}-> Metros origen: }\entrada{10}\consola{ METROS}\par
+		
+		\consola{\hspace*{0.5cm}-> Pies : }\entrada{32.8084}\consola{ PIES}\par
+		
+		\consola{\hspace*{0.5cm}-> Pulgadas : }\entrada{393.701}\consola{ PULGADAS}\par
+		
+		\consola{\hspace*{0.5cm}-> Yardas : }\entrada{10.9361}\consola{ YARDAS}\par
+		
+		\consola{\hspace*{0.5cm}-> Millas : }\entrada{0.00621371}\consola{ MILLAS}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{1.5cm}
+		
+		\lineaPSeInt{línea 78 instrucción 1}
+		
+	\end{PSeIntWindow}
+	%===================FIN OPCION 1 DEL MENU =========================
+	
+	%=========OPCION 1========================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION 2 MENÚ DE OPCIONES OPCION 1}
+	{ejec:06-ejecucion-2-menu-de-opciones-opcion-1}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MENÚ PRINCIPAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{1. Conversión de Longitudes}\par
+		
+		\consola{2. Calcular el sueldo neto semanal de un trabajador}\par
+		
+		\consola{3. Suma y resta de dos arreglos unidimensionales}\par
+		
+		\consola{4. Inversa de un arreglo de N elementos}\par
+		
+		\consola{5. Salir}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{Por favor, seleccione una opción (1-5): \textgreater\ }\entrada{1}\par
+		
+		\vspace{2.8cm}
+		
+		\lineaPSeInt{línea 41 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%=============================EJECUCION 2 TRANSFORMACION DE UNIDADES
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION 2 TRANSFORMACION DE UNIDADES}
+	{ejec:07-ejecucion-2-transformacion-de-unidades}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{==============================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 1 \hspace{1cm} TRANSFORMACION DE UNIDADES}
+		\end{center}
+		
+		\consola{==============================================================}\par
+		
+		\vspace{0.6cm}
+		
+		\consola{Ingrese la magnitud en Metros a convertir: \textgreater}\par
+		
+		\vspace{1.8cm}
+		
+		\lineaPSeInt{línea 58 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%=====================EJECUCION 1 DE tRANSFORMACION DE UNIDADES===
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION 2 TRANSFORMACION DE UNIDADES}
+	{ejec:08-ejecucion-2-transformacion-de-unidades}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 1 \hspace{1cm} TRANSFORMACION DE UNIDADES}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Ingrese la magnitud en Metros a convertir: \textgreater\ }\entrada{20}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{--------------------------------------------------------}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{RESULTADOS DE LA CONVERSIÓN :}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\hspace*{0.5cm}-> Metros origen: }\entrada{20}\consola{ METROS}\par
+		
+		\consola{\hspace*{0.5cm}-> Pies : }\entrada{65.616}\consola{ PIES}\par
+		
+		\consola{\hspace*{0.5cm}-> Pulgadas : }\entrada{787.40}\consola{ PULGADAS}\par
+		
+		\consola{\hspace*{0.5cm}-> Yardas : }\entrada{21.872}\consola{ YARDAS}\par
+		
+		\consola{\hspace*{0.5cm}-> Millas : }\entrada{0.0124274}\consola{ MILLAS}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{1.5cm}
+		
+		\lineaPSeInt{línea 78 instrucción 1}
+		
+	\end{PSeIntWindow}	
+	
+	%===================EJECUCION MENU PRONCIPAL===================================
+	\InicioEjecucion
+	{EJECUCION MENU PRINCIPAL}
+	{ejec:09-ejecucion-menu-principal}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MENÚ PRINCIPAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{1. Conversión de Longitudes}\par
+		
+		\consola{2. Calcular el sueldo neto semanal de un trabajador}\par
+		
+		\consola{3. Suma y resta de dos arreglos unidimensionales}\par
+		
+		\consola{4. Inversa de un arreglo de N elementos}\par
+		
+		\consola{5. Salir}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{Por favor, seleccione una opción (1-5): \textgreater\ }\entrada{2}\par
+		
+		\vspace{2.8cm}
+		
+		\lineaPSeInt{línea 41 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%========EJECUCION EJECUCION IGRESO DE DATOS ROL=========
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION IGRESO DE DATOS ROL}
+	{ejec:10-ejecucion-igreso-de-datos-rol}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 2: CALCULO NÓMINA SEMANAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Ingrese el número total de horas trabajadas en la semana: \textgreater}\par
+		
+		\vspace{2.8cm}
+		
+		\lineaPSeInt{línea 102 instrucción 1}
+		
+	\end{PSeIntWindow}	
+	%==========CALCULO DEL ROL======================
+	
+	\InicioEjecucion
+	{EJECUCION DE CALCULO ROL}
+	{ejec:11-ejecucion-de-claculo-rol}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 2: CALCULO NÓMINA SEMANAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{Ingrese el número total de horas trabajadas en la semana: \textgreater\ }\entrada{50}\par
+		
+		\consola{Ingrese el costo de la hora laboral estándar (Dolares): \textgreater\ }\entrada{4}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{--------------------------------------------------------}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{ROL DE PAGO:}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\hspace*{0.5cm}[+] Horas Ordinarias Liquidadas: }\entrada{40}\consola{ hrs}\par
+		
+		\consola{\hspace*{0.5cm}[+] Horas Extraordinarias Liquidadas: }\entrada{10}\consola{ hrs}\par
+		
+		\consola{\hspace*{0.5cm}[=] Sueldo Bruto Consolidado: \$}\entrada{220}\par
+		
+		\consola{\hspace*{0.5cm}[-] Descuento Obligatorio IESS (9.2\%): \$}\entrada{20.24}\par
+		
+		\consola{\hspace*{0.5cm}[TOTAL A PAGAR] Sueldo Neto Semanal: \$}\entrada{199.76}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{1.8cm}
+		
+		\lineaPSeInt{línea 125 instrucción 1}
+		
+	\end{PSeIntWindow}	
+	%======================SEGUNDA EJECUCION=================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION 2 CALCULO DE ROL}
+	{ejec:12-ejecucion-2-claculo-de-rol}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 2: CALCULO NÓMINA SEMANAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{Ingrese el número total de horas trabajadas en la semana: \textgreater\ }\entrada{40}\par
+		
+		\consola{Ingrese el costo de la hora laboral estándar (Dolares): \textgreater\ }\entrada{4}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{--------------------------------------------------------}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{ROL DE PAGO:}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\hspace*{0.5cm}[+] Horas Ordinarias Liquidadas: }\entrada{40}\consola{ hrs}\par
+		
+		\consola{\hspace*{0.5cm}[+] Horas Extraordinarias Liquidadas: }\entrada{0}\consola{ hrs}\par
+		
+		\consola{\hspace*{0.5cm}[=] Sueldo Bruto Consolidado: \$}\entrada{160}\par
+		
+		\consola{\hspace*{0.5cm}[-] Descuento Obligatorio IESS (9.2\%): \$}\entrada{14.72}\par
+		
+		\consola{\hspace*{0.5cm}[TOTAL A PAGAR] Sueldo Neto Semanal: \$}\entrada{145.28}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{1.8cm}
+		
+		\lineaPSeInt{línea 122 instrucción 1}
+		
+	\end{PSeIntWindow}	
+	%======================OPCION 3 DEL MENU ===================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION MENU PRINCIPAL}
+	{ejec:13-ejecucion-menu-principal}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MENÚ PRINCIPAL}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{1. Conversión de Longitudes}\par
+		
+		\consola{2. Calcular el sueldo neto semanal de un trabajador}\par
+		
+		\consola{3. Suma y resta de dos arreglos unidimensionales}\par
+		
+		\consola{4. Inversa de un arreglo de N elementos}\par
+		
+		\consola{5. Salir}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{Por favor, seleccione una opción (1-5): \textgreater\ }\entrada{3}\par
+		
+		\vspace{2.8cm}
+		
+		\lineaPSeInt{línea 41 instrucción 1}
+		
+	\end{PSeIntWindow}	
+	%==========================modulo 3=============
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{MÓDULO 3 - INGRESO DE DATOS DE VECTORES}
+	{ejec:14-modulo-3-ingreso-de-datos-de-vectores}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 3: OPERACIONES CON VECTORES (SUMA-RESTA)}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\textgreater\textgreater\ ESCRIBIR 10 ELEMENTOS PARA EL VECTOR A:}\par
+		
+		\vspace{0.15cm}
+		
+		\consola{Ingrese numero VectorA[1]: \textgreater\ }\entrada{4}\par
+		\consola{Ingrese numero VectorA[2]: \textgreater\ }\entrada{5}\par
+		\consola{Ingrese numero VectorA[3]: \textgreater\ }\entrada{3}\par
+		\consola{Ingrese numero VectorA[4]: \textgreater\ }\entrada{2}\par
+		\consola{Ingrese numero VectorA[5]: \textgreater\ }\entrada{6}\par
+		\consola{Ingrese numero VectorA[6]: \textgreater\ }\entrada{7}\par
+		\consola{Ingrese numero VectorA[7]: \textgreater\ }\entrada{8}\par
+		\consola{Ingrese numero VectorA[8]: \textgreater\ }\entrada{9}\par
+		\consola{Ingrese numero VectorA[9]: \textgreater\ }\entrada{3}\par
+		\consola{Ingrese numero VectorA[10]: \textgreater\ }\entrada{2}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{--------------------------------------------------------}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\textgreater\textgreater\ ESCRIBIR 10 ELEMENTOS PARA EL VECTOR B:}\par
+		
+		\vspace{0.15cm}
+		
+		\consola{Ingrese numero VectorB[1]: \textgreater\ }\entrada{1}\par
+		\consola{Ingrese numero VectorB[2]: \textgreater\ }\entrada{2}\par
+		\consola{Ingrese numero VectorB[3]: \textgreater\ }\entrada{3}\par
+		\consola{Ingrese numero VectorB[4]: \textgreater\ }\entrada{4}\par
+		\consola{Ingrese numero VectorB[5]: \textgreater\ }\entrada{5}\par
+		\consola{Ingrese numero VectorB[6]: \textgreater\ }\entrada{6}\par
+		\consola{Ingrese numero VectorB[7]: \textgreater\ }\entrada{7}\par
+		\consola{Ingrese numero VectorB[8]: \textgreater\ }\entrada{8}\par
+		\consola{Ingrese numero VectorB[9]: \textgreater\ }\entrada{9}\par
+		\consola{Ingrese numero VectorB[10]: \textgreater\ }\entrada{10}\par
+		
+		\vspace{0.5cm}
+		
+		\lineaPSeInt{línea 226 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%===============================resultado de suma y rsta de vectores 1ejecucion
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{RESULTADOS DE SUMA Y RESTA DE VECTORES}
+	{ejec:15-resultados-de-suma-y-resta-de-vectores}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily\small
+		
+		\consola{==============================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{IMPRESION DE VALORES ORDENADOS}
+		\end{center}
+		
+		\consola{==============================================================}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{Índice \hspace{0.2cm}| \hspace{0.2cm} Vector A \hspace{0.2cm}| \hspace{0.2cm} Vector B \hspace{0.2cm}| \hspace{0.2cm} Suma (A + B) \hspace{0.2cm}| \hspace{0.2cm} Resta (A - B)}\par
+		\consola{-------------------------------------------------------------------------------------------------------------------------------}\par
+		
+		\consola{[1]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{4}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{1}\consola{\hspace{1.0cm}| \hspace{1.0cm}}\entrada{5}\consola{\hspace{1.5cm}| \hspace{1.3cm}}\entrada{3}\par
+		\consola{[2]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{5}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{2}\consola{\hspace{1.0cm}| \hspace{1.0cm}}\entrada{7}\consola{\hspace{1.5cm}| \hspace{1.3cm}}\entrada{3}\par
+		\consola{[3]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{3}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{3}\consola{\hspace{1.0cm}| \hspace{1.0cm}}\entrada{6}\consola{\hspace{1.5cm}| \hspace{1.3cm}}\entrada{0}\par
+		\consola{[4]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{2}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{4}\consola{\hspace{1.0cm}| \hspace{1.0cm}}\entrada{6}\consola{\hspace{1.5cm}| \hspace{1.1cm}}\entrada{-2}\par
+		\consola{[5]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{6}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{5}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{11}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{1}\par
+		\consola{[6]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{7}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{6}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{13}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{1}\par
+		\consola{[7]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{8}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{7}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{15}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{1}\par
+		\consola{[8]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{9}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{8}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{17}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{1}\par
+		\consola{[9]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{3}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{9}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{12}\consola{\hspace{1.4cm}| \hspace{1.1cm}}\entrada{-6}\par
+		\consola{[10] \hspace{0.5cm}| \hspace{0.9cm}}\entrada{2}\consola{\hspace{1.0cm}| \hspace{0.7cm}}\entrada{10}\consola{\hspace{0.8cm}| \hspace{0.8cm}}\entrada{12}\consola{\hspace{1.4cm}| \hspace{1.1cm}}\entrada{-8}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{==============================================================}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{0.4cm}
+		
+		\lineaPSeInt{línea 245 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%==========================ejecucion 2==============================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION 2 OPERACIONES CON VECTORES (SUMA-RESTA)}
+	{ejec:16-ejecucion-2-operaciones-con-vectores-suma-resta}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily
+		\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 3: OPERACIONES CON VECTORES (SUMA-RESTA)}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\textgreater\textgreater\ ESCRIBIR 10 ELEMENTOS PARA EL VECTOR A:}\par
+		
+		\vspace{0.15cm}
+		
+		\consola{Ingrese numero VectorA[1]: \textgreater\ }\entrada{6}\par
+		\consola{Ingrese numero VectorA[2]: \textgreater\ }\entrada{7}\par
+		\consola{Ingrese numero VectorA[3]: \textgreater\ }\entrada{8}\par
+		\consola{Ingrese numero VectorA[4]: \textgreater\ }\entrada{6}\par
+		\consola{Ingrese numero VectorA[5]: \textgreater\ }\entrada{56}\par
+		\consola{Ingrese numero VectorA[6]: \textgreater\ }\entrada{6}\par
+		\consola{Ingrese numero VectorA[7]: \textgreater\ }\entrada{7}\par
+		\consola{Ingrese numero VectorA[8]: \textgreater\ }\entrada{8}\par
+		\consola{Ingrese numero VectorA[9]: \textgreater\ }\entrada{5}\par
+		\consola{Ingrese numero VectorA[10]: \textgreater\ }\entrada{4}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{--------------------------------------------------------}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{\textgreater\textgreater\ ESCRIBIR 10 ELEMENTOS PARA EL VECTOR B:}\par
+		
+		\vspace{0.15cm}
+		
+		\consola{Ingrese numero VectorB[1]: \textgreater\ }\entrada{9}\par
+		\consola{Ingrese numero VectorB[2]: \textgreater\ }\entrada{7}\par
+		\consola{Ingrese numero VectorB[3]: \textgreater\ }\entrada{6}\par
+		\consola{Ingrese numero VectorB[4]: \textgreater\ }\entrada{5}\par
+		\consola{Ingrese numero VectorB[5]: \textgreater\ }\entrada{4}\par
+		\consola{Ingrese numero VectorB[6]: \textgreater\ }\entrada{43}\par
+		\consola{Ingrese numero VectorB[7]: \textgreater\ }\entrada{3}\par
+		\consola{Ingrese numero VectorB[8]: \textgreater\ }\entrada{3}\par
+		\consola{Ingrese numero VectorB[9]: \textgreater\ }\entrada{3}\par
+		\consola{Ingrese numero VectorB[10]: \textgreater\ }\entrada{6}\par
+		
+		\vspace{0.5cm}
+		
+		\lineaPSeInt{línea 226 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%==================================ingreso vector=================
+	
+	\InicioEjecucion
+	{EJECUCION 2 RESULTADOS DE SUMA Y RESTA DE VECTORES}
+	{ejec:17-ejecucion-2-resultados-de-suma-y-resta-de-vectores}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{IMPRESION DE VALORES ORDENADOS}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{Índice \hspace{0.4cm}| \hspace{0.4cm} Vector A \hspace{0.4cm}| \hspace{0.4cm} Vector B \hspace{0.4cm}| \hspace{0.4cm} Suma (A + B) \hspace{0.4cm}| \hspace{0.4cm} Resta (A - B)}\par
+		\consola{----------------------------------------------------------------}\par
+		
+		\consola{[1]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{6}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{9}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{15}\consola{\hspace{1.4cm}| \hspace{1.1cm}}\entrada{-3}\par
+		\consola{[2]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{7}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{7}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{14}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{0}\par
+		\consola{[3]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{8}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{6}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{14}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{2}\par
+		\consola{[4]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{6}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{5}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{11}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{1}\par
+		\consola{[5]  \hspace{0.7cm}| \hspace{0.6cm}}\entrada{56}\consola{\hspace{0.8cm}| \hspace{0.9cm}}\entrada{4}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{60}\consola{\hspace{1.4cm}| \hspace{1.1cm}}\entrada{52}\par
+		\consola{[6]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{6}\consola{\hspace{1.0cm}| \hspace{0.6cm}}\entrada{43}\consola{\hspace{0.8cm}| \hspace{0.8cm}}\entrada{49}\consola{\hspace{1.4cm}| \hspace{1.0cm}}\entrada{-37}\par
+		\consola{[7]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{7}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{3}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{10}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{4}\par
+		\consola{[8]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{8}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{3}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{11}\consola{\hspace{1.4cm}| \hspace{1.3cm}}\entrada{5}\par
+		\consola{[9]  \hspace{0.7cm}| \hspace{0.9cm}}\entrada{5}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{3}\consola{\hspace{1.0cm}| \hspace{1.0cm}}\entrada{8}\consola{\hspace{1.5cm}| \hspace{1.3cm}}\entrada{2}\par
+		\consola{[10] \hspace{0.5cm}| \hspace{0.9cm}}\entrada{4}\consola{\hspace{1.0cm}| \hspace{0.9cm}}\entrada{6}\consola{\hspace{1.0cm}| \hspace{0.8cm}}\entrada{10}\consola{\hspace{1.4cm}| \hspace{1.1cm}}\entrada{-2}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{0.4cm}
+		
+		\lineaPSeInt{línea 245 instrucción 1}
+		
+	\end{PSeIntWindow}
+	%	=======================opcion 4================================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{INGRESO DEL TAMAÑO DEL VECTOR}
+	{ejec:18-ingreso-del-tamano-del-vector}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 4: INVERSO DEL VECTOR INGRESADO}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.4cm}
+		
+		\consola{Defina el tamaño del vector debe ser positivo: \textgreater\ }\par
+		
+		\vspace{2.5cm}
+		
+		\lineaPSeInt{línea 273 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%=================resultado moduo 4====
+	
+	\InicioEjecucion
+	{INGRESO DE DATOS DEL VECTOR}
+	{ejec:19-ingreso-de-datos-del-vector}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 4: INVERSO DEL VECTOR INGRESADO}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{Defina el tamaño del vector debe ser positivo: \textgreater\ }\entrada{9}\par
+		
+		\consola{Ingrese valor para la posicion [1]: \textgreater\ }\entrada{1}\par
+		
+		\consola{Ingrese valor para la posicion [2]: \textgreater\ }\entrada{2}\par
+		
+		\consola{Ingrese valor para la posicion [3]: \textgreater\ }\entrada{3}\par
+		
+		\consola{Ingrese valor para la posicion [4]: \textgreater\ }\entrada{4}\par
+		
+		\consola{Ingrese valor para la posicion [5]: \textgreater\ }\entrada{5}\par
+		
+		\consola{Ingrese valor para la posicion [6]: \textgreater\ }\entrada{6}\par
+		
+		\consola{Ingrese valor para la posicion [7]: \textgreater\ }\entrada{7}\par
+		
+		\consola{Ingrese valor para la posicion [8]: \textgreater\ }\entrada{8}\par
+		
+		\consola{Ingrese valor para la posicion [9]: \textgreater\ }\entrada{9}\par
+		
+		\vspace{1.5cm}
+		
+		\lineaPSeInt{línea 287 instrucción 1}
+		
+	\end{PSeIntWindow}
+	%==========================resiltado modulo 4 ==============
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{VECTOR ORDENADO E INVERSO}
+	{ejec:20-vector-ordenado-e-inverso}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily\small
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{VECTOR ORDENADO}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{[*] Elemento en Celda [1] = }\entrada{1}\par
+		
+		\consola{[*] Elemento en Celda [2] = }\entrada{2}\par
+		
+		\consola{[*] Elemento en Celda [3] = }\entrada{3}\par
+		
+		\consola{[*] Elemento en Celda [4] = }\entrada{4}\par
+		
+		\consola{[*] Elemento en Celda [5] = }\entrada{5}\par
+		
+		\consola{[*] Elemento en Celda [6] = }\entrada{6}\par
+		
+		\consola{[*] Elemento en Celda [7] = }\entrada{7}\par
+		
+		\consola{[*] Elemento en Celda [8] = }\entrada{8}\par
+		
+		\consola{[*] Elemento en Celda [9] = }\entrada{9}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{ORDEN INVERSO DEL VECTOR}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{[\#] Elemento en indice Invertido [9] = }\entrada{9}\par
+		
+		\consola{[\#] Elemento en indice Invertido [8] = }\entrada{8}\par
+		
+		\consola{[\#] Elemento en indice Invertido [7] = }\entrada{7}\par
+		
+		\consola{[\#] Elemento en indice Invertido [6] = }\entrada{6}\par
+		
+		\consola{[\#] Elemento en indice Invertido [5] = }\entrada{5}\par
+		
+		\consola{[\#] Elemento en indice Invertido [4] = }\entrada{4}\par
+		
+		\consola{[\#] Elemento en indice Invertido [3] = }\entrada{3}\par
+		
+		\consola{[\#] Elemento en indice Invertido [2] = }\entrada{2}\par
+		
+		\consola{[\#] Elemento en indice Invertido [1] = }\entrada{1}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{0.4cm}
+		
+		\lineaPSeInt{línea 314 instrucción 1}
+		
+	\end{PSeIntWindow}
+	%==============ingreso de datos ejecucion 2=======
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJEUCION 2 INGRESO DE DATOS DEL VECTOR}
+	{ejec:21-ejeucion-2-ingreso-de-datos-del-vector}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily\small
+		
+		\consola{========================================================}\par
+		
+		\begin{center}
+			\textcolor{pseString}{MODULO 4: INVERSO DEL VECTOR INGRESADO}
+		\end{center}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.25cm}
+		
+		\consola{Defina el tamaño del vector debe ser positivo: \textgreater\ }\entrada{7}\par
+		
+		\consola{Ingrese valor para la posicion [1]: \textgreater\ }\entrada{10}\par
+		
+		\consola{Ingrese valor para la posicion [2]: \textgreater\ }\entrada{20}\par
+		
+		\consola{Ingrese valor para la posicion [3]: \textgreater\ }\entrada{30}\par
+		
+		\consola{Ingrese valor para la posicion [4]: \textgreater\ }\entrada{40}\par
+		
+		\consola{Ingrese valor para la posicion [5]: \textgreater\ }\entrada{50}\par
+		
+		\consola{Ingrese valor para la posicion [6]: \textgreater\ }\entrada{60}\par
+		
+		\consola{Ingrese valor para la posicion [7]: \textgreater\ }\entrada{70}\par
+		
+		\vspace{1.8cm}
+		
+		\lineaPSeInt{línea 287 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%==================resultado de la ejecucion 2================
+	\vspace{0.2cm}
+	\InicioEjecucion
+	{EJECUCION 2 VECTOR ORDENADO E INVERSO}
+	{ejec:22-ejecucion-2-vector-ordenado-e-inverso}
+	
+	\begin{PSeIntWindow}
+		
+		\BarraPSeInt
+		
+		\vspace{0.2cm}
+		
+		\ttfamily\small
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{VECTOR ORDENADO}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{[*] Elemento en Celda [1] = }\entrada{10}\par
+		
+		\consola{[*] Elemento en Celda [2] = }\entrada{20}\par
+		
+		\consola{[*] Elemento en Celda [3] = }\entrada{30}\par
+		
+		\consola{[*] Elemento en Celda [4] = }\entrada{40}\par
+		
+		\consola{[*] Elemento en Celda [5] = }\entrada{50}\par
+		
+		\consola{[*] Elemento en Celda [6] = }\entrada{60}\par
+		
+		\consola{[*] Elemento en Celda [7] = }\entrada{70}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{ORDEN INVERSO DEL VECTOR}\par
+		
+		\vspace{0.2cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{[\#] Elemento en indice Invertido [7] = }\entrada{70}\par
+		
+		\consola{[\#] Elemento en indice Invertido [6] = }\entrada{60}\par
+		
+		\consola{[\#] Elemento en indice Invertido [5] = }\entrada{50}\par
+		
+		\consola{[\#] Elemento en indice Invertido [4] = }\entrada{40}\par
+		
+		\consola{[\#] Elemento en indice Invertido [3] = }\entrada{30}\par
+		
+		\consola{[\#] Elemento en indice Invertido [2] = }\entrada{20}\par
+		
+		\consola{[\#] Elemento en indice Invertido [1] = }\entrada{10}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{========================================================}\par
+		
+		\vspace{0.3cm}
+		
+		\consola{Presione una tecla para retornar al Menú Principal...}\par
+		
+		\vspace{0.4cm}
+		
+		\lineaPSeInt{línea 314 instrucción 1}
+		
+	\end{PSeIntWindow}
+	
+	%=====================================================
+	
+    \newpage
+    
+	\listadefiguraspseint
+	%***********************************************
+	%************************************************
+	% =====================================================
+	% CONCLUSIONES Y RECOMENDACIONES
+	% =====================================================
+	
+	\newpage
+	
+	\section{\textcolor{azulUNEMI}{Conclusiones}}
+	
+	\begin{enumerate}
+		\item La modularización mediante subprocesos permitió organizar el programa en módulos independientes, facilitando su comprensión, mantenimiento y reutilización.
+		\item El uso de estructuras repetitivas como Para y Repetir permitió automatizar procesos de ingreso, recorrido y presentación de datos, reduciendo la cantidad de instrucciones necesarias.
+		\item La implementación de arreglos unidimensionales fortaleció la comprensión sobre el almacenamiento y manipulación de conjuntos de datos dentro de un programa.
+		\item La integración de varios ejercicios en un único sistema demostró la importancia de planificar adecuadamente la estructura de un programa para optimizar recursos y mejorar la experiencia del usuario.
+		\item El desarrollo de este proyecto contribuyó al fortalecimiento de habilidades fundamentales en lógica de programación, análisis de problemas y diseño de algoritmos, bases necesarias para asignaturas más avanzadas de la carrera.
+	\end{enumerate}
+	
+	\section{\textcolor{azulUNEMI}{Recomendaciones}}
+	
+	
+	\begin{enumerate}
+		\item Mantener una adecuada modularización del código para facilitar futuras modificaciones y ampliaciones del sistema.
+		\item Implementar validaciones adicionales que controlen tipos de datos incorrectos y eviten errores durante la ejecución.
+		\item Documentar cada subproceso mediante comentarios descriptivos para mejorar la comprensión del código por parte de otros desarrolladores.
+		\item Realizar pruebas con diferentes casos de entrada, incluyendo datos válidos e inválidos, para verificar el correcto funcionamiento de cada módulo.
+		\item Continuar practicando el uso de arreglos, estructuras repetitivas y funciones, ya que constituyen elementos fundamentales en el desarrollo de software.
+	\end{enumerate}
+	
+	
+	% =====================================================
+	% BIBLIOGRAFÍA EN ÚLTIMA HOJA
+	% =====================================================
+	
+	\newpage
+	
+	\section{\textcolor{azulUNEMI}{Bibliografía}}
+	
+	
+	\begin{itemize}
+		\item Joyanes Aguilar, L. (2020). \textit{Fundamentos de programación: Algoritmos, estructuras de datos y objetos} (5.ª ed.). McGraw-Hill.
+		
+		\item Pérez López, C. (2021). \textit{Programación estructurada y algoritmos}. Alfaomega.
+		
+		\item PSeInt. (2025). \textit{PSeInt: Herramienta para asistir a estudiantes en programación}. https://pseint.sourceforge.net
+		
+		\item Deitel, P., \& Deitel, H. (2020). \textit{Cómo programar} (10.ª ed.). Pearson Educación.
+	\end{itemize}
+	%************************************************
+	%************************************************
+	\newpage
+	
+	\tableofcontents
+	
+\end{document}
